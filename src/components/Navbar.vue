@@ -5,7 +5,7 @@
     <div class="flex items-center justify-between mx-auto max-w-3xl md:max-w-4xl xl:max-w-5xl px-3 sm:px-6 xl:px-0">
       <!-- Left Nav -->
       <a href="/" class="flex items-center">
-        <img alt="Logo" src="/src/assets/imgs/logo.svg" loading="lazy" width="50" height="45" decoding="async"
+        <img alt="Logo" src="/src/assets/imgs/logo.png" loading="lazy" width="50" height="45" decoding="async"
           class="mr-3 rounded-full transition duration-300 hover:blur-[2px]" />
         <p class="hidden md:block text-lg font-bold text-black dark:text-white">BaoIT Blog</p>
       </a>
