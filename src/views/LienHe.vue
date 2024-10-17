@@ -1,8 +1,8 @@
 <template>
   <!--Contact Page-->
-  <div class="grid place-items-center min-h-screen bg-gray-100 dark:bg-black">
+  <div class="grid place-items-center min-h-screen bg-gray-100 dark:bg-dark">
     <div
-      class="grid grid-cols-12 gap-4 w-full max-w-4xl p-8 rounded-xl shadow-lg shadow-gray-400 bg-cover bg-center dark:shadow-purple-600" >
+      class="grid grid-cols-12 gap-4 w-full max-w-4xl p-8 rounded-xl xl:shadow-lg xl:shadow-gray-400 bg-cover bg-center xl:dark:shadow-purple-600">
       <!-- Left Section: Image -->
       <div class="xl:col-span-5 col-span-12 overflow-hidden">
         <img src="/src/assets/imgs/person.jpg" alt="Image" class="w-full object-cover rounded-full" />
