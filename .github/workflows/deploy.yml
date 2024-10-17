@@ -1,4 +1,4 @@
-name: Deploy my_site on Github 
+name: Deploy vue_my_site on Github
 
 on:
   push:
@@ -7,12 +7,12 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '20'
       - name: Install Dependencies
         run: npm install
       - name: Build App
@@ -38,7 +38,7 @@ jobs:
     needs: build
 
     permissions:
-      pages: write     
+      pages: write
       id-token: write
 
     environment:
@@ -47,6 +47,17 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
+      - name: Setup SSH Key for Git Access
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+      - name: Checkout Repository via SSH
+        run: |
+          git remote set-url origin git@github.com:kimbaorrr/vue_my_site.git
+          git fetch --all
+          git checkout master
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
