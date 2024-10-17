@@ -1,4 +1,4 @@
-name: Deploy vue_my_site on Github
+name: Deploy my_site on Github 
 
 on:
   push:
@@ -38,7 +38,7 @@ jobs:
     needs: build
 
     permissions:
-      pages: write
+      pages: write     
       id-token: write
 
     environment:
@@ -47,15 +47,6 @@ jobs:
 
     runs-on: ubuntu-20.04
     steps:
-      - name: Setup SSH Key for Git Access
-        uses: appleboy/ssh-action@v1.1.0
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: whoami
-          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
