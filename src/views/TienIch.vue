@@ -55,11 +55,6 @@ import Mixin from "/src/components/Mixin.vue";
 import TienIch_IMG_to_PDF from "/src/components/TienIch_IMG_to_PDF.vue";
 import TienIch_PwdGen from "/src/components/TienIch_PwdGen.vue";
 import TienIch_Nato from "/src/components/TienIch_Nato.vue";
-import code_review from "/src/assets/imgs/code-review.jpg";
-import padlock from "/src/assets/imgs/padlock.jpg";
-import qr from "/src/assets/imgs/qr.jpg";
-import generative_image from "/src/assets/imgs/generative-image.jpg";
-import utf8 from "/src/assets/imgs/utf8.jpg";
 
 export default {
   name: "TienIch",
@@ -70,12 +65,7 @@ export default {
     TienIch_URL,
     TienIch_IMG_to_PDF,
     TienIch_PwdGen,
-    TienIch_Nato,
-    code_review,
-    padlock,
-    qr,
-    generative_image,
-    utf8
+    TienIch_Nato
   },
   data() {
     return {
@@ -127,4 +117,3 @@ export default {
   }
 }
 </script>
-

@@ -54,7 +54,7 @@
       <span class="sr-only">Loading...</span>
     </div>
     <!--Projects card-->
-    <div class="bg-white dark:bg-gray-700 p-4 cursor-default transition-transform duration-200 transform hover:-translate-y-1 shadow-lg hover:shadow-xl hover:shadow-gray-300 dark:hover:shadow-gray-400" :data-da-id="item._id"
+    <div class="bg-white dark:bg-gray-700 p-4 cursor-default transition-transform duration-200 transform xl:hover:-translate-y-1 shadow-lg hover:shadow-xl hover:shadow-gray-300 dark:hover:shadow-gray-400" :data-da-id="item._id"
       v-for="(item, idx) in filteredProjects" :key="idx"
       v-if="projectData !== null && Object.keys(projectData).length > 0 && !isLoading">
       <div class="flex justify-between items-baseline font-semibold text-xs text-black dark:text-white mt-1">

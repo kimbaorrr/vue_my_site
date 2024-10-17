@@ -1,8 +1,8 @@
 <template>
   <div class="mt-8 md:mt-16 divide-y divide-gray-200 dark:divide-gray-700">
     <div class="space-y-2 md:space-y-5 xl:grid xl:grid-cols-3 md:my-4 md:pt-6 md:pb-8">
+      <!--Left Content-->
       <div class="space-y-6 md:space-y-8 xl:col-span-2 md:pr-8">
-
         <div class="flex">
           <div
             class="flex bg-clip-text bg-gradient-to-r dark:bg-gradient-to-l from-yellow-600 dark:from-indigo-500 to-red-600 dark:to-purple-500 font-extrabold text-4xl text-transparent md:text-7xl leading-[60px] md:leading-[86px] tracking-tight">
@@ -157,6 +157,7 @@
           </p>
         </div>
       </div>
+      <!--Right Content-->
       <CardInfo />
     </div>
   </div>
