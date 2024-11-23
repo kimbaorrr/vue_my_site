@@ -119,7 +119,7 @@ export default {
             const formSerialized = $('#questionModal form').serialize();
             setTimeout(() => {
                 $.ajax({
-                    url: 'https://api.baoit.xyz/my_blog/ask_question/send',
+                    url: 'https://api.baoit.xyz/my_blog/dat_cau_hoi/send',
                     type: 'POST',
                     data: formSerialized,
                     success: () => {

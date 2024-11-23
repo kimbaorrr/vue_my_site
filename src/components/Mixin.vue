@@ -7,7 +7,7 @@ export default {
             /**
              * Lấy danh sách thông tin cá nhân & trả về dạng JSON
              */
-            const response = await fetch("https://api.baoit.xyz/my_blog/personal_info/get");
+            const response = await fetch("https://api.baoit.xyz/my_blog/ca_nhan/get");
             const data = await response.json();
             return data[0] || [];
         },
