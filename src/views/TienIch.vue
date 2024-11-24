@@ -36,7 +36,7 @@
           @click="this.selectedTool = item.Id, toggleMobileSidebar()"
           :class="this.selectedTool === item.Id ? 'bg-gray-300 dark:bg-gray-700' : true">
           <a href="#" class="flex items-center p-2 rounded-lg">
-            <img class="inline-block ml-0.5" :src="item.Icon" width="22" height="22" :alt="item.Name">
+            <img class="inline-block ml-0.5" v-bind:src="item.Icon" width="22" height="22" :alt="item.Name">
             <span class="ml-2 text-sm">{{ item.Name }}</span>
           </a>
         </li>
