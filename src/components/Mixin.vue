@@ -3,29 +3,37 @@ export default {
     // Lớp vue hỗn hợp chứa các hàm dùng chung
     name: "Mixin",
     methods: {
-        async getInfo() {
+        async getCaNhan() {
             /**
              * Lấy danh sách thông tin cá nhân & trả về dạng JSON
              */
             const response = await fetch("https://api.baoit.xyz/my_blog/ca_nhan/get");
-            const data = await response.json();
-            return data[0] || [];
+            const result = await response.json();
+           
+            if (result.success === "true") {
+                const data = await result.data;
+                return data[0] || [];
+            }
         },
         async getDuAn() {
             /**
              * * Lấy danh sách thông tin dự án & trả về dạng JSON
              */
             const response = await fetch("https://api.baoit.xyz/my_blog/du_an/get");
-            const data = await response.json();
-            return data || [];
+            const result = await response.json();
+            if (result.success === "true") {
+                const data = await result.data;
+                return data || [];
+            }
         },
         async getTienIch() {
             /**
              * * Lấy danh sách thông tin tiện ích & trả về dạng JSON
              */
             const response = await fetch("https://api.baoit.xyz/my_blog/tien_ich/get");
-            if (response.success) {
-                const data = await response.data.json();
+            const result = await response.json();
+            if (result.success === "true") {
+                const data = await result.data;
                 return data || [];
             }
         },
@@ -34,15 +42,11 @@ export default {
              * * Lấy danh sách thông tin lý lịch & trả về dạng JSON
              */
             const response = await fetch("https://api.baoit.xyz/my_blog/ly_lich/get");
-            const data = await response.json();
-            return data[0] || [];
-        },
-        async getLienHe() {
-            /**
-             * * Lấy danh sách thông tin liên hệ & trả về dạng JSON
-             */
-            const response = await fetch("https://api.baoit.xyz/my_blog/lien_he/get");
-            const data = await response.json();
+            const result = await response.json();
+            if (result.success === "true") {
+                const data = await result.data;
+                return data || [];
+            }
             return data[0] || [];
         }
         

@@ -4,34 +4,34 @@
         <!--Input-->
         <div class="space-y-3 border-2 border-orange-500 dark:border-[#F59E0B] p-4 rounded-lg">
             <div class="relative w-full">
-                <textarea rows="6" name="noiDung" v-model="qrData.noiDung" @input="counterChar = qrData.noiDung.length"
+                <textarea rows="6" name="noiDung" v-model="this.qrData.noiDung" @input="this.counterChar = this.qrData.noiDung.length"
                     class="border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 mt-2 p-2.5 border focus:border-green-500 focus:ring-1 focus:ring-green-500 rounded-lg w-full text-black dark:text-white text-sm focus:outline-none dark:placeholder-gray-400 dark:focus:border-green-400 dark:focus:ring-green-400"
                     placeholder="Nội dung cần tạo QR..."></textarea>
                 <span class="right-2.5 bottom-0 absolute p-2.5 font-bold text-gray-500 dark:text-gray-400 text-sm char_counter">{{
-                    counterChar }} kí tự</span>
+                    this.counterChar }} kí tự</span>
             </div>
             <div class="gap-4 grid sm:grid-cols-2 md:grid-cols-4 text-black dark:text-white text-sm">
                 <div class="col-span-2">
                     <label for="tieuDe" class="font-medium">Tiêu đề</label>
-                    <input type="text" name="tieuDe" v-model="qrData.tieuDe"
+                    <input type="text" name="tieuDe" v-model="this.qrData.tieuDe"
                         class="border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 mt-2 p-2.5 border focus:border-green-500 focus:ring-1 focus:ring-green-500 rounded-lg w-full focus:outline-none dark:placeholder-gray-400 dark:focus:border-green-400 dark:focus:ring-green-400">
                 </div>
 
                 <div class="col-span-2">
                     <label for="tieuDeCon" class="font-medium">Tiêu đề con</label>
-                    <input type="text" name="tieuDeCon" v-model="qrData.tieuDeCon"
+                    <input type="text" name="tieuDeCon" v-model="this.qrData.tieuDeCon"
                         class="border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 mt-2 p-2.5 border focus:border-green-500 focus:ring-1 focus:ring-green-500 rounded-lg w-full focus:outline-none dark:placeholder-gray-400 dark:focus:border-green-400 dark:focus:ring-green-400">
                 </div>
 
                 <div class="col-span-2">
                     <label for="mauSac" class="font-medium">Màu sắc</label>
-                    <input type="color" name="mauSac" v-model="qrData.mauSac"
+                    <input type="color" name="mauSac" v-model="this.qrData.mauSac"
                         class="border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 mt-2 p-[1.31rem] border focus:border-green-500 focus:ring-1 focus:ring-green-500 rounded-lg w-full focus:outline-none dark:placeholder-gray-400 dark:focus:border-green-400 dark:focus:ring-green-400">
                 </div>
 
                 <div class="col-span-2">
                     <label for="hinhAnh" class="font-medium">Chèn ảnh</label>
-                    <input name="hinhAnh" v-on:change="qrData.hinhAnh"
+                    <input name="hinhAnh" v-on:change="this.qrData.hinhAnh"
                         class="border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 mt-2 p-2 border focus:border-green-500 focus:ring-1 focus:ring-green-500 rounded-lg w-full focus:outline-none dark:placeholder-gray-400 dark:focus:border-green-400 dark:focus:ring-green-400"
                         type="file">
                 </div>

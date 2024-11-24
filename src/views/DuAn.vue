@@ -56,10 +56,10 @@
     <!--Projects card-->
     <div
       class="bg-white dark:bg-gray-700 p-4 cursor-default transition-transform duration-200 transform xl:hover:-translate-y-1 shadow-lg hover:shadow-xl hover:shadow-gray-300 dark:hover:shadow-gray-400"
-      :data-da-id="item._id" v-for="(item, idx) in filteredProjects" :key="idx"
+      :data-da-id="item.Id" v-for="(item, idx) in filteredProjects" :key="idx"
       v-if="projectData !== null && Object.keys(projectData).length > 0 && !isLoading">
       <div class="flex justify-between items-baseline font-semibold text-xs text-black dark:text-white mt-1">
-        <h4 class="text-xl" :data-da-name="item.project_name">{{ item.project_name }}</h4>
+        <h4 class="text-xl" :data-da-name="item.ProjectName">{{ item.ProjectName }}</h4>
         <div class="flex mb-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
             viewBox="0 0 16 16">
@@ -67,49 +67,49 @@
               d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
             <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
           </svg>
-          <span class="ml-1" :data-da-viewer="item.viewer">{{ item.viewer }}</span>
+          <span class="ml-1" :data-da-viewer="item.Viewer">{{ item.Viewer }}</span>
         </div>
       </div>
       <div class="text-gray-800 text-xs dark:text-gray-200 mt-0.5">
-        <h4 class="text-xs" :data-da-description="item.description">{{ item.description }}</h4>
+        <h4 class="text-xs" :data-da-description="item.Description">{{ item.Description }}</h4>
         <div class="mt-1 mb-1">
           <div class="flex">
             <span class="mt-2">Dataset:</span>
-            <a :href="item.ds_url === '' ? '#' : item.ds_url"
+            <a :href="item.DsUrl === '' ? '#' : item.DsUrl"
               class="text-blue-800 dark:text-blue-300 mt-2 ml-1 hover:text-red-600 hover:dark:text-red-400"
-              target="_blank">{{ item.ds_name === '' ? 'NaN' : item.ds_name }}</a>
+              target="_blank">{{ item.DsName === '' ? 'NaN' : item.DsName }}</a>
           </div>
           <div class="flex">
             <span class="mt-2">FE:</span>
-            <span class="mt-2 ml-1 font-semibold" :data-da-fe="item.fe">{{ item.fe === '' ? 'NaN' : item.fe }}</span>
+            <span class="mt-2 ml-1 font-semibold" :data-da-fe="item.FE">{{ item.FE.join(", ") }}</span>
           </div>
           <div class="flex">
             <span class="mt-2">BE:</span>
-            <span class="mt-2 ml-1 font-semibold" :data-da-be="item.be">{{ item.be === '' ? 'NaN' : item.be }}</span>
+            <span class="mt-2 ml-1 font-semibold" :data-da-be="item.BE">{{ item.BE.join(", ") }}</span>
           </div>
           <div class="flex">
             <span class="mt-2">Loại dự án:</span>
-            <span class="mt-2 ml-1 font-semibold" :data-da-type="item.project_type">{{ item.project_type }}</span>
+            <span class="mt-2 ml-1 font-semibold" :data-da-type="item.ProjectType">{{ item.ProjectType }}</span>
           </div>
           <div class="flex">
             <span class="mt-2">Quy mô:</span>
-            <span class="mt-2 ml-1 font-semibold" :data-da-mem="item.team_members">{{ item.team_members }}
+            <span class="mt-2 ml-1 font-semibold" :data-da-mem="item.TeamMembers">{{ item.TeamMembers }}
               thành viên</span>
           </div>
           <div class="flex">
             <span class="mt-2">Mã nguồn:</span>
-            <a :href="item.git === '' ? '#' : item.git" :data-da-git="item.git"
+            <a :href="item.Git === '' ? '#' : item.Git" :data-da-git="item.Git"
               class="text-blue-600 dark:text-blue-300 mt-2 ml-1 hover:text-red-600 hover:dark:text-red-400"
               target="_blank">GitHub</a>
           </div>
         </div>
       </div>
       <div class="flex justify-between mt-4 items-end text-white text-xs">
-        <span :class="{ 'badgeDone': item.project_done, 'badgePending': !item.project_done }">
-          {{ item.project_done ? "Done" : "Pending" }}</span>
+        <span :class="{ 'badgeDone': item.ProjectDone, 'badgePending': !item.ProjectDone }">
+          {{ item.ProjectDone ? "Done" : "Pending" }}</span>
         <button type="button" class="btnThuNghiem"
-          :class="item.project_url === '' ? 'opacity-50 cursor-not-allowed' : true" :disabled="item.project_url === ''"
-          @click="tryProject(item._id, item.project_url)">
+          :class="item.ProjectUrl === '' ? 'opacity-50 cursor-not-allowed' : true" :disabled="item.ProjectUrl === ''"
+          @click="tryProject(item.Id, item.ProjectUrl)">
           Thử nghiệm
         </button>
       </div>
@@ -118,7 +118,7 @@
   <!-- Pagination -->
   <div class="flex justify-center mt-4">
     <nav aria-label="Pagination">
-      <ul class="inline-flex -space-x-px text-sm">
+      <ul class="inline-flex -space-x-px text-sm hidden">
         <li>
           <a href="#"
             class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
@@ -168,6 +168,7 @@ export default {
   methods: {
     // Khu vực chứa các hàm thực thi
     tryProject(id, project_url) {
+      console.log(id);
       /**
        * Sự kiện nhấn nút Thử nghiệm dự án nào đó
        */

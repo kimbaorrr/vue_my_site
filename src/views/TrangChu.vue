@@ -164,7 +164,6 @@
 </template>
 
 <script>
-import { RouterLink } from "vue-router";
 import CardInfo from "/src/components/CardInfo.vue";
 export default {
   name: "TrangChu",

@@ -4,12 +4,12 @@
     <!--Input-->
     <div class="space-y-3 border-2 border-orange-500 dark:border-orange-800 p-4 rounded-lg">
       <div class="relative w-full">
-        <textarea rows="6" name="noiDung" @input="counterChar = urlData.inputString.length" autofocus="true"
-          v-model="urlData.inputString"
+        <textarea rows="6" name="noiDung" @input="this.counterChar = this.urlData.inputString.length" autofocus="true"
+          v-model="this.urlData.inputString"
           class="block border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-2.5 pb-8 border focus:border-blue-500 dark:focus:border-blue-500 rounded-lg w-full text-gray-900 text-sm textarea_counter focus:ring-blue-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
           placeholder="Nội dung cần Encode/Decode..."></textarea>
         <span class="right-2.5 bottom-0 absolute p-2.5 font-bold text-gray-500 text-sm char_counter">{{
-          counterChar }}
+          this.counterChar }}
           kí tự</span>
       </div>
       <div class="flex justify-center items-center space-x-4">
@@ -30,8 +30,8 @@
       </div>
       <textarea rows="8" @click="outputCopied"
         class="border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 mt-2 p-2.5 pb-8 border focus:border-blue-500 rounded-lg w-full text-gray-900 text-sm focus:ring-blue-500 dark:placeholder-gray-400 dark:focus:border-blue-500 dark:text-white dark:focus:ring-blue-500"
-        readonly v-model="urlData.outputString"></textarea>
-      <p v-if="isCopied" class="text-xs text-gray-600 italic dark:text-gray-400">Đã sao chép vào clipboard !</p>
+        readonly v-model="this.urlData.outputString"></textarea>
+      <p v-if="this.isCopied" class="text-xs text-gray-600 italic dark:text-gray-400">Đã sao chép vào clipboard !</p>
     </div>
   </div>
 </template>

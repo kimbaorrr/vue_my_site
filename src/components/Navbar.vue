@@ -15,19 +15,19 @@
         <div class="hidden w-full md:flex md:flex-row md:space-x-3 xl:block xl:space-x-1.5 font-medium">
           <RouterLink to="/" :class="$route.path === '/' ? 'bg-gray-300 dark:bg-red-700' : true"
             class="inline-block px-3 py-1 rounded transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700">{{
-              translators.nav_home }}</RouterLink>
+              this.translators.nav_home }}</RouterLink>
           <RouterLink to="/du-an" :class="$route.path === '/du-an' ? 'bg-gray-300 dark:bg-red-700' : true"
             class="inline-block px-3 py-1 rounded transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700">{{
-              translators.nav_project }}</RouterLink>
+              this.translators.nav_project }}</RouterLink>
           <RouterLink to="/tien-ich" :class="$route.path === '/tien-ich' ? 'bg-gray-300 dark:bg-red-700' : true"
             class="inline-block px-3 py-1 rounded transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700">{{
-              translators.nav_tool }}</RouterLink>
+              this.translators.nav_tool }}</RouterLink>
           <RouterLink to="/ly-lich" :class="$route.path === '/ly-lich' ? 'bg-gray-300 dark:bg-red-700' : true"
             class="inline-block px-3 py-1 rounded transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700">{{
-              translators.nav_cv }}</RouterLink>
+              this.translators.nav_cv }}</RouterLink>
           <RouterLink to="/lien-he" :class="$route.path === '/lien-he' ? 'bg-gray-300 dark:bg-red-700' : true"
             class="inline-block px-3 py-1 rounded transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700">{{
-              translators.nav_contact }}</RouterLink>
+              this.translators.nav_contact }}</RouterLink>
         </div>
         <div class="hidden xl:flex items-center gap-1">
           <span class="mb-1 font-semibold text-gray-400 cursor-default">|</span>
@@ -78,7 +78,7 @@
             </div>
           </button>
           <!-- Clock -->
-          <div class="p-1.5 font-medium cursor-default">{{ subNavClock }}</div>
+          <div class="p-1.5 font-medium cursor-default">{{ this.subNavClock }}</div>
           <!-- Toggle Menu -->
           <button type="button" @click="showMobileNav" aria-label="toggleMenu"
             class="md:hidden p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300">
@@ -96,11 +96,11 @@
     <AskQuestionModal ref="askQuestionModal" />
   </modal>
   <!-- Mobile Nav -->
-  <nav v-if="isToggleMenuClicked">
+  <nav v-if="this.isToggleMenuClicked">
     <div
       class="fixed top-0 left-0 w-full h-full bg-gray-200 dark:bg-gray-800 opacity-95 z-30 flex items-center justify-center">
       <div class="relative flex flex-col space-y-4 px-3 sm:px-6 xl:px-0 text-lg font-semibold">
-        <button @click="isToggleMenuClicked = false"
+        <button @click="this.isToggleMenuClicked = false"
           class="absolute -top-36 -right-24 text-xl text-gray-800 dark:text-white hover:text-red-600 transition duration-300">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-x"
             viewBox="0 0 16 16">
@@ -108,26 +108,26 @@
               d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
           </svg>
         </button>
-        <RouterLink to="/" @click="isToggleMenuClicked = false"
+        <RouterLink to="/" @click="this.isToggleMenuClicked = false"
           :class="$route.path === '/' ? 'bg-gray-300 dark:bg-red-700' : true"
           class="w-full py-4 px-8 rounded-lg text-center transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700">
-          {{ translators.nav_home }}</RouterLink>
-        <RouterLink to="/du-an" @click="isToggleMenuClicked = false"
+          {{ this.translators.nav_home }}</RouterLink>
+        <RouterLink to="/du-an" @click="this.isToggleMenuClicked = false"
           :class="$route.path === '/du-an' ? 'bg-gray-300 dark:bg-red-700' : true"
           class="w-full py-4 px-8 rounded-lg text-center transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700">
-          {{ translators.nav_project }}</RouterLink>
-        <RouterLink to="/tien-ich" @click="isToggleMenuClicked = false"
+          {{ this.translators.nav_project }}</RouterLink>
+        <RouterLink to="/tien-ich" @click="this.isToggleMenuClicked = false"
           :class="$route.path === '/tien-ich' ? 'bg-gray-300 dark:bg-red-700' : true"
           class="w-full py-4 px-8 rounded-lg text-center transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700">
-          {{ translators.nav_tool }}</RouterLink>
-        <RouterLink to="/ly-lich" @click="isToggleMenuClicked = false"
+          {{ this.translators.nav_tool }}</RouterLink>
+        <RouterLink to="/ly-lich" @click="this.isToggleMenuClicked = false"
           :class="$route.path === '/ly-lich' ? 'bg-gray-300 dark:bg-red-700' : true"
           class="w-full py-4 px-8 rounded-lg text-center transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700">
-          {{ translators.nav_cv }}</RouterLink>
-        <RouterLink to="/lien-he" @click="isToggleMenuClicked = false"
+          {{ this.translators.nav_cv }}</RouterLink>
+        <RouterLink to="/lien-he" @click="this.isToggleMenuClicked = false"
           :class="$route.path === '/lien-he' ? 'bg-gray-300 dark:bg-red-700' : true"
           class="w-full py-4 px-8 rounded-lg text-center transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700">
-          {{ translators.nav_contact }}</RouterLink>
+          {{ this.translators.nav_contact }}</RouterLink>
       </div>
 
     </div>
@@ -161,7 +161,7 @@ export default {
        * Lấy dữ liệu thời gian định dạng HH:MM
        */
       const now = new Date();
-      return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
     },
     showMobileNav() {
       /**

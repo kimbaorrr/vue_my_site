@@ -1,23 +1,23 @@
 <template>
   <div class="relative flex bg-gray-100 dark:bg-gray-900 rounded-2xl h-[90vh]">
     <!--Toggle Mobile Tool-->
-    <button @click="toggleMobileSidebar" :class="isShowMobileSidebar ? 'left-0' : 'right-0'"
+    <button @click="this.toggleMobileSidebar" :class="this.isShowMobileSidebar ? 'left-0' : 'right-0'"
       class="top-0 z-40 absolute md:hidden bg-gray-200 dark:bg-gray-600 p-2 rounded-lg">
       <i class="inline-block twa twa-hammer-and-wrench twa-lg"></i> Chọn tiện ích </button>
     <!--Mobile Tools list-->
-    <div :class="isShowMobileSidebar ? 'left-0 w-1/4' : 'left-60 w-64'"
+    <div :class="this.isShowMobileSidebar ? 'left-0 w-1/4' : 'left-60 w-64'"
       class="top-0 z-30 md:static absolute bg-gray-200 dark:bg-gray-800 p-2 rounded-lg h-full transition-transform -translate-x-full md:translate-x-0 duration-300 overflow-y-auto ease-in-out">
       <div class="gap-3 grid grid-cols-4">
         <input type="text"
           class="border-2 border-gray-400 col-span-3 bg-gray-50 dark:bg-gray-700 px-2 py-1 focus:border-blue-500 rounded-md text-black focus:outline-none focus:ring-blue-500 dark:text-white dark:placeholder-gray-400"
-          v-model="searchText" placeholder="Tìm tiện ích...">
+          v-model="this.searchText" placeholder="Tìm tiện ích...">
         <button type="button"
           class="bg-blue-700 hover:bg-blue-800 dark:hover:bg-blue-700 dark:bg-blue-600 px-4 py-2 rounded-lg font-medium text-sm text-white focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800">{{
-            Object.keys(filteredTools).length }}</button>
+            Object.keys(this.filteredTools).length }}</button>
       </div>
       <hr class="border-1 border-gray-500 mt-3 rounded">
       <!--Loading Spinner-->
-      <div class="flex justify-center items-center h-2/6" v-if="isLoading">
+      <div class="flex justify-center items-center h-2/6" v-if="this.isLoading">
         <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
           viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -31,19 +31,19 @@
       </div>
       <!--Tools list-->
       <ul class="font-medium text-black dark:text-white list-none"
-        v-if="toolData !== null && Object.keys(toolData).length > 0 && !isLoading">
-        <li class="my-3 duration-300 hover:translate-x-2" v-for="(item, idx) in filteredTools" :key="idx"
-          @click="selectedTool = item._id, toggleMobileSidebar()"
-          :class="selectedTool === item._id ? 'bg-gray-300 dark:bg-gray-700' : true">
+        v-if="this.toolData !== null && Object.keys(this.toolData).length > 0 && !this.isLoading">
+        <li class="my-3 duration-300 hover:translate-x-2" v-for="(item, idx) in this.filteredTools" :key="idx"
+          @click="this.selectedTool = item.Id, toggleMobileSidebar()"
+          :class="this.selectedTool === item.Id ? 'bg-gray-300 dark:bg-gray-700' : true">
           <a href="#" class="flex items-center p-2 rounded-lg">
-            <img class="inline-block ml-0.5" :src="item.icon" width="22" height="22" :alt="item.name">
-            <span class="ml-2 text-sm">{{ item.name }}</span>
+            <img class="inline-block ml-0.5" :src="item.Icon" width="22" height="22" :alt="item.Name">
+            <span class="ml-2 text-sm">{{ item.Name }}</span>
           </a>
         </li>
       </ul>
     </div>
     <!--Render Selected Tool-->
-    <component :is="getComponent(selectedTool)"></component>
+    <component :is="getComponent(this.selectedTool)"></component>
   </div>
 </template>
 

@@ -1,14 +1,14 @@
 <template>
   <footer class="border-t border-gray-200 dark:border-gray-700"
-    v-if="infoData !== null && Object.keys(infoData).length > 0">
+    v-if="this.infoData !== null && Object.keys(this.infoData).length > 0">
     <div class="mb-6 mt-4 md:mb-10 flex flex-col items-center justify-center space-y-4 md:space-y-0">
       <div class="flex flex-col items-center">
         <div class="my-2 text-sm text-gray-500 dark:text-gray-400 text-center">
-          <span>&copy; {{ yearOnly }} BaoIT. All rights reserved.</span>
+          <span>&copy; {{ this.yearOnly }} BaoIT. All rights reserved.</span>
         </div>
         <div class="flex justify-center space-x-4 items-center">
           <a class="text-gray-700 hover:text-black dark:text-white dark:hover:text-gray-300"
-            :href="infoData.git_url === '' ? '#' : infoData.git_url" target="_blank" aria-label="Github">
+            :href="this.infoData.Socials.Git.Url === '' ? '#' : this.infoData.Socials.Git.Url" target="_blank" aria-label="Github">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path
@@ -19,7 +19,7 @@
           </a>
 
           <a class="text-gray-700 hover:text-black dark:text-white dark:hover:text-gray-300"
-            :href="infoData.x_url === '' ? '#' : infoData.x_url" target="_blank" aria-label="X">
+            :href="this.infoData.Socials.X.Url === '' ? '#' : this.infoData.Socials.X.Url" target="_blank" aria-label="X">
             <svg width="24" height="24" viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"
@@ -27,7 +27,7 @@
             </svg>
           </a>
           <a class="text-gray-700 hover:text-black dark:text-white dark:hover:text-gray-300"
-            :href="infoData.linkedin_url === '' ? '#' : infoData.linkedin_url" target="_blank" aria-label="Linkedin">
+            :href="this.infoData.Socials.Linkedin.Url === '' ? '#' : this.infoData.Socials.Linkedin.Url" target="_blank" aria-label="Linkedin">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
@@ -36,7 +36,7 @@
             </svg>
           </a>
           <a class="text-gray-700 hover:text-black dark:text-white dark:hover:text-gray-300"
-            :href="infoData.mail === '' ? '#' : 'mailto:' + infoData.mail" aria-label="Email">
+            :href="this.infoData.Email === '' ? '#' : 'mailto:' + this.infoData.Email" aria-label="Email">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <rect width="20" height="16" x="2" y="4" rx="2"></rect>
@@ -44,14 +44,14 @@
             </svg>
           </a>
           <a class="text-gray-700 hover:text-black dark:text-white dark:hover:text-gray-300"
-            :href="infoData.facebook_url === '' ? '#' : infoData.facebook_url" aria-label="Facebook">
+            :href="this.infoData.Socials.Facebook.Url === '' ? '#' : this.infoData.Socials.Facebook.Url" aria-label="Facebook">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
             </svg>
           </a>
           <a class="text-gray-700 hover:text-black dark:text-white dark:hover:text-gray-300"
-            :href="infoData.ytb_url === '' ? '#' : infoData.ytb_url" aria-label="Youtube">
+            :href="this.infoData.Socials.Ytb.Url === '' ? '#' : this.infoData.Socials.Ytb.Url" aria-label="Youtube">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path
@@ -64,7 +64,7 @@
       </div>
     </div>
     <!-- Back To Top -->
-    <button type="button" @click="backToTop" v-show="showBackToTop"
+    <button type="button" @click="backToTop" v-show="this.showBackToTop"
       class="fixed bottom-5 right-5 p-3 text-white bg-red-700 rounded-full hover:bg-red-800 focus:outline-none dark:bg-red-600 dark:hover:bg-red-800">
       <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
         stroke="currentColor">
@@ -108,7 +108,7 @@ export default {
   },
   async mounted() {
     // Khu vực sẽ chạy sau khi đã load xong DOM
-    this.infoData = await this.getInfo();
+    this.infoData = await this.getCaNhan();
     // Lắng nghe sự kiện cuộn trang
     window.addEventListener('scroll', this.handleScroll);
   },

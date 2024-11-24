@@ -1,6 +1,6 @@
 <template>
     <!-- Ask Question Modal -->
-    <div v-if="isOpenModal"
+    <div v-if="this.isOpenModal" id="questionModal"
         class="z-50 fixed inset-0 justify-center items-center flex bg-opacity-55 overflow-x-hidden overflow-y-auto">
         <div class="relative p-4 w-full max-w-md max-h-full">
             <!-- Modal content -->
@@ -24,7 +24,7 @@
                 <!-- Modal body -->
                 <form class="p-4 md:p-5 relative" @submit.prevent="sendQuestion">
                     <!--Sending Spinner-->
-                    <div v-if="isSending"
+                    <div v-if="this.isSending"
                         class="absolute inset-0 flex justify-center items-center bg-white bg-opacity-75">
                         <svg aria-hidden="true"
                             class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
@@ -44,7 +44,7 @@
                             <label for="name" class="block mb-2 font-medium text-gray-900 text-sm dark:text-white">Tên
                                 của
                                 bạn <span class="font-bold text-red-500">*</span></label>
-                            <input type="text" name="name" v-model="formData.name"
+                            <input type="text" name="name" v-model="this.formData.name"
                                 class="block border-gray-300 focus:border-blue-600 dark:focus:border-blue-500 dark:border-gray-500 bg-gray-50 dark:bg-gray-600 p-2.5 border-2 rounded-lg w-full text-gray-900 text-sm dark:placeholder-gray-400 dark:text-white transition duration-300 ease-in-out transform focus:shadow-lg focus:outline-none"
                                 placeholder="Nguyễn Văn A" required>
                         </div>
@@ -53,7 +53,7 @@
                                 class="block mb-2 font-medium text-gray-900 text-sm dark:text-white">Email
                                 liên
                                 hệ <span class="font-bold text-red-500">*</span></label>
-                            <input type="text" name="email" v-model="formData.email"
+                            <input type="text" name="email" v-model="this.formData.email"
                                 class="block border-gray-300 focus:border-blue-600 dark:focus:border-blue-500 dark:border-gray-500 bg-gray-50 dark:bg-gray-600 p-2.5 border-2 rounded-lg w-full text-gray-900 text-sm dark:placeholder-gray-400 dark:text-white transition duration-300 ease-in-out transform focus:shadow-lg focus:outline-none"
                                 placeholder="abc@gmail.com" required>
                         </div>
@@ -61,7 +61,7 @@
                             <label for="description"
                                 class="block mb-2 font-medium text-gray-900 text-sm dark:text-white">Nội
                                 dung <span class="font-bold text-red-500">*</span></label>
-                            <textarea name="content" rows="4" v-model="formData.content"
+                            <textarea name="content" rows="4" v-model="this.formData.content"
                                 class="block border-gray-300 focus:border-blue-600 dark:focus:border-blue-500 dark:border-gray-500 bg-gray-50 dark:bg-gray-600 p-2.5 border-2 rounded-lg w-full text-gray-900 text-sm dark:placeholder-gray-400 dark:text-white transition duration-300 ease-in-out transform focus:shadow-lg focus:outline-none"
                                 placeholder="Viết gì đó vào đây..." required></textarea>
                         </div>
