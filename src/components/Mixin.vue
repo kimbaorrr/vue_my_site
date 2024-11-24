@@ -24,8 +24,10 @@ export default {
              * * Lấy danh sách thông tin tiện ích & trả về dạng JSON
              */
             const response = await fetch("https://api.baoit.xyz/my_blog/tien_ich/get");
-            const data = await response.json();
-            return data || [];
+            if (response.success) {
+                const data = await response.data.json();
+                return data || [];
+            }
         },
         async getLyLich() {
             /**
