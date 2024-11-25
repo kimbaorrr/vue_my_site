@@ -3,8 +3,8 @@
         <!-- Left Section -->
         <div class="col-span-1 w-full space-y-4 dark:text-gray-100 text-dark-500">
             <div class="text-5xl font-dark font-bold">Alert !</div>
-            <p class="text-2xl md:text-2xl font-light leading-normal">Trang đang trong quá trình hoàn thiện!</p>
-            <p class="mb-8">Xin lỗi, hiện tại trang này vẫn đang được phát triển. Vui lòng quay lại sau!</p>
+            <p class="text-2xl md:text-2xl font-light leading-normal">Tính năng đang trong quá trình hoàn thiện!</p>
+            <p class="mb-8">Xin lỗi, hiện tại tính năng này vẫn đang được phát triển. Vui lòng quay lại sau!</p>
             <a href="/"
                 class="inline-block px-4 py-2 text-sm font-medium leading-5 shadow text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-none focus:shadow-outline-blue bg-blue-600 active:bg-blue-600 hover:bg-blue-700">
                 Quay về trang chủ

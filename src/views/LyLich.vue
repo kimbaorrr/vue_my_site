@@ -1,5 +1,5 @@
 <template>
-  <PageBuildingAlert />
+  <PageBuildingAlert></PageBuildingAlert>
 </template>
 
 <script>

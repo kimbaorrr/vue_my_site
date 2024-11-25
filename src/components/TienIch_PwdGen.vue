@@ -1,9 +1,13 @@
 <template>
-    <h1>Tiện ích đang được xây dựng !</h1>
+    <PageBuildingAlert></PageBuildingAlert>
 </template>
 
 <script>
+import PageBuildingAlert from '/src/components/PageBuildingAlert.vue'
 export default {
-    name: 'TienIch_PwdGen'
+    name: 'TienIch_PwdGen',
+    components: {
+        PageBuildingAlert
+    }
 }
 </script>
