@@ -1,11 +1,14 @@
 <template>
-  <h1 class="text-3xl font-bold underline text-red-500">
-    Hello world!
-  </h1>
+  <PageBuildingAlert />
 </template>
 
 <script>
+import PageBuildingAlert from '/src/components/PageBuildingAlert.vue';
+
 export default {
-  name: "LyLich"
+  name: "LyLich",
+  components: {
+    PageBuildingAlert
+  }
 }
 </script>
