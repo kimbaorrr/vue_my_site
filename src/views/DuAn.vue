@@ -82,13 +82,13 @@
           <div class="flex">
             <span class="mt-2">FE:</span>
             <span class="mt-2 ml-1 font-semibold" :data-da-fe="item.FE">
-              {{ Object.length(item.FE) !== 0 ? item.FE.join(", ") : "NaN" }}
+              {{ item.FE.length !== 0 ? item.FE.join(", ") : "NaN" }}
             </span>
           </div>
           <div class="flex">
             <span class="mt-2">BE:</span>
             <span class="mt-2 ml-1 font-semibold" :data-da-be="item.BE">
-              {{ Object.length(item.BE) !== 0 ? item.BE.join(", ") : "NaN" }}
+              {{ item.BE.length !== 0 ? item.BE.join(", ") : "NaN" }}
             </span>
           </div>
           <div class="flex">
