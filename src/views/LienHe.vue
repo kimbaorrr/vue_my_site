@@ -84,14 +84,14 @@ export default {
     }
   },
   async mounted() {
-    this.isLoading = false;
+    this.isLoading = true;
     // Khu vực sẽ thực thi sau khi load xong DOM
     this.infoData = await this.getCaNhan(); // Dữ liệu thông tin cá nhân dưới dạng JSON
     // Đặt link tag vào DOM để load các icon
     const linkTag = document.createElement("link");
     linkTag.href = "https://jsdelivr.b-cdn.net/npm/fontawesome-free-6.2.1@6.2.1/css/all.min.css";
     linkTag.rel = "stylesheet";
-    this.isLoading = true;
+    this.isLoading = false;
   },
 }
 </script>
