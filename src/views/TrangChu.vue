@@ -15,8 +15,8 @@
               <i class="inline-block twa twa-lg twa-party-popper"></i>
             </span>
           </p>
-          <p>Mình là một người đam mê về AI
-            <span class="inline-flex absolute ml-1.5 pt-[3px]">
+          <p class="typeWriter">Mình là một người đam mê về AI 🤖
+            <!-- <span class="inline-flex absolute ml-1.5 pt-[3px]">
               <svg width="25" height="25" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
                 <lineargradient id="h" x1="63.994" x2="63.994" y1="119.482" y2="39.919"
                   gradientTransform="matrix(1 0 0 -1 0 128)" gradientUnits="userSpaceOnUse">
@@ -123,7 +123,7 @@
                   d="M100.13 56.17S109.44 4.27 64 4.03h-.04c-.71 0-1.4.02-2.08.05c-1.35.06-2.66.16-3.92.31h-.04c-.09.01-.17.03-.26.04c-38.24 4.81-29.82 51.74-29.82 51.74l2.98 7.68c.13.34.62.31.7-.05c.98-4.39 4.46-19.71 6.22-24.37a6.075 6.075 0 0 1 6.79-3.83c4.45.81 11.55 1.81 19.37 1.81h.16c7.82 0 14.92-1 19.37-1.81c2.9-.53 5.76 1.08 6.79 3.83c1.76 4.68 5.25 20.1 6.21 24.42c.08.36.57.39.7.05c.95-2.36 3-7.73 3-7.73"
                   fill="url(#a)" />
               </svg>
-            </span>
+            </span> -->
           </p>
           <div class="mt-4 mb-8">
             <ul>
@@ -169,10 +169,32 @@ export default {
   name: "TrangChu",
   components: {
     CardInfo
+  },
+  methods: {
+    typeWriter() {
+      $(".typeWriter").each(function () {
+        const myText = $(this).text();
+        let currentIndex = 0;
+        $(this).text("");
+        var interval = setInterval(() => {
+          $(this).append(myText[currentIndex]);
+          currentIndex++;
+          if (currentIndex === myText.length) {
+            setTimeout(() => {
+              currentIndex = 0;
+              $(this).text("");
+            }, 1500)
+
+          }
+        }, 100);
+      });
+    }
+  },
+  mounted() {
+    this.typeWriter();
   }
 }
 </script>
-
 <style>
 @keyframes say_hi {
   0% {

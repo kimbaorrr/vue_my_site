@@ -199,8 +199,8 @@ export default {
     filteredProjects() {
       // Trả về danh sách dự án phù hợp với điều kiện tìm kiếm và lọc theo trạng thái dự án
       return this.projectData.filter(item => {
-        const matchesSearch = this.searchText === "" || item.project_name.toLowerCase().includes(this.searchText.toLowerCase());
-        const matchesFilter = this.filterType === 'all' || (this.filterType === 'done' && item.project_done) || (this.filterType === 'pending' && !item.project_done);
+        const matchesSearch = this.searchText === "" || item.ProjectName.toLowerCase().includes(this.searchText.toLowerCase());
+        const matchesFilter = this.filterType === 'all' || (this.filterType === 'done' && item.ProjectDone) || (this.filterType === 'pending' && !item.ProjectDone);
         return matchesSearch && matchesFilter;
       });
     }
