@@ -3,13 +3,13 @@
   <nav
     class="sticky top-0 z-40 overflow-hidden bg-white/75 py-3 backdrop-blur supports-backdrop-blur:bg-white/95 dark:bg-dark">
     <div class="flex items-center justify-between mx-auto max-w-3xl md:max-w-4xl xl:max-w-5xl px-3 sm:px-6 xl:px-0">
-      <!-- Left Nav -->
+      <!-- Left Wide Screen Nav -->
       <a href="/" class="flex items-center">
         <img alt="Logo" src="/assets/imgs/logo.png" loading="lazy" width="50" height="45" decoding="async"
           class="mr-3 rounded-full transition duration-300 hover:blur-[2px]" />
         <p class="hidden md:block text-lg font-bold text-black dark:text-white">BaoIT Blog</p>
       </a>
-      <!-- Right Nav -->
+      <!-- Right Wide Screen Nav -->
       <div class="flex items-center gap-4">
         <!-- Link Nav -->
         <div class="hidden w-full md:flex md:flex-row md:space-x-3 xl:block xl:space-x-1.5 font-medium">
@@ -34,8 +34,8 @@
         </div>
         <!-- Icon Nav -->
         <div class="flex items-center gap-1">
-          <!-- Ask Question Modal Button -->
-          <button type="button" aria-label="askQuestionModal" @click="this.$refs.askQuestionModal.openModal"
+          <!-- Question Modal Button -->
+          <button type="button" aria-label="questionModal" @click="this.$refs.questionModal.openModal"
             class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -92,16 +92,17 @@
       </div>
     </div>
   </nav>
+  <!--Question Modal-->
   <modal>
-    <AskQuestionModal ref="askQuestionModal" />
+    <QuestionModal ref="questionModal" />
   </modal>
   <!-- Mobile Nav -->
   <nav v-if="this.isToggleMenuClicked">
     <div
-      class="fixed top-0 left-0 w-full h-full bg-gray-200 dark:bg-gray-800 opacity-95 z-30 flex items-center justify-center">
+      class="fixed inset-0 top-0 left-0 w-full h-full bg-gray-100 dark:bg-gray-800 opacity-95 z-30 flex items-center justify-center">
       <div class="relative flex flex-col space-y-4 px-3 sm:px-6 xl:px-0 text-lg font-semibold">
         <button @click="this.isToggleMenuClicked = false"
-          class="absolute -top-36 -right-24 text-xl text-gray-800 dark:text-white hover:text-red-600 transition duration-300">
+          class="absolute -top-10 right-[-13rem] text-xl text-gray-800 dark:text-white hover:text-red-600 transition duration-300 w-full">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-x"
             viewBox="0 0 16 16">
             <path
@@ -109,23 +110,23 @@
           </svg>
         </button>
         <RouterLink to="/" @click="this.isToggleMenuClicked = false"
-          :class="$route.path === '/' ? 'bg-gray-300 dark:bg-red-700' : true"
+          :class="$route.path === '/' ? 'bg-gray-300 dark:bg-red-700 transition' : true"
           class="w-full py-4 px-8 rounded-lg text-center transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700">
           {{ this.translators.nav_home }}</RouterLink>
         <RouterLink to="/du-an" @click="this.isToggleMenuClicked = false"
-          :class="$route.path === '/du-an' ? 'bg-gray-300 dark:bg-red-700' : true"
+          :class="$route.path === '/du-an' ? 'bg-gray-300 dark:bg-red-700 transition' : true"
           class="w-full py-4 px-8 rounded-lg text-center transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700">
           {{ this.translators.nav_project }}</RouterLink>
         <RouterLink to="/tien-ich" @click="this.isToggleMenuClicked = false"
-          :class="$route.path === '/tien-ich' ? 'bg-gray-300 dark:bg-red-700' : true"
+          :class="$route.path === '/tien-ich' ? 'bg-gray-300 dark:bg-red-700 transition' : true"
           class="w-full py-4 px-8 rounded-lg text-center transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700">
           {{ this.translators.nav_tool }}</RouterLink>
         <RouterLink to="/ly-lich" @click="this.isToggleMenuClicked = false"
-          :class="$route.path === '/ly-lich' ? 'bg-gray-300 dark:bg-red-700' : true"
+          :class="$route.path === '/ly-lich' ? 'bg-gray-300 dark:bg-red-700 transition' : true"
           class="w-full py-4 px-8 rounded-lg text-center transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700">
           {{ this.translators.nav_cv }}</RouterLink>
         <RouterLink to="/lien-he" @click="this.isToggleMenuClicked = false"
-          :class="$route.path === '/lien-he' ? 'bg-gray-300 dark:bg-red-700' : true"
+          :class="$route.path === '/lien-he' ? 'bg-gray-300 dark:bg-red-700 transition' : true"
           class="w-full py-4 px-8 rounded-lg text-center transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700">
           {{ this.translators.nav_contact }}</RouterLink>
       </div>
@@ -137,12 +138,12 @@
 <script>
 import en from "/src/assets/json/en.json";
 import vi from "/src/assets/json/vi.json";
-import AskQuestionModal from "./AskQuestionModal.vue";
+import QuestionModal from "./QuestionModal.vue";
 import { RouterLink } from "vue-router";
 export default {
   name: "Navbar",
   components: {
-    AskQuestionModal
+    QuestionModal
   },
   data() {
     // Khu vực các biến lưu trữ dữ liệu
@@ -216,6 +217,10 @@ export default {
       localStorage.setItem("lang", "en");
       this.translators = en;
     }
+
+    // Nếu là buổi chiều tối thì bật dark theme [18h => 6h]
+    const [hour, minute] = this.subNavClock.split(":").map(Number);
+    hour > 18 && hour < 7 ? this.currentTheme = 'dark' : this.currentTheme = 'light';
   },
   computed: {
 

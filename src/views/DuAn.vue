@@ -6,7 +6,9 @@
         Dự án</h1>
       <p class="text-base text-gray-500 md:text-lg dark:text-gray-400 md:leading-7">Danh sách những dự
         án mà mình đã và đang làm.</p>
+
       <div class="flex sm:flex-row flex-col justify-between items-center">
+        <!--Fillter Buttons-->
         <div class="space-y-2 sm:space-y-0 font-semibold text-gray-900 text-sm dark:text-gray-100">
           <button type="button" @click="filterType = 'all'"
             :class="filterType === 'all' ? 'border-blue-500' : 'border-gray-300 dark:border-gray-500'"
@@ -21,9 +23,11 @@
             class="bg-transparent hover:bg-gray-200 dark:hover:bg-gray-600 px-4 py-2 border-b-4 w-full sm:w-36 duration-300">Đã
             hoàn thành</button>
         </div>
+        <!--Search Bar-->
         <div class="flex items-center mt-4 sm:mt-0">
-          <div class="relative">
-            <div class="absolute inset-y-0 start-0 flex ps-3 items-center pointer-events-none">
+          <div class="relative group w-full sm:w-auto">
+            <div
+              class="absolute inset-y-0 right-6 left-2 translate-x-full group-focus-within:translate-x-0 opacity-50 group-focus-within:opacity-100 transition-transform duration-500 ease-in-out flex items-center pointer-events-none">
               <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -31,7 +35,7 @@
               </svg>
             </div>
             <input type="text" placeholder="Tìm dự án..." v-model="searchText" @click="isShowSearchIcon = true"
-              class="border-2 border-gray-400 bg-gray-50 dark:bg-gray-700 ps-8 py-2 focus:border-blue-500 rounded-md w-full sm:w-auto text-black text-sm focus:outline-none focus:ring-blue-500 dark:text-white dark:placeholder-gray-400">
+              class="border-2 border-gray-400 bg-gray-50 dark:bg-gray-700 ps-8 py-2 focus:border-blue-500 rounded-md w-full sm:w-auto text-black text-sm focus:outline-none focus:ring-blue-500 dark:text-white dark:placeholder-gray-400 duration-300">
           </div>
         </div>
       </div>
@@ -39,57 +43,82 @@
   </div>
   <!--Begin cards-->
   <div
-    class="items-baseline gap-2 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 bg-gray-100 dark:bg-gray-500 shadow-lg my-3 xl:h-[47vh] h-full overflow-y-auto">
+    class="items-baseline gap-2 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 bg-gray-100 dark:bg-gray-500 shadow-lg my-3 xl:h-[48vh] h-full overflow-y-auto">
     <!--Loading Spinner-->
     <div class="flex justify-center items-center h-full absolute inset-0" v-if="isLoading">
       <LoadingSpinner></LoadingSpinner>
     </div>
-    <!--Projects card-->
+    <!--Project cards-->
     <div
-      class="bg-white dark:bg-gray-700 p-4 cursor-default transition-transform duration-200 transform xl:hover:-translate-y-1 shadow-lg hover:shadow-xl hover:shadow-gray-300 dark:hover:shadow-gray-400"
-      :data-da-id="item.Id" v-for="(item, idx) in filteredProjects" :key="idx"
-      v-if="projectData !== null && Object.keys(projectData).length > 0 && !isLoading">
-      <div class="flex justify-between items-baseline font-semibold text-xs text-black dark:text-white mt-1">
-        <h4 class="text-xl" :data-da-name="item.ProjectName">{{ item.ProjectName }}</h4>
-        <div class="flex mb-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
-            viewBox="0 0 16 16">
-            <path
-              d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
-            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
-          </svg>
-          <span class="ml-1" :data-da-viewer="item.Viewer">{{ item.Viewer }}</span>
+      class="relative bg-white dark:bg-gray-700 p-4 cursor-pointer transition-opacity duration-200 transform xl:hover:-translate-y-1 shadow-lg hover:shadow-xl hover:shadow-gray-300 dark:hover:shadow-gray-400"
+      :class="[
+        isExpanded(item.Id) ? 'max-h-screen overflow-visible' : 'max-h-[24vh] overflow-hidden',
+        selectedId === null || isSelected(item.Id) ? 'opacity-100' : 'opacity-50'
+      ]" :data-da-id="item.Id" v-for="(item, idx) in filteredProjects" :key="idx" @click="toggleExpand(item.Id)">
+      <!--Pending ribbon-->
+      <div class="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none" v-if="!item.ProjectDone">
+        <div
+          class="absolute top-[18px] right-[-40px] w-[140px] transform rotate-45 bg-red-600 text-white text-xs font-medium text-center py-[2px]">
+          Pending
         </div>
       </div>
+      <!--Card header-->
+      <h4 class="flex text-xl items-baseline font-semibold text-black dark:text-white mt-1"
+        :data-da-name="item.ProjectName">{{ item.ProjectName }}</h4>
+      <!--Card body-->
       <div class="text-gray-800 text-xs dark:text-gray-200 mt-0.5">
         <h4 class="text-xs" :data-da-description="item.Description">{{ item.Description }}</h4>
         <div class="mt-1 mb-1">
-          <div class="flex">
-            <span class="mt-2">Dataset:</span>
-            <a :href="item.DsUrl === '' ? '#' : item.DsUrl"
-              class="text-blue-800 dark:text-blue-300 mt-2 ml-1 hover:text-red-600 hover:dark:text-red-400"
-              target="_blank">{{ item.DsName === '' ? 'NaN' : item.DsName }}</a>
+          <!--AI Projects Technical-->
+          <div v-if="item.ProjectType === 'ai'">
+            <div class="flex">
+              <span class="mt-2">Dataset:</span>
+              <a :href="item.DatasetUrl === '' ? '#' : item.DatasetUrl"
+                class="text-blue-800 dark:text-blue-300 mt-2 ml-1 hover:text-red-600 hover:dark:text-red-400"
+                target="_blank">{{ item.DatasetName === '' ? 'NaN' : item.DatasetName }}</a>
+            </div>
+            <div class="flex">
+              <span class="mt-2">Model Used:</span>
+              <span class="mt-2 ml-1 font-semibold" :data-da-mem="item.ModelUsed">{{ item.ModelUsed }}</span>
+            </div>
+            <div class="flex">
+              <span class="mt-2">Evalution Metrics:</span>
+              <span class="mt-2 ml-1 font-semibold" :data-da-mem="item.EvalutionMetrics">{{ item.EvalutionMetrics
+              }}</span>
+            </div>
+            <div class="flex">
+              <span class="mt-2">Tech Stack:</span>
+              <span class="mt-2 ml-1 font-semibold" :data-da-techstack="item.TechStack">
+                {{ item.TechStack.length !== 0 ? item.TechStack.join(", ") : "NaN" }}
+              </span>
+            </div>
+          </div>
+          <!--.NET Projects Technical-->
+          <div v-else>
+            <div class="flex">
+              <span class="mt-2">FE:</span>
+              <span class="mt-2 ml-1 font-semibold" :data-da-fe="item.FE">
+                {{ item.FE.length !== 0 ? item.FE.join(", ") : "NaN" }}
+              </span>
+            </div>
+            <div class="flex">
+              <span class="mt-2">BE:</span>
+              <span class="mt-2 ml-1 font-semibold" :data-da-be="item.BE">
+                {{ item.BE.length !== 0 ? item.BE.join(", ") : "NaN" }}
+              </span>
+            </div>
           </div>
           <div class="flex">
-            <span class="mt-2">FE:</span>
-            <span class="mt-2 ml-1 font-semibold" :data-da-fe="item.FE">
-              {{ item.FE.length !== 0 ? item.FE.join(", ") : "NaN" }}
+            <span class="mt-2">Scope:</span>
+            <span class="mt-2 ml-1 font-semibold" :data-da-mem="item.Members">
+              {{ item.TeamMembers === 1 ? 'Invididual' : 'Team (' + item.Members + ' members)' }}
             </span>
           </div>
-          <div class="flex">
-            <span class="mt-2">BE:</span>
-            <span class="mt-2 ml-1 font-semibold" :data-da-be="item.BE">
-              {{ item.BE.length !== 0 ? item.BE.join(", ") : "NaN" }}
+          <div class="flex" v-if="item.Members > 1">
+            <span class="mt-2">Team Role:</span>
+            <span class="mt-2 ml-1 font-semibold" :data-da-mem="item.Role">
+              {{ item.Role }}
             </span>
-          </div>
-          <div class="flex">
-            <span class="mt-2">Loại dự án:</span>
-            <span class="mt-2 ml-1 font-semibold" :data-da-type="item.ProjectType">{{ item.ProjectType }}</span>
-          </div>
-          <div class="flex">
-            <span class="mt-2">Quy mô:</span>
-            <span class="mt-2 ml-1 font-semibold" :data-da-mem="item.TeamMembers">{{ item.TeamMembers }}
-              thành viên</span>
           </div>
           <div class="flex">
             <span class="mt-2">Mã nguồn:</span>
@@ -99,6 +128,7 @@
           </div>
         </div>
       </div>
+      <!--Card footer-->
       <div class="flex justify-between mt-4 items-end text-white text-xs">
         <span :class="{ 'badgeDone': item.ProjectDone, 'badgePending': !item.ProjectDone }">
           {{ item.ProjectDone ? "Done" : "Pending" }}</span>
@@ -108,42 +138,17 @@
           Thử nghiệm
         </button>
       </div>
+      <!--See More icon-->
+      <div
+        class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-white dark:from-gray-700 to-transparent flex items-center justify-center pointer-events-none z-10"
+        v-if="!isExpanded(item.Id)">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 text-gray-400 dark:text-gray-300 opacity-70 animate-bounce" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
     </div>
-  </div>
-  <!-- Pagination -->
-  <div class="flex justify-center mt-4">
-    <nav aria-label="Pagination">
-      <ul class="inline-flex -space-x-px text-sm hidden">
-        <li>
-          <a href="#"
-            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-        </li>
-        <li>
-          <a href="#"
-            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-        </li>
-        <li>
-          <a href="#"
-            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-        </li>
-        <li>
-          <a href="#" aria-current="page"
-            class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">...</a>
-        </li>
-        <li>
-          <a href="#"
-            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-        </li>
-        <li>
-          <a href="#"
-            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-        </li>
-        <li>
-          <a href="#"
-            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-        </li>
-      </ul>
-    </nav>
   </div>
 </template>
 
@@ -161,7 +166,9 @@ export default {
       projectData: [], // Danh sách dự án dạng JSON
       searchText: "", // Giá trị tìm kiếm được nhập từ người dùng
       filterType: "all", // Chế độ lọc trạng thái dự án,
-      isLoading: true // Đã load xong các dự án hay chưa ?
+      isLoading: true, // Đã load xong các dự án hay chưa ?
+      expandedId: null, // ID card được nhấn See more
+      selectedId: null, // ID của card đang được chọn
     }
   },
   methods: {
@@ -186,7 +193,32 @@ export default {
       });
       // Mở liên kết dự án ở Tab mới
       window.open(project_url, "_blank");
+    },
+
+    toggleExpand(id) {
+      /**
+       * Sự kiện nhấn See more
+       */
+      if (this.selectedId === id) {
+        this.selectedId = null;
+      } else {
+        this.selectedId = id;
+      }
+      this.expandedId = this.expandedId === id ? null : id;
+    },
+    isExpanded(id) {
+      /**
+       * Xác định card nào được chọn để Xem thêm ?
+       */
+      return this.expandedId === id;
+    },
+    isSelected(id) {
+      /**
+       * Kiểm tra card đã được chọn hay chưa ?
+       */
+      return this.selectedId === id;
     }
+
   },
   async mounted() {
     // Khu vực thực thi sau khi đã load xong DOM

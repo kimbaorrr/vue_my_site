@@ -1,16 +1,18 @@
 <template>
   <footer class="border-t border-gray-200 dark:border-gray-700"
-    v-if="this.infoData !== null && Object.keys(this.infoData).length > 0">
+    v-if="this.infoData !== null && Object.keys(this.infoData).length !== 0">
     <div class="mb-6 mt-4 md:mb-10 flex flex-col items-center justify-center space-y-4 md:space-y-0">
       <div class="flex flex-col items-center">
+        <!--Copyright Text-->
         <div class="my-2 text-sm text-gray-500 dark:text-gray-400 text-center">
           <span>&copy; {{ this.yearOnly }} BaoIT. All rights reserved.</span>
         </div>
+        <!--Loading Spinner-->
         <div v-if="Object.keys(this.infoData).length === 0 || this.isLoading">
           <LoadingSpinner></LoadingSpinner>
         </div>
-
-        <div class="flex justify-center space-x-4 items-center"
+        <!--Icon Links-->
+        <div class="flex justify-center space-x-4 items-center mt-1"
           v-if="this.infoData !== null && Object.keys(this.infoData) !== 0 && !this.isLoading">
           <a class="text-gray-700 hover:text-black dark:text-white dark:hover:text-gray-300"
             :href="this.infoData.Socials.Git.Url === '' ? '#' : this.infoData.Socials.Git.Url" target="_blank"

@@ -1,4 +1,14 @@
 <template>
+  <!--Greeting Message-->
+  <div class="flex items-center justify-center" v-show="false">
+    <div class="relative p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md overflow-hidden">
+      <div class="absolute inset-0 rounded-lg border-animation"></div>
+      <div class="relative z-50 text-black dark:text-white text-sm font-medium">
+        📢 Chào buổi sáng! Chúc bạn một ngày mới tràn đầy năng lượng!
+      </div>
+    </div>
+  </div>
+
   <div class="mt-8 md:mt-16 divide-y divide-gray-200 dark:divide-gray-700">
     <div class="space-y-2 md:space-y-5 xl:grid xl:grid-cols-3 md:my-4 md:pt-6 md:pb-8">
       <!--Left Content-->
@@ -170,6 +180,11 @@ export default {
   components: {
     CardInfo
   },
+  data() {
+    return {
+      greetingMessage: ""
+    }
+  },
   methods: {
     typeWriter() {
       $(".typeWriter").each(function () {
@@ -207,6 +222,38 @@ export default {
 
   100% {
     transform: rotate(-10deg);
+  }
+}
+
+
+.border-animation {
+  pointer-events: none;
+  border: 2px solid transparent;
+  background: linear-gradient(45deg, #ff0080, #7928ca, #2afadf, #ff0080);
+  background-size: 400% 400%;
+  animation: glowBorder 6s linear infinite;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  border-radius: 0.5rem;
+}
+
+@keyframes glowBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
   }
 }
 </style>

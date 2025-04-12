@@ -5,15 +5,15 @@
         <div class="" v-if="this.isLoading || Object.keys(this.infoData).length === 0">
             <LoadingSpinner></LoadingSpinner>
         </div>
-        <!--Card content-->
+        <!--Card Content-->
         <div class="z-10 hover:z-50 mb-8 xl:mb-0 transition-all duration-200 ease-out scale-100 xl:hover:scale-[1.15]"
             style="perspective: 600px;"
             v-if="this.infoData !== null && Object.keys(this.infoData).length !== 0 && !this.isLoading">
             <div
                 class="flex flex-col bg-white dark:bg-dark shadow-gray-200 shadow-lg dark:shadow-green-700 xl:rounded-3xl transition-all duration-200 overflow-hidden ease-out outline outline-1 outline-gray-100 dark:outline-gray-600">
                 <img alt="HinhDD" width="550" height="350" decoding="async" fetchpriority="high"
-                    class="rounded-xl object-cover w-full" :src="this.infoData.Avatar"
-                    style="object-position: 50% 16%; aspect-ratio: 17 / 11;">
+                    class="rounded-xl object-cover w-full aspect-[17/11]" :src="this.infoData.Avatar"
+                    style="object-position: 50% 16%;">
                 <div class="xl:block hidden xl:px-6 py-4">
                     <h3 class="font-semibold text-gray-800 text-xl dark:text-white">{{ this.infoData.FullName }}</h3>
                     <h5 class="py-2 text-gray-700 dark:text-gray-300">{{ this.infoData.Job }} | Sở thích {{

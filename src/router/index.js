@@ -1,4 +1,4 @@
-import { createMemoryHistory, createRouter } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import TrangChu from "../views/TrangChu.vue";
 import DuAn from "../views/DuAn.vue";
 import TienIch from "../views/TienIch.vue";
@@ -31,6 +31,6 @@ const routes = [
 
 // Tạo và xuất một router Vue
 export default createRouter({
-  history: createMemoryHistory(),
+  history: createWebHistory(),
   routes,
 });
