@@ -1,0 +1,142 @@
+{
+    "nav": {
+        "home": {
+            "En": "Home",
+            "Vi": "Trang chủ"
+        },
+        "project": {
+            "En": "Projects",
+            "Vi": "Dự án"
+        },
+        "tool": {
+            "En": "Tools",
+            "Vi": "Tiện ích"
+        },
+        "cv": {
+            "En": "Resume",
+            "Vi": "Lý lịch"
+        },
+        "contact": {
+            "En": "Contact",
+            "Vi": "Liên hệ"
+        }
+    },
+    "home_body": {
+        "hi": {
+            "Vi": "Xin chào !",
+            "En": "Hi there !"
+        },
+        "favorite": {
+            "En": "Favorite",
+            "Vi": "Sở thích"
+        },
+        "link_list": {
+            "projects": {
+                "Vi": "Các dự án mình làm",
+                "En": "My Projects"
+            },
+            "tools": {
+                "Vi": "Các tiện ích mình làm",
+                "En": "My Tools"
+            },
+            "cv": {
+                "Vi": "Lý lịch của mình",
+                "En": "My Resume"
+            },
+            "contact": {
+                "Vi": "Thông tin liên hệ của mình",
+                "En": "My Contact Information"
+            }
+        },
+        "thanks": {
+            "Vi": "Cảm ơn bạn đã ghé thăm ! ❤️",
+            "En": "Thanks for coming ! ❤️"
+        }
+    },
+    "question": {
+        "header": {
+            "Vi": "Gửi câu hỏi của bạn",
+            "En": "Send your question"
+        },
+        "close": {
+            "Vi": "Đóng",
+            "En": "Close"
+        },
+        "body": {
+            "name": {
+                "Vi": "Tên của bạn",
+                "En": "Your name"
+            },
+            "email": {
+                "Vi": "Địa chỉ email",
+                "En": "Email address"
+            },
+            "content": {
+                "Vi": "Bạn muốn hỏi tôi điều gì ?",
+                "En": "What would you like to ask me ?"
+            },
+            "content_placeholder": {
+                "Vi": "Viết gì đó vào đây...",
+                "En": "Enter something here..."
+            },
+            "send": {
+                "Vi": "Gửi thông tin",
+                "En": "Send"
+            },
+            "response": {
+                "success": {
+                    "Vi": "Câu hỏi của bạn đã được ghi nhận !",
+                    "En": "Your question had been recorded !"
+                },
+                "fail": {
+                    "Vi": "Lỗi khi gửi câu hỏi. Vui lòng thử lại !",
+                    "En": "Error when sending the question. Please try again !"
+                }
+            }
+        }
+    },
+    "projects": {
+        "title": {
+            "Vi": "Dự án",
+            "En": "Projects"
+        },
+        "description": {
+            "Vi": "Danh sách các dự án mình đã & đang làm",
+            "En": "A list of the projects I have done & am currently working on"
+        },
+        "filter_by": {
+            "all": {
+                "Vi": "Tất cả",
+                "En": "All"
+            },
+            "in_progress": {
+                "Vi": "Đang thực hiện",
+                "En": "In Progress"
+            },
+            "done": {
+                "Vi": "Đã hoàn thành",
+                "En": "Completed"
+            }
+        },
+        "search_box": {
+            "placeholder": {
+                "Vi": "Tìm dự án...",
+                "En": "Find a project..."
+            }
+        },
+        "card": {
+            "try": {
+                "Vi": "Thử nghiệm",
+                "En": "Try now"
+            }
+        }
+    },
+    "tools": {
+        "search_box": {
+            "placeholder": {
+                "Vi": "Tìm tiện ích...",
+                "En": "Find a tool..."
+            }
+        }
+    }
+}

@@ -1,71 +1,67 @@
 <template>
-    <!-- Ask Question Modal -->
+    <!-- Question Modal -->
     <div v-if="this.isOpenModal" id="questionModal"
-        class="z-50 fixed inset-0 justify-center items-center flex bg-opacity-55 overflow-x-hidden overflow-y-auto">
-        <div class="relative p-4 w-full max-w-md max-h-full">
+        class="bg-opacity-55 overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex justify-center items-center">
+        <div class="w-full max-w-md max-h-full relative p-4">
             <!-- Modal content -->
-            <div class="relative bg-white dark:bg-gray-700 shadow rounded-lg">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->
-                <div class="flex justify-between items-center dark:border-gray-600 p-4 md:p-5 border-b rounded-t">
-                    <h3 class="font-semibold text-gray-900 text-lg dark:text-white">
-                        Đặt câu hỏi
+                <div class="flex justify-between items-center p-4 rounded-t border-b dark:border-gray-600 md:p-5">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                        {{ this.trans?.question?.header?.[this.getLang()] || "" }}
                     </h3>
                     <!--Close modal-->
                     <button type="button" aria-label="closeModal" @click="closeModal"
-                        class="inline-flex justify-center items-center bg-transparent hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg w-8 h-8 text-gray-400 text-sm hover:text-gray-900 dark:hover:text-white ms-auto">
+                        class="ms-auto w-8 h-8 inline-flex justify-center items-center text-sm text-gray-400 bg-transparent rounded-lg dark:hover:text-white dark:hover:bg-gray-600 hover:text-gray-900 hover:bg-gray-200">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 14 14">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
-                        <span class="sr-only">Đóng</span>
+                        <span class="sr-only">{{ this.trans?.question?.close?.[this.getLang()] || "" }}</span>
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form class="p-4 md:p-5 relative" @submit.prevent="sendQuestion">
+                <form class="relative p-4 md:p-5" @submit.prevent="sendQuestion">
                     <!--Sending Spinner-->
-                    <div v-if="this.isSending" class="absolute inset-0 bg-opacity-75">
+                    <div v-if="this.isSending" class="bg-opacity-75 absolute inset-0">
                         <LoadingSpinner></LoadingSpinner>
                     </div>
                     <!--Modal content-->
-                    <div class=" gap-4 grid grid-cols-2 mb-4">
+                    <div class="grid grid-cols-2 gap-4 mb-4">
                         <div class="col-span-2">
-                            <label for="name" class="block mb-2 font-medium text-gray-900 text-sm dark:text-white">Tên
-                                của
-                                bạn <span class="font-bold text-red-500">*</span></label>
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{
+                                this.trans?.question?.body?.name?.[this.getLang()] || "" }} <span
+                                    class="font-bold text-red-500">*</span></label>
                             <input type="text" name="name" v-model="this.formData.name"
-                                class="block border-gray-300 focus:border-blue-600 dark:focus:border-blue-500 dark:border-gray-500 bg-gray-50 dark:bg-gray-600 p-2.5 border-2 rounded-lg w-full text-gray-900 text-sm dark:placeholder-gray-400 dark:text-white transition duration-300 ease-in-out transform focus:shadow-lg focus:outline-none"
-                                placeholder="Nguyễn Văn A" required>
+                                class="blueBox w-full p-2.5 text-sm" placeholder="Nguyễn Văn A" required>
                         </div>
                         <div class="col-span-2">
-                            <label for="email"
-                                class="block mb-2 font-medium text-gray-900 text-sm dark:text-white">Email
-                                liên
-                                hệ <span class="font-bold text-red-500">*</span></label>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{
+                                this.trans?.question?.body?.email?.[this.getLang()] || "" }} <span
+                                    class="font-bold text-red-500">*</span></label>
                             <input type="text" name="email" v-model="this.formData.email"
-                                class="block border-gray-300 focus:border-blue-600 dark:focus:border-blue-500 dark:border-gray-500 bg-gray-50 dark:bg-gray-600 p-2.5 border-2 rounded-lg w-full text-gray-900 text-sm dark:placeholder-gray-400 dark:text-white transition duration-300 ease-in-out transform focus:shadow-lg focus:outline-none"
-                                placeholder="abc@gmail.com" required>
+                                class="blueBox w-full p-2.5 text-sm" placeholder="abc@gmail.com" required>
                         </div>
                         <div class="col-span-2">
                             <label for="description"
-                                class="block mb-2 font-medium text-gray-900 text-sm dark:text-white">Nội
-                                dung <span class="font-bold text-red-500">*</span></label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{
+                                    this.trans?.question?.body?.content?.[this.getLang()] || "" }} <span
+                                    class="font-bold text-red-500">*</span></label>
                             <textarea name="content" rows="4" v-model="this.formData.content"
-                                class="block border-gray-300 focus:border-blue-600 dark:focus:border-blue-500 dark:border-gray-500 bg-gray-50 dark:bg-gray-600 p-2.5 border-2 rounded-lg w-full text-gray-900 text-sm dark:placeholder-gray-400 dark:text-white transition duration-300 ease-in-out transform focus:shadow-lg focus:outline-none"
-                                placeholder="Viết gì đó vào đây..." required></textarea>
+                                class="blueBox w-full p-2.5 text-sm" placeholder="Viết gì đó vào đây..."
+                                required></textarea>
                         </div>
                     </div>
-                    <button type="submit"
-                        class="inline-flex items-center justify-center rounded-lg px-5 py-2.5 overflow-hidden group bg-blue-700 relative hover:bg-gradient-to-r text-white transition-all ease-out duration-300">
-                        <span
-                            class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
-                        <svg class="w-5 h-5 -ms-1 me-2" fill="currentColor" viewBox="0 0 20 20"
+                    <button type="submit" class="blueBtn flex items-center px-4 py-2.5 space-x-1 text-white">
+                        <svg fill="currentColor" width="20" height="20" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
                                 d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                        <span class="relative text-sm font-semibold">Gửi thông tin</span>
+                        <span class="relative text-sm font-medium">{{
+                            this.trans?.question?.body?.send?.[this.getLang()] || "" }}</span>
                     </button>
                 </form>
             </div>
@@ -75,11 +71,13 @@
 
 <script>
 import LoadingSpinner from '/src/components/LoadingSpinner.vue'
+import Mixin from "./Mixin.vue"
 export default {
     name: "AskQuestionModal",
     components: {
         LoadingSpinner
     },
+    mixins: [Mixin],
     data() {
         return {
             isOpenModal: false, // Trạng thái đóng/mở Modal
@@ -88,7 +86,8 @@ export default {
                 name: "",
                 email: "",
                 content: ""
-            }
+            },
+            trans: this.getTranslator()
         }
     },
     methods: {
@@ -117,13 +116,13 @@ export default {
                     data: formSerialized,
                     success: () => {
                         this.isSending = !this.isSending;
-                        alert("Câu hỏi của bạn đã được hệ thống ghi nhận !");
+                        alert(this.trans?.question?.body?.response?.success?.[this.getLang()] || "");
                         this.closeModal();
                     },
                     error: (xhr) => {
                         this.isSending = !this.isSending;
                         const message = JSON.parse(xhr.responseText).message;
-                        alert(message);
+                        alert(this.trans?.question?.body?.response?.fail?.[this.getLang()] || "" + "\n" + message);
                     }
                 });
             }, 1500)

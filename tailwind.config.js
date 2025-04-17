@@ -11,6 +11,9 @@ export default {
       colors: {
         dark: "#0A0A0A",
       },
+      fontFamily: {
+        sans: ['Cabin', 'sans-serif'],
+      },
     },
   }
 }

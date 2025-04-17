@@ -1,14 +1,14 @@
 <template>
-  <PageBuildingAlert></PageBuildingAlert>
+  <Alert></Alert>
 </template>
 
 <script>
-import PageBuildingAlert from '/src/components/PageBuildingAlert.vue';
+import Alert from '/src/components/Alert.vue';
 
 export default {
   name: "LyLich",
   components: {
-    PageBuildingAlert
+    Alert
   }
 }
 </script>
