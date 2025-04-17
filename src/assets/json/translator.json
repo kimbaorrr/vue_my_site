@@ -128,6 +128,84 @@
             "try": {
                 "Vi": "Thử nghiệm",
                 "En": "Try now"
+            },
+            "technical": {
+                "desc": {
+                    "En": "Description",
+                    "Vi": "Mô tả dự án"
+                },
+                "dataset": {
+                    "En": "Dataset",
+                    "Vi": "Tập dữ liệu"
+                },
+                "lang": {
+                    "En": "Languages",
+                    "Vi": "Ngôn ngữ lập trình"
+                },
+                "metrics": {
+                    "En": "Evalution Metrics",
+                    "Vi": "Chỉ số đánh giá",
+                    "scalar": {
+                        "En": "Scalar Metrics",
+                        "Vi": "Số liệu"
+                    },
+                    "matrix": {
+                        "En": "Confussion Matrix",
+                        "Vi": "Ma trận nhầm lẫn"
+                    }
+                },
+                "fe": {
+                    "En": "Frontend",
+                    "Vi": "Giao diện người dùng"
+                },
+                "be": {
+                    "En": "Backend",
+                    "Vi": "Xử lý phía máy chủ"
+                },
+                "db": {
+                    "En": "Database",
+                    "Vi": "Cơ sở dữ liệu"
+                },
+                "inf_str": {
+                    "En": "Infractructure",
+                    "Vi": "Kiến trúc hệ thống"
+                },
+                "arc": {
+                    "En": "Architecture",
+                    "Vi": "Kiến trúc phần mềm"
+                },
+                "lib": {
+                    "En": "Library",
+                    "Vi": "Thư viện"
+                },
+                "model": {
+                    "En": "Models Used",
+                    "Vi": "Mô hình sử dụng"
+                },
+                "framework": {
+                    "En": "Frameworks",
+                    "Vi": "Khung phát triển"
+                },
+                "algo": {
+                    "En": "Algorithms",
+                    "Vi": "Thuật toán"
+                },
+                "task_type": {
+                    "En": "Task Type",
+                    "Vi": "Loại tác vụ"
+                },
+                "scope": {
+                    "En": "Scope",
+                    "Vi": "Quy mô dự án"
+                },
+                "role": {
+                    "En": "Team Role",
+                    "Vi": "Vai trò trong nhóm"
+                },
+                "code": {
+                    "En": "Source code",
+                    "Vi": "Mã nguồn"
+                }
             }
         }
     },

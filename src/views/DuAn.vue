@@ -165,32 +165,32 @@
       <!--Card body-->
       <div class="mt-4 space-y-2 text-sm text-gray-800 dark:text-gray-200">
         <div class="flex items-baseline space-x-1">
-          <span class="font-semibold text-black dark:text-gray-100">Description:</span>
+          <span class="font-semibold text-black dark:text-gray-100">{{ this.trans?.projects?.card?.technical?.desc?.[this.getLang()] || "" }}:</span>
           <span class="text-black dark:text-gray-200">{{ selectedCard.Description }}</span>
         </div>
 
         <div class="flex items-baseline space-x-1" v-if="selectedCard.Dataset.Name && selectedCard.Dataset.Url">
-          <span class="font-semibold text-black dark:text-gray-100">Dataset:</span>
+          <span class="font-semibold text-black dark:text-gray-100">{{ this.trans?.projects?.card?.technical?.dataset?.[this.getLang()] || "" }}:</span>
           <a :href="selectedCard.Dataset.Url" target="_blank" class="text-blue-500 underline">
             {{ selectedCard.Dataset.Name }}
           </a>
         </div>
 
         <div class="flex items-center space-x-1" v-if="selectedCard.TechStack.Languages.length">
-          <span class="font-semibold text-black dark:text-gray-100">Languages:</span>
+          <span class="font-semibold text-black dark:text-gray-100">{{ this.trans?.projects?.card?.technical?.lang?.[this.getLang()] || "" }}:</span>
           <span class="text-black dark:text-gray-200">{{ selectedCard.TechStack.Languages.join(', ') }}</span>
         </div>
 
         <div class="flex items-center space-x-1" v-if="selectedCard.Type === 'AI'">
-          <span class="font-semibold text-black dark:text-gray-100">Evaluation Metrics:</span>
+          <span class="font-semibold text-black dark:text-gray-100">{{ this.trans?.projects?.card?.technical?.metrics?.[this.getLang()] || "" }}:</span>
           <div class="space-x-1">
             <button type="button" @click="this.isShowCfs = false; this.isShowChart = !this.isShowChart"
               class="text-orange-400 dark:text-orange-600"
-              :class="this.isShowChart ? 'text-orange-700 dark:text-orange-400' : true">Scalar Metrics</button>
+              :class="this.isShowChart ? 'text-orange-700 dark:text-orange-400' : true">{{ this.trans?.projects?.card?.technical?.metrics?.scalar?.[this.getLang()] || "" }}</button>
             <span class="font-bold text-gray-600">|</span>
             <button type="button" @click="this.isShowChart = false; this.isShowCfs = !this.isShowCfs"
               class="text-orange-400 dark:text-orange-600"
-              :class="this.isShowCfs ? 'text-orange-700 dark:text-orange-400' : true">Confussion Matrix</button>
+              :class="this.isShowCfs ? 'text-orange-700 dark:text-orange-400' : true">{{ this.trans?.projects?.card?.technical?.metrics?.matrix?.[this.getLang()] || "" }}</button>
           </div>
         </div>
 
@@ -201,67 +201,67 @@
         </div>
 
         <div class="flex items-center space-x-1" v-if="selectedCard.TechStack.FrontEnd.length">
-          <span class="font-semibold text-black dark:text-gray-100">Frontend:</span>
+          <span class="font-semibold text-black dark:text-gray-100">{{ this.trans?.projects?.card?.technical?.fe?.[this.getLang()] || "" }}:</span>
           <span class="text-black dark:text-gray-200">{{ selectedCard.TechStack.FrontEnd.join(', ') }}</span>
         </div>
 
         <div class="flex items-center space-x-1" v-if="selectedCard.TechStack.BackEnd.length">
-          <span class="font-semibold text-black dark:text-gray-100">Backend:</span>
+          <span class="font-semibold text-black dark:text-gray-100">{{ this.trans?.projects?.card?.technical?.be?.[this.getLang()] || "" }}:</span>
           <span class="text-black dark:text-gray-200">{{ selectedCard.TechStack.BackEnd.join(', ') }}</span>
         </div>
 
         <div class="flex items-center space-x-1" v-if="selectedCard.TechStack.Database.length">
-          <span class="font-semibold text-black dark:text-gray-100">Database:</span>
+          <span class="font-semibold text-black dark:text-gray-100">{{ this.trans?.projects?.card?.technical?.db?.[this.getLang()] || "" }}:</span>
           <span class="text-black dark:text-gray-200">{{ selectedCard.TechStack.Database.join(', ') }}</span>
         </div>
 
         <div class="flex items-center space-x-1" v-if="selectedCard.TechStack.Infrastructure.length">
-          <span class="font-semibold text-black dark:text-gray-100">Infrastructure:</span>
+          <span class="font-semibold text-black dark:text-gray-100">{{ this.trans?.projects?.card?.technical?.inf_str?.[this.getLang()] || "" }}:</span>
           <span class="text-black dark:text-gray-200">{{ selectedCard.TechStack.Infrastructure.join(', ') }}</span>
         </div>
 
         <div class="flex items-baseline space-x-1" v-if="selectedCard.TechStack.Architecture.length">
-          <span class="font-semibold text-black dark:text-gray-100">Architecture:</span>
+          <span class="font-semibold text-black dark:text-gray-100">{{ this.trans?.projects?.card?.technical?.arc?.[this.getLang()] || "" }}:</span>
           <span class="text-black dark:text-gray-200">{{ selectedCard.TechStack.Architecture.join(', ') }}</span>
         </div>
 
         <div class="flex items-center space-x-1" v-if="selectedCard.TechStack.Libraries.length">
-          <span class="font-semibold text-black dark:text-gray-100">Libraries:</span>
+          <span class="font-semibold text-black dark:text-gray-100">{{ this.trans?.projects?.card?.technical?.lib?.[this.getLang()] || "" }}:</span>
           <span class="text-black dark:text-gray-200">{{ selectedCard.TechStack.Libraries.join(', ') }}</span>
         </div>
 
         <div class="flex items-center space-x-1" v-if="selectedCard.TechStack.Models.length">
-          <span class="font-semibold text-black dark:text-gray-100">Models Used:</span>
+          <span class="font-semibold text-black dark:text-gray-100">{{ this.trans?.projects?.card?.technical?.model?.[this.getLang()] || "" }}:</span>
           <span class="text-black dark:text-gray-200">{{ selectedCard.TechStack.Models.join(', ') }}</span>
         </div>
 
         <div class="flex items-center space-x-1" v-if="selectedCard.TechStack.Frameworks.length">
-          <span class="font-semibold text-black dark:text-gray-100">Frameworks:</span>
+          <span class="font-semibold text-black dark:text-gray-100">{{ this.trans?.projects?.card?.technical?.framework?.[this.getLang()] || "" }}:</span>
           <span class="text-black dark:text-gray-200">{{ selectedCard.TechStack.Frameworks.join(', ') }}</span>
         </div>
 
         <div class="flex items-center space-x-1" v-if="selectedCard.TechStack.Algorithms.length">
-          <span class="font-semibold text-black dark:text-gray-100">Algorithms:</span>
+          <span class="font-semibold text-black dark:text-gray-100">{{ this.trans?.projects?.card?.technical?.algo?.[this.getLang()] || "" }}:</span>
           <span class="text-black dark:text-gray-200">{{ selectedCard.TechStack.Algorithms.join(', ') }}</span>
         </div>
 
         <div class="flex items-center space-x-1" v-if="selectedCard.TechStack.TaskType.length">
-          <span class="font-semibold text-black dark:text-gray-100">Task Type:</span>
+          <span class="font-semibold text-black dark:text-gray-100">{{ this.trans?.projects?.card?.technical?.task_type?.[this.getLang()] || "" }}:</span>
           <span class="text-black dark:text-gray-200">{{ selectedCard.TechStack.TaskType.join(', ') }}</span>
         </div>
 
         <div class="flex items-center space-x-1">
-          <span class="font-semibold text-black dark:text-gray-100">Scope:</span>
+          <span class="font-semibold text-black dark:text-gray-100">{{ this.trans?.projects?.card?.technical?.scope?.[this.getLang()] || "" }}:</span>
           <span class="text-black dark:text-gray-200">{{ selectedCard.Scope }}</span>
         </div>
 
         <div class="flex items-center space-x-1" v-if="selectedCard.Members > 1">
-          <span class="font-semibold text-black dark:text-gray-100">Team Role:</span>
+          <span class="font-semibold text-black dark:text-gray-100">{{ this.trans?.projects?.card?.technical?.role?.[this.getLang()] || "" }}:</span>
           <span class="text-black dark:text-gray-200">{{ selectedCard.Role }}</span>
         </div>
 
         <div class="flex items-center space-x-2">
-          <span class="font-semibold text-black dark:text-gray-100">Source code:</span>
+          <span class="font-semibold text-black dark:text-gray-100">{{ this.trans?.projects?.card?.technical?.code?.[this.getLang()] || "" }}:</span>
           <a :href="selectedCard.SourceCode.GitHub || '#'"
             class="text-gray-800 duration-500 dark:text-gray-300 hover:text-gray-400 hover:dark:text-gray-600"
             target="_blank">
