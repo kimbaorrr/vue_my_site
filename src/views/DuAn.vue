@@ -255,7 +255,7 @@
           <span class="text-black dark:text-gray-200">{{ selectedCard.Scope }}</span>
         </div>
 
-        <div class="items-centerspace-x-1 flex" v-if="selectedCard.Members > 1">
+        <div class="flex items-center space-x-1" v-if="selectedCard.Members > 1">
           <span class="font-semibold text-black dark:text-gray-100">Team Role:</span>
           <span class="text-black dark:text-gray-200">{{ selectedCard.Role }}</span>
         </div>

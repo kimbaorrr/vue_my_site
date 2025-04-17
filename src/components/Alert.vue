@@ -7,16 +7,23 @@
 
         <!-- Nội dung -->
         <div class="w-full flex flex-col justify-center items-center space-y-3 md:w-1/2 md:items-start">
-            <h3 class="text-4xl font-bold text-gray-800 dark:text-gray-100">Có lỗi xảy ra...</h3>
-            <p class="text-lg text-gray-600 dark:text-gray-300">Đã có lỗi xảy ra. Vui lòng quay lại sau !</p>
+            <h3 class="text-4xl font-bold text-gray-800 dark:text-gray-100">{{ this.trans?.alert?.title?.[this.getLang()] || ""}}</h3>
+            <p class="text-lg text-gray-600 dark:text-gray-300">{{ this.trans?.alert?.description?.[this.getLang()] || "" }}</p>
         </div>
     </div>
 </template>
 
 
 <script>
+import Mixin from "./Mixin.vue";
 export default {
-    name: "Alert"
+    name: "Alert",
+    mixins: [Mixin],
+    data() {
+        return {
+            trans: this.getTranslator()
+        }
+    }
 }
 </script>
 

@@ -138,5 +138,15 @@
                 "En": "Find a tool..."
             }
         }
+    },
+    "alert": {
+        "title": {
+            "En": "Oops...",
+            "Vi": "Ôi không..."
+        },
+        "description": {
+            "Vi": "Hệ thống gặp sự cố. Xin vui lòng quay lại sau.!",
+            "En": "The system encountered an error. Please try again later.!"
+        }
     }
 }
