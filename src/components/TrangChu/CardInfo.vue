@@ -2,7 +2,7 @@
     <!--Personal Card-->
     <div class="hidden xl:block">
         <!--Loading Spinner-->
-        <div class="" v-if="this.isLoading || Object.keys(this.infoData).length === 0">
+        <div class="h-full flex justify-center items-center" v-if="this.isLoading || Object.keys(this.infoData).length === 0">
             <LoadingSpinner></LoadingSpinner>
         </div>
         <!--Card Content-->

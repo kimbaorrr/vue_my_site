@@ -1,19 +1,21 @@
 <template>
-    <div class="space-y-6 md:pr-8 md:space-y-8 xl:col-span-2">
-        <div class="flex">
-          <div
-            class="from-yellow-600 leading-[60px] to-red-600 flex text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r dark:from-indigo-500 dark:to-purple-500 dark:bg-gradient-to-l md:leading-[86px] md:text-7xl">
-            {{ this.trans?.home_body?.hi?.[this.getLang] || ""}}</div>
-          <span class="flex items-center ml-4 text-5xl" style="animation: say_hi 1.5s linear infinite;">🖐️</span>
-        </div>
-        <div class="text-base leading-7 text-black dark:text-gray-100 md:text-lg md:leading-8">
-          <p>{{ this.introData?.Welcome?.[this.getLang] || "" }}
-            <span class="pt-[3px] absolute inline-flex ml-1.5">
-              <i class="twa twa-lg twa-party-popper inline-block"></i>
-            </span>
-          </p>
-          <p class="">{{ this.introData?.Passion?.[this.getLang] || "" }}
-            <!-- <span class="pt-[3px] absolute inline-flex ml-1.5">
+  <div class="space-y-6 md:pr-8 md:space-y-8 xl:col-span-2">
+    <div class="flex">
+      <span
+        class="animate-gradient-x from-yellow-600 leading-[60px] to-red-600 flex text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r bg-[length:200%_auto] dark:from-indigo-500 dark:to-purple-500 md:leading-[86px] md:text-7xl">
+        {{ this.trans?.home_body?.hi?.[this.getLang] || "" }}
+      </span>
+
+      <span class="flex items-center ml-4 text-5xl" style="animation: say_hi 1.5s linear infinite;">🖐️</span>
+    </div>
+    <div class="text-base leading-7 text-black dark:text-gray-100 md:text-lg md:leading-8">
+      <p>{{ this.introData?.Welcome?.[this.getLang] || "" }}
+        <span class="pt-[3px] absolute inline-flex ml-1.5">
+          <i class="twa twa-lg twa-party-popper inline-block"></i>
+        </span>
+      </p>
+      <p class="">{{ this.introData?.Passion?.[this.getLang] || "" }}
+        <!-- <span class="pt-[3px] absolute inline-flex ml-1.5">
               <svg width="25" height="25" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
                 <lineargradient id="h" x1="63.994" x2="63.994" y1="119.482" y2="39.919"
                   gradientTransform="matrix(1 0 0 -1 0 128)" gradientUnits="userSpaceOnUse">
@@ -121,38 +123,56 @@
                   fill="url(#a)" />
               </svg>
             </span> -->
-          </p>
-          <div class="mt-4 mb-8">
-            <ul>
-              <li v-for="(goal, index) in this.introData?.Goals" :key="index">
-                {{ goal?.[this.getLang] }}
-              </li>
-            </ul>
-          </div>
-
-          <!--Link List-->
-          <IntroLinkList :getLang="this.getLang" :trans="this.trans"></IntroLinkList>
-
-          
-          <p class="flex my-8">
-            <span class="mr-2">{{ this.trans?.home_body?.thanks?.[this.getLang] }}</span>
-          </p>
-        </div>
+      </p>
+      <div class="mt-4 mb-8">
+        <ul>
+          <li v-for="(goal, index) in this.introData?.Goals" :key="index">
+            {{ goal?.[this.getLang] }}
+          </li>
+        </ul>
       </div>
+
+      <!--Link List-->
+      <IntroLinkList :getLang="this.getLang" :trans="this.trans"></IntroLinkList>
+
+
+      <p class="flex my-8">
+        <span class="mr-2">{{ this.trans?.home_body?.thanks?.[this.getLang] }}</span>
+      </p>
+    </div>
+  </div>
 </template>
 
 <script>
 import IntroLinkList from './IntroLinkList.vue';
 
 export default {
-    name: "IntroContent",
-    components: {
-        IntroLinkList
-    },
-    props: {
-        trans: Object,
-        introData: Object,
-        getLang: Function
-    }
+  name: "IntroContent",
+  components: {
+    IntroLinkList
+  },
+  props: {
+    trans: Object,
+    introData: Object,
+    getLang: Function
+  }
 }
+
+
 </script>
+
+<style>
+@keyframes gradient-x {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 10s linear infinite;
+}
+</style>

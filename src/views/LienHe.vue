@@ -2,14 +2,15 @@
   <div class="h-screen flex justify-center items-center bg-white dark:bg-dark">
     <div
       class="w-full max-w-4xl flex flex-col justify-center gap-4 p-8 bg-center bg-cover rounded-xl xl:flex-row xl:shadow-lg xl:shadow-gray-400 xl:dark:shadow-purple-600">
-      <!-- Loading Spinner -->
-      <div class="w-full flex justify-center items-center" v-if="Object.keys(this.infoData).length === 0 || this.isLoading">
-        <LoadingSpinner></LoadingSpinner>
-      </div>
-
       <!-- Left Section: Avatar -->
       <Avatar :avatarImgSrc="this.infoData.Avatar || '#'"></Avatar>
 
+      <!-- Loading Spinner -->
+      <div class="w-full flex justify-end items-center"
+        v-if="Object.keys(this.infoData).length === 0 || this.isLoading">
+        <LoadingSpinner></LoadingSpinner>
+      </div>
+      
       <!--Right Section: Content-->
       <Content :contactData="this.contactData" :infoData="this.infoData" :getLang="this.getLang()"
         :isLoading="this.isLoading"></Content>

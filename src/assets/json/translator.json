@@ -147,7 +147,7 @@
                     "Vi": "Chỉ số đánh giá",
                     "scalar": {
                         "En": "Scalar Metrics",
-                        "Vi": "Số liệu"
+                        "Vi": "Chỉ số định lượng"
                     },
                     "matrix": {
                         "En": "Confussion Matrix",
