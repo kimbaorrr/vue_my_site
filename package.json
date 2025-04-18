@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "chart.js": "^4.4.9",
-    "easyqrcodejs": "^4.6.1",
+    "qrcode.vue": "^3.6.0",
+    "remove-accents": "^0.5.0",
     "vue": "^3.5.13",
     "vue-chartjs": "^5.3.2",
     "vue-recaptcha-v3": "^2.0.1",
