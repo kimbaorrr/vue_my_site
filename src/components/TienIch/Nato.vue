@@ -63,8 +63,13 @@ export default {
         .map(char => this.natoAlphabet[char] || char)
         .join(" ");
     }
-
-
+  },
+  watch: {
+    inputString(newValue) {
+      if (newValue.length > 0) {
+        this.executeAction();
+      }
+    }
   }
 }
 

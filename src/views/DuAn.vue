@@ -32,7 +32,7 @@
       class="transform relative p-4 bg-white shadow-lg transition-opacity duration-500 cursor-pointer dark:bg-gray-700 dark:hover:shadow-gray-400 hover:shadow-xl hover:shadow-gray-300 xl:hover:-translate-y-1"
       :class="[
         this.selectedCard === null || this.selectedCard.Id === item.Id ? 'opacity-100' : 'opacity-50',
-        isExpanded(item.Id) ? 'max-h-screen overflow-visible' : 'max-h-[24vh] overflow-hidden'
+        isExpanded(item.Id) ? 'h-full overflow-visible' : 'h-[24vh] overflow-hidden'
       ]" :data-da-id="item.Id" v-for="(item, idx) in this.filteredProjects" :key="idx" @click="toggleExpand(item.Id)">
 
       

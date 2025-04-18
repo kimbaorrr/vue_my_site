@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[90vh] relative flex bg-gray-100 rounded-2xl dark:bg-gray-900">
+  <div class="h-screen overflow-y-auto relative flex bg-gray-100 rounded-2xl dark:bg-gray-900">
     <!--Toggle Mobile Tool-->
     <button @click="this.toggleMobileSidebar" :class="this.isShowMobileSidebar ? 'left-0' : 'right-0'"
       class="absolute top-0 z-40 p-2 bg-gray-200 rounded-lg dark:bg-gray-600 md:hidden">
