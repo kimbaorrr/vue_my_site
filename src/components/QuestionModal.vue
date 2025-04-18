@@ -22,48 +22,60 @@
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form class="relative p-4 md:p-5" @submit.prevent="sendQuestion">
+                <form class="relative flex flex-col gap-4 p-4 md:p-5" @submit.prevent="sendQuestion">
                     <!--Sending Spinner-->
-                    <div v-if="this.isSending" class="bg-opacity-75 absolute inset-0">
+                    <div v-if="this.isSending" class="bg-opacity-75 absolute inset-0 z-10 justify-center items-center">
                         <LoadingSpinner></LoadingSpinner>
                     </div>
+
                     <!--Modal content-->
-                    <div class="grid grid-cols-2 gap-4 mb-4">
-                        <div class="col-span-2">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{
-                                this.trans?.question?.body?.name?.[this.getLang()] || "" }} <span
-                                    class="font-bold text-red-500">*</span></label>
+                    <div class="flex flex-col gap-4">
+                        <div class="w-full">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                {{ this.trans?.question?.body?.name?.[this.getLang()] || "" }}
+                                <span class="font-bold text-red-500">*</span>
+                            </label>
                             <input type="text" name="name" v-model="this.formData.name"
                                 class="blueBox w-full p-2.5 text-sm" placeholder="Nguyễn Văn A" required>
                         </div>
-                        <div class="col-span-2">
-                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{
-                                this.trans?.question?.body?.email?.[this.getLang()] || "" }} <span
-                                    class="font-bold text-red-500">*</span></label>
+
+                        <div class="w-full">
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                {{ this.trans?.question?.body?.email?.[this.getLang()] || "" }}
+                                <span class="font-bold text-red-500">*</span>
+                            </label>
                             <input type="text" name="email" v-model="this.formData.email"
                                 class="blueBox w-full p-2.5 text-sm" placeholder="abc@gmail.com" required>
                         </div>
-                        <div class="col-span-2">
+
+                        <div class="w-full">
                             <label for="description"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{
-                                    this.trans?.question?.body?.content?.[this.getLang()] || "" }} <span
-                                    class="font-bold text-red-500">*</span></label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                {{ this.trans?.question?.body?.content?.[this.getLang()] || "" }}
+                                <span class="font-bold text-red-500">*</span>
+                            </label>
                             <textarea name="content" rows="4" v-model="this.formData.content"
                                 class="blueBox w-full p-2.5 text-sm" placeholder="Viết gì đó vào đây..."
                                 required></textarea>
                         </div>
                     </div>
-                    <button type="submit" class="blueBtn flex items-center px-4 py-2.5 space-x-1 text-white">
-                        <svg fill="currentColor" width="20" height="20" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="relative text-sm font-medium">{{
-                            this.trans?.question?.body?.send?.[this.getLang()] || "" }}</span>
-                    </button>
+                    <div class="flex justify-between items-center">
+                        <button type="submit"
+                            class="blueBtn flex px-4 py-2.5 space-x-1 text-white">
+                            <svg fill="currentColor" width="20" height="20" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="relative flex text-sm font-medium">
+                                {{ this.trans?.question?.body?.send?.[this.getLang()] || "" }}
+                            </span>
+                        </button>
+                    </div>
+
                 </form>
+
             </div>
         </div>
     </div>
