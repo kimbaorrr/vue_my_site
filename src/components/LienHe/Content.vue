@@ -2,10 +2,10 @@
     <!-- Right Section: Content -->
     <div class="w-full flex flex-col-reverse p-8 text-black dark:text-white xl:w-7/12 xl:flex-col">
         <div class="mt-4 xl:mt-0">
-          <h2 class="text-xl font-bold tracking-tight md:text-3xl">{{ this.contactData?.Title?.[this.getLang] || "" }}
+          <h2 class="text-xl font-bold tracking-tight md:text-3xl">{{ this.contactData?.title?.[this.getLang] || "" }}
           </h2>
           <ul class="mt-4 space-y-1 list-none">
-            <li v-for="(content, index) in this.contactData?.Content" :key="index">
+            <li v-for="(content, index) in this.contactData?.content" :key="index">
               {{ content?.[this.getLang] }}
             </li>
           </ul>
@@ -15,7 +15,7 @@
         <div class="inset-0 flex flex-wrap justify-center gap-6 pt-0.5 xl:justify-start xl:pt-2 xl:mt-4"
           v-if="Object.keys(this.infoData).length !== 0 && !this.isLoading">
           <!-- Facebook -->
-          <a :href="this.infoData?.Socials?.Facebook?.Url || '#'"
+          <a :href="this.infoData?.socials?.facebook?.url || '#'"
             class="transform text-4xl text-blue-600 transition duration-300 hover:text-blue-800 hover:scale-110">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-facebook"
               viewBox="0 0 16 16">
@@ -24,7 +24,7 @@
             </svg>
           </a>
           <!-- X (Twitter) -->
-          <a :href="this.infoData?.Socials?.X?.Url || '#'"
+          <a :href="this.infoData?.socials?.x?.url || '#'"
             class="transform text-4xl text-gray-500 transition duration-300 hover:text-gray-700 hover:scale-110">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-twitter-x"
               viewBox="0 0 16 16">
@@ -33,7 +33,7 @@
             </svg>
           </a>
           <!-- LinkedIn -->
-          <a :href="this.infoData?.Socials?.Linkedin?.Url || '#'"
+          <a :href="this.infoData?.socials?.linkedin?.url || '#'"
             class="transform text-4xl text-blue-400 transition duration-300 hover:text-blue-900 hover:scale-110">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-linkedin"
               viewBox="0 0 16 16">
@@ -42,7 +42,7 @@
             </svg>
           </a>
           <!-- YouTube -->
-          <a :href="this.infoData?.Socials?.Youtube?.Url || '#'"
+          <a :href="this.infoData?.socials?.youtube?.url || '#'"
             class="transform text-4xl text-red-600 transition duration-300 hover:text-red-800 hover:scale-110">
             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-youtube"
               viewBox="0 0 16 16">

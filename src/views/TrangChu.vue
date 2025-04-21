@@ -5,7 +5,7 @@
   <div class="mt-8 divide-y divide-gray-200 dark:divide-gray-700 md:mt-16">
     <div class="space-y-2 md:pt-6 md:pb-8 md:my-4 md:space-y-5 xl:grid xl:grid-cols-3">
       <!--Left Content-->
-      <IntroContent :trans="this.trans" :getLang="this.getLang()" :introData="this.introData"></IntroContent>
+      <IntroContent :trans="this.trans" :getLang="this.lang" :introData="this.introData"></IntroContent>
       
       <!--Right Content-->
       <CardInfo></CardInfo>
@@ -31,9 +31,7 @@ export default {
   },
   data() {
     return {
-      greetingMessage: "",
-      trans: this.getTranslator(),
-      introData: []
+      greetingMessage: ""
     }
   },
   methods: {
@@ -57,7 +55,6 @@ export default {
     }
   },
   async mounted() {
-    this.introData = await this.getGioiThieu();
     this.typeWriter();
 
     

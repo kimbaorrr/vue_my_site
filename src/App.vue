@@ -6,7 +6,7 @@
   <div class="mx-auto max-w-3xl px-3 md:max-w-4xl sm:px-6 xl:max-w-5xl xl:px-0">
     <div class="flex flex-col justify-between">
       <!--Main View-->
-      <main class="min-h-[85vh] z-0">
+      <main class="min-h-[85vh] max-w-full z-0">
         <!--Render Body-->
         <RouterView />
       </main>
@@ -35,7 +35,7 @@ export default {
 
     // Đặt ngôn ngữ mặc định là Vi
     if (!localStorage.getItem("lang")) {
-      localStorage.setItem("lang", "Vi");
+      localStorage.setItem("lang", "vi");
     }
 
     // Đặt chủ đề theo thời gian [6h-18h: light, ngược lại dark]

@@ -1,14 +1,14 @@
 <template>
     <div class="-mr-8 flex flex-col justify-center items-center gap-10 md:flex-row">
-        <!-- Hình ảnh -->
+        <!-- Image -->
         <div class="w-full flex justify-center md:w-1/2 md:justify-end">
             <img src="/assets/imgs/error.png" class="w-5/12 h-auto" />
         </div>
 
-        <!-- Nội dung -->
+        <!-- Content -->
         <div class="w-full flex flex-col justify-center items-center space-y-3 md:w-1/2 md:items-start">
-            <h3 class="text-4xl font-bold text-gray-800 dark:text-gray-100">{{ this.trans?.alert?.title?.[this.getLang()] || ""}}</h3>
-            <p class="text-lg text-gray-600 dark:text-gray-300">{{ this.trans?.alert?.description?.[this.getLang()] || "" }}</p>
+            <h3 class="text-4xl font-bold text-gray-800 dark:text-gray-100">{{ this.trans?.alert?.title?.[this.lang] || ""}}</h3>
+            <p class="text-lg text-gray-600 dark:text-gray-300">{{ this.trans?.alert?.description?.[this.lang] || "" }}</p>
         </div>
     </div>
 </template>
@@ -18,12 +18,7 @@
 import Mixin from "./Mixin.vue";
 export default {
     name: "Alert",
-    mixins: [Mixin],
-    data() {
-        return {
-            trans: this.getTranslator()
-        }
-    }
+    mixins: [Mixin]
 }
 </script>
 

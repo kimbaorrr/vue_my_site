@@ -9,12 +9,12 @@
       <span class="flex items-center ml-4 text-5xl" style="animation: say_hi 1.5s linear infinite;">🖐️</span>
     </div>
     <div class="text-base leading-7 text-black dark:text-gray-100 md:text-lg md:leading-8">
-      <p>{{ this.introData?.Welcome?.[this.getLang] || "" }}
+      <p>{{ this.introData?.welcome?.[this.getLang] || "" }}
         <span class="pt-[3px] absolute inline-flex ml-1.5">
           <i class="twa twa-lg twa-party-popper inline-block"></i>
         </span>
       </p>
-      <p class="">{{ this.introData?.Passion?.[this.getLang] || "" }}
+      <p class="">{{ this.introData?.passion?.[this.getLang] || "" }}
         <!-- <span class="pt-[3px] absolute inline-flex ml-1.5">
               <svg width="25" height="25" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
                 <lineargradient id="h" x1="63.994" x2="63.994" y1="119.482" y2="39.919"
@@ -126,7 +126,7 @@
       </p>
       <div class="mt-4 mb-8">
         <ul>
-          <li v-for="(goal, index) in this.introData?.Goals" :key="index">
+          <li v-for="(goal, index) in this.introData?.goals" :key="index">
             {{ goal?.[this.getLang] }}
           </li>
         </ul>
@@ -137,7 +137,7 @@
 
 
       <p class="flex my-8">
-        <span class="mr-2">{{ this.trans?.home_body?.thanks?.[this.getLang] }}</span>
+        <span class="mr-2">{{ this.trans?.home_body?.thanks?.[this.getLang] || "" }}</span>
       </p>
     </div>
   </div>

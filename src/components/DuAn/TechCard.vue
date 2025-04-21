@@ -2,24 +2,24 @@
     <div class="flex items-baseline space-x-1">
         <span class="font-semibold text-black dark:text-gray-100">{{
             this.trans?.projects?.card?.technical?.desc?.[this.getLang] || "" }}:</span>
-        <span class="text-black dark:text-gray-200">{{ this.projectData?.Description?.[this.getLang] || "" }}</span>
+        <span class="text-black dark:text-gray-200">{{ this.projectData?.description?.[this.getLang] || "" }}</span>
     </div>
 
-    <div class="flex items-baseline space-x-1" v-if="this.projectData?.Dataset?.Name && this.projectData?.Dataset?.Url">
+    <div class="flex items-baseline space-x-1" v-if="this.projectData?.dataset?.name && this.projectData?.dataset?.url">
         <span class="font-semibold text-black dark:text-gray-100">{{
             this.trans?.projects?.card?.technical?.dataset?.[this.getLang] || "" }}:</span>
-        <a :href="this.projectData?.Dataset.Url" target="_blank" class="text-blue-500 underline">
-            {{ this.projectData?.Dataset.Name }}
+        <a :href="this.projectData?.dataset.url" target="_blank" class="text-blue-500 underline">
+            {{ this.projectData?.dataset.name }}
         </a>
     </div>
 
-    <div class="flex items-baseline space-x-1" v-if="this.projectData?.TechStack.Languages.length">
+    <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.languages.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
             this.trans?.projects?.card?.technical?.lang?.[this.getLang] || "" }}:</span>
-        <span class="text-black dark:text-gray-200">{{ this.projectData?.TechStack?.Languages.join(', ') }}</span>
+        <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack?.languages.join(', ') }}</span>
     </div>
 
-    <div class="flex items-baseline space-x-1" v-if="this.projectData?.Type === 'AI'">
+    <div class="flex items-baseline space-x-1" v-if="this.projectData?.type === 'AI'">
         <span class="font-semibold text-black dark:text-gray-100">{{
             this.trans?.projects?.card?.technical?.metrics?.[this.getLang] || "" }}:</span>
         <div class="space-x-1">
@@ -35,89 +35,89 @@
         </div>
     </div>
 
-    <div class="w-full max-h-36 flex" v-if="this.projectData?.Type === 'AI'"
+    <div class="w-full max-h-36 flex" v-if="this.projectData?.type === 'AI'"
         v-show="this.isShowCfs || this.isShowChart">
         <ScalarChart v-if="this.isShowChart"></ScalarChart>
         <img src="https://glassboxmedicine.com/wp-content/uploads/2019/02/confusion-matrix.png?w=816"
             alt="Confussion Matrix" class="w-full inline-flex" v-if="this.isShowCfs" />
     </div>
 
-    <div class="flex items-baseline space-x-1" v-if="this.projectData?.TechStack.FrontEnd.length">
+    <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.frontEnd.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
             this.trans?.projects?.card?.technical?.fe?.[this.getLang] || "" }}:</span>
-        <span class="text-black dark:text-gray-200">{{ this.projectData?.TechStack.FrontEnd.join(', ') }}</span>
+        <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.frontEnd.join(', ') }}</span>
     </div>
 
-    <div class="flex items-baseline space-x-1" v-if="this.projectData?.TechStack.BackEnd.length">
+    <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.backEnd.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
             this.trans?.projects?.card?.technical?.be?.[this.getLang] || "" }}:</span>
-        <span class="text-black dark:text-gray-200">{{ this.projectData?.TechStack.BackEnd.join(', ') }}</span>
+        <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.backEnd.join(', ') }}</span>
     </div>
 
-    <div class="flex items-baseline space-x-1" v-if="this.projectData?.TechStack.Database.length">
+    <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.database.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
             this.trans?.projects?.card?.technical?.db?.[this.getLang] || "" }}:</span>
-        <span class="text-black dark:text-gray-200">{{ this.projectData?.TechStack.Database.join(', ') }}</span>
+        <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.database.join(', ') }}</span>
     </div>
 
-    <div class="flex items-baseline space-x-1" v-if="this.projectData?.TechStack.Infrastructure.length">
+    <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.infrastructure.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
             this.trans?.projects?.card?.technical?.inf_str?.[this.getLang] || "" }}:</span>
-        <span class="text-black dark:text-gray-200">{{ this.projectData?.TechStack.Infrastructure.join(', ') }}</span>
+        <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.infrastructure.join(', ') }}</span>
     </div>
 
-    <div class="flex items-baseline space-x-1" v-if="this.projectData?.TechStack.Architecture.length">
+    <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.architecture.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
             this.trans?.projects?.card?.technical?.arc?.[this.getLang] || "" }}:</span>
-        <span class="text-black dark:text-gray-200">{{ this.projectData?.TechStack.Architecture.join(', ') }}</span>
+        <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.architecture.join(', ') }}</span>
     </div>
 
-    <div class="flex items-baseline space-x-1" v-if="this.projectData?.TechStack.Libraries.length">
+    <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.libraries.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
             this.trans?.projects?.card?.technical?.lib?.[this.getLang] || "" }}:</span>
-        <span class="text-black dark:text-gray-200">{{ this.projectData?.TechStack.Libraries.join(', ') }}</span>
+        <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.libraries.join(', ') }}</span>
     </div>
 
-    <div class="flex items-baseline space-x-1" v-if="this.projectData?.TechStack.Models.length">
+    <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.models.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
             this.trans?.projects?.card?.technical?.model?.[this.getLang] || "" }}:</span>
-        <span class="text-black dark:text-gray-200">{{ this.projectData?.TechStack.Models.join(', ') }}</span>
+        <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.models.join(', ') }}</span>
     </div>
 
-    <div class="flex items-baseline space-x-1" v-if="this.projectData?.TechStack.Frameworks.length">
+    <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.frameworks.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
             this.trans?.projects?.card?.technical?.framework?.[this.getLang] || "" }}:</span>
-        <span class="text-black dark:text-gray-200">{{ this.projectData?.TechStack.Frameworks.join(', ') }}</span>
+        <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.frameworks.join(', ') }}</span>
     </div>
 
-    <div class="flex items-baseline space-x-1" v-if="this.projectData?.TechStack.Algorithms.length">
+    <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.algorithms.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
             this.trans?.projects?.card?.technical?.algo?.[this.getLang] || "" }}:</span>
-        <span class="text-black dark:text-gray-200">{{ this.projectData?.TechStack.Algorithms.join(', ') }}</span>
+        <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.algorithms.join(', ') }}</span>
     </div>
 
-    <div class="flex items-baseline space-x-1" v-if="this.projectData?.TechStack.TaskType.length">
+    <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.taskType.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
             this.trans?.projects?.card?.technical?.task_type?.[this.getLang] || "" }}:</span>
-        <span class="text-black dark:text-gray-200">{{ this.projectData?.TechStack.TaskType.join(', ') }}</span>
+        <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.taskType.join(', ') }}</span>
     </div>
 
     <div class="flex items-baseline space-x-1">
         <span class="font-semibold text-black dark:text-gray-100">{{
             this.trans?.projects?.card?.technical?.scope?.[this.getLang] || "" }}:</span>
-        <span class="text-black dark:text-gray-200">{{ this.projectData?.Scope?.[this.getLang] || "" }}</span>
+        <span class="text-black dark:text-gray-200">{{ this.projectData?.scope?.[this.getLang] || "" }}</span>
     </div>
 
     <div class="flex items-baseline space-x-1" v-if="this.projectData?.Members > 1">
         <span class="font-semibold text-black dark:text-gray-100">{{
             this.trans?.projects?.card?.technical?.role?.[this.getLang] || "" }}:</span>
-        <span class="text-black dark:text-gray-200">{{ this.projectData?.Role?.[this.getLang] || "" }}</span>
+        <span class="text-black dark:text-gray-200">{{ this.projectData?.role?.[this.getLang] || "" }}</span>
     </div>
 
     <div class="flex items-center space-x-2">
         <span class="font-semibold text-black dark:text-gray-100">{{
             this.trans?.projects?.card?.technical?.code?.[this.getLang] || "" }}:</span>
-        <a :href="this.projectData?.SourceCode?.GitHub || '#'"
+        <a :href="this.projectData?.sourceCode?.gitHub || '#'"
             class="text-gray-800 duration-500 dark:text-gray-300 hover:text-gray-400 hover:dark:text-gray-600"
             target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="22" height="22" viewBox="0 0 24 24">
@@ -126,7 +126,7 @@
             </svg>
         </a>
 
-        <a :href="this.projectData?.SourceCode?.GitLab || '#'"
+        <a :href="this.projectData?.sourceCode?.gitLab || '#'"
             class="filter duration-500 dark:hover:brightness-150 hover:brightness-125" target="_blank">
             <svg width="22" height="22" viewBox="0 -10 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">

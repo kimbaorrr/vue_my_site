@@ -1,4 +1,5 @@
 <template>
+    <!--Wide Screen Nav-->
     <nav
         class="bg-white/75 overflow-hidden sticky top-0 z-40 py-3 backdrop-blur dark:bg-dark supports-backdrop-blur:bg-white/95">
         <div
@@ -80,10 +81,10 @@
                         <div class="flex justify-center items-center">
                             <img alt="VN_Flag"
                                 src="https://upload.wikimedia.org/wikipedia/commons/0/07/Flag_of_Vietnam-Animated.gif"
-                                loading="lazy" width="18" height="18" v-if="this.currentLang === 'Vi'" class="absolute">
+                                loading="lazy" width="18" height="18" v-if="this.currentLang === 'vi'" class="absolute">
                             <img alt="US_Flag"
                                 src="https://upload.wikimedia.org/wikipedia/commons/4/42/Animated-Flag-USA.gif"
-                                loading="lazy" width="18" height="18" v-if="this.currentLang === 'En'" class="absolute">
+                                loading="lazy" width="18" height="18" v-if="this.currentLang === 'en'" class="absolute">
                         </div>
                     </button>
                     <!-- Clock -->

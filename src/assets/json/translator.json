@@ -1,210 +1,214 @@
 {
     "nav": {
         "home": {
-            "En": "Home",
-            "Vi": "Trang chủ"
+            "en": "Home",
+            "vi": "Trang chủ"
         },
         "project": {
-            "En": "Projects",
-            "Vi": "Dự án"
+            "en": "Projects",
+            "vi": "Dự án"
         },
         "tool": {
-            "En": "Tools",
-            "Vi": "Tiện ích"
+            "en": "Tools",
+            "vi": "Tiện ích"
         },
         "cv": {
-            "En": "Resume",
-            "Vi": "Lý lịch"
+            "en": "Resume",
+            "vi": "Lý lịch"
         },
         "contact": {
-            "En": "Contact",
-            "Vi": "Liên hệ"
+            "en": "Contact",
+            "vi": "Liên hệ"
         }
     },
     "home_body": {
         "hi": {
-            "Vi": "Xin chào !",
-            "En": "Hi there !"
+            "vi": "Xin chào !",
+            "en": "Hi there !"
         },
         "favorite": {
-            "En": "Favorite",
-            "Vi": "Sở thích"
+            "en": "Favorite",
+            "vi": "Sở thích"
         },
         "link_list": {
             "projects": {
-                "Vi": "Các dự án mình làm",
-                "En": "My Projects"
+                "vi": "Các dự án mình làm",
+                "en": "My Projects"
             },
             "tools": {
-                "Vi": "Các tiện ích mình làm",
-                "En": "My Tools"
+                "vi": "Các tiện ích mình làm",
+                "en": "My Tools"
             },
             "cv": {
-                "Vi": "Lý lịch của mình",
-                "En": "My Resume"
+                "vi": "Lý lịch của mình",
+                "en": "My Resume"
             },
             "contact": {
-                "Vi": "Thông tin liên hệ của mình",
-                "En": "My Contact Information"
+                "vi": "Thông tin liên hệ của mình",
+                "en": "My Contact Information"
             }
         },
         "thanks": {
-            "Vi": "Cảm ơn bạn đã ghé thăm ! ❤️",
-            "En": "Thanks for coming ! ❤️"
+            "vi": "Cảm ơn bạn đã ghé thăm ! ❤️",
+            "en": "Thanks for coming ! ❤️"
         }
     },
     "question": {
         "header": {
-            "Vi": "Gửi câu hỏi của bạn",
-            "En": "Send your question"
+            "vi": "Gửi câu hỏi của bạn",
+            "en": "Send your question"
         },
         "close": {
-            "Vi": "Đóng",
-            "En": "Close"
+            "vi": "Đóng",
+            "en": "Close"
         },
         "body": {
             "name": {
-                "Vi": "Tên của bạn",
-                "En": "Your name"
+                "vi": "Tên của bạn",
+                "en": "Your name"
             },
             "email": {
-                "Vi": "Địa chỉ email",
-                "En": "Email address"
+                "vi": "Địa chỉ email",
+                "en": "Email address"
             },
             "content": {
-                "Vi": "Bạn muốn hỏi tôi điều gì ?",
-                "En": "What would you like to ask me ?"
+                "vi": "Bạn muốn hỏi tôi điều gì ?",
+                "en": "What would you like to ask me ?"
             },
             "content_placeholder": {
-                "Vi": "Viết gì đó vào đây...",
-                "En": "Enter something here..."
+                "vi": "Viết gì đó vào đây...",
+                "en": "Enter something here..."
             },
             "send": {
-                "Vi": "Gửi thông tin",
-                "En": "Send"
+                "vi": "Gửi thông tin",
+                "en": "Send"
+            },
+            "placeholder": {
+                "vi": "Viết gì đó vào đây...",
+                "en": "Enter something here..."
             },
             "response": {
                 "success": {
-                    "Vi": "Câu hỏi của bạn đã được ghi nhận !",
-                    "En": "Your question had been recorded !"
+                    "vi": "Câu hỏi của bạn đã được ghi nhận !",
+                    "en": "Your question had been recorded !"
                 },
                 "fail": {
-                    "Vi": "Lỗi khi gửi câu hỏi. Vui lòng thử lại !",
-                    "En": "Error when sending the question. Please try again !"
+                    "vi": "Lỗi khi gửi câu hỏi. Vui lòng thử lại !",
+                    "en": "Error when sending the question. Please try again !"
                 }
             }
         }
     },
     "projects": {
         "title": {
-            "Vi": "Dự án",
-            "En": "Projects"
+            "vi": "Dự án",
+            "en": "Projects"
         },
         "description": {
-            "Vi": "Danh sách các dự án mình đã & đang làm",
-            "En": "A list of the projects I have done & am currently working on"
+            "vi": "Danh sách các dự án mình đã & đang làm",
+            "en": "A list of the projects I have done & am currently working on"
         },
         "filter_by": {
             "all": {
-                "Vi": "Tất cả",
-                "En": "All"
+                "vi": "Tất cả",
+                "en": "All"
             },
             "in_progress": {
-                "Vi": "Đang thực hiện",
-                "En": "In Progress"
+                "vi": "Đang thực hiện",
+                "en": "In Progress"
             },
             "done": {
-                "Vi": "Đã hoàn thành",
-                "En": "Completed"
+                "vi": "Đã hoàn thành",
+                "en": "Completed"
             }
         },
         "search_box": {
             "placeholder": {
-                "Vi": "Tìm dự án...",
-                "En": "Find a project..."
+                "vi": "Tìm dự án...",
+                "en": "Find a project..."
             }
         },
         "card": {
             "try": {
-                "Vi": "Thử nghiệm",
-                "En": "Try now"
+                "vi": "Thử nghiệm",
+                "en": "Try now"
             },
             "technical": {
                 "desc": {
-                    "En": "Description",
-                    "Vi": "Mô tả dự án"
+                    "en": "Description",
+                    "vi": "Mô tả dự án"
                 },
                 "dataset": {
-                    "En": "Dataset",
-                    "Vi": "Tập dữ liệu"
+                    "en": "Dataset",
+                    "vi": "Tập dữ liệu"
                 },
                 "lang": {
-                    "En": "Languages",
-                    "Vi": "Ngôn ngữ lập trình"
+                    "en": "Languages",
+                    "vi": "Ngôn ngữ lập trình"
                 },
                 "metrics": {
-                    "En": "Evalution Metrics",
-                    "Vi": "Chỉ số đánh giá",
+                    "en": "Evalution Metrics",
+                    "vi": "Chỉ số đánh giá",
                     "scalar": {
-                        "En": "Scalar Metrics",
-                        "Vi": "Chỉ số định lượng"
+                        "en": "Scalar Metrics",
+                        "vi": "Chỉ số định lượng"
                     },
                     "matrix": {
-                        "En": "Confussion Matrix",
-                        "Vi": "Ma trận nhầm lẫn"
+                        "en": "Confussion Matrix",
+                        "vi": "Ma trận nhầm lẫn"
                     }
                 },
                 "fe": {
-                    "En": "Frontend",
-                    "Vi": "Giao diện người dùng"
+                    "en": "Frontend",
+                    "vi": "Giao diện người dùng"
                 },
                 "be": {
-                    "En": "Backend",
-                    "Vi": "Xử lý phía máy chủ"
+                    "en": "Backend",
+                    "vi": "Xử lý phía máy chủ"
                 },
                 "db": {
-                    "En": "Database",
-                    "Vi": "Cơ sở dữ liệu"
+                    "en": "Database",
+                    "vi": "Cơ sở dữ liệu"
                 },
                 "inf_str": {
-                    "En": "Infractructure",
-                    "Vi": "Kiến trúc hệ thống"
+                    "en": "Infractructure",
+                    "vi": "Kiến trúc hệ thống"
                 },
                 "arc": {
-                    "En": "Architecture",
-                    "Vi": "Kiến trúc phần mềm"
+                    "en": "Architecture",
+                    "vi": "Kiến trúc phần mềm"
                 },
                 "lib": {
-                    "En": "Library",
-                    "Vi": "Thư viện"
+                    "en": "Library",
+                    "vi": "Thư viện"
                 },
                 "model": {
-                    "En": "Models Used",
-                    "Vi": "Mô hình sử dụng"
+                    "en": "Models Used",
+                    "vi": "Mô hình sử dụng"
                 },
                 "framework": {
-                    "En": "Frameworks",
-                    "Vi": "Khung phát triển"
+                    "en": "Frameworks",
+                    "vi": "Khung phát triển"
                 },
                 "algo": {
-                    "En": "Algorithms",
-                    "Vi": "Thuật toán"
+                    "en": "Algorithms",
+                    "vi": "Thuật toán"
                 },
                 "task_type": {
-                    "En": "Task Type",
-                    "Vi": "Loại tác vụ"
+                    "en": "Task Type",
+                    "vi": "Loại tác vụ"
                 },
                 "scope": {
-                    "En": "Scope",
-                    "Vi": "Quy mô dự án"
+                    "en": "Scope",
+                    "vi": "Quy mô dự án"
                 },
                 "role": {
-                    "En": "Team Role",
-                    "Vi": "Vai trò trong nhóm"
+                    "en": "Team Role",
+                    "vi": "Vai trò trong nhóm"
                 },
                 "code": {
-                    "En": "Source code",
-                    "Vi": "Mã nguồn"
+                    "en": "Source code",
+                    "vi": "Mã nguồn"
                 }
             }
         }
@@ -212,19 +216,135 @@
     "tools": {
         "search_box": {
             "placeholder": {
-                "Vi": "Tìm tiện ích...",
-                "En": "Find a tool..."
+                "vi": "Tìm tiện ích...",
+                "en": "Find a tool..."
+            }
+        },
+        "labels": {
+            "qr": {
+                "title": {
+                    "en": "Title",
+                    "vi": "Tiêu đề"
+                },
+                "subtitle": {
+                    "en": "Subtitle",
+                    "vi": "Tiêu đề con"
+                },
+                "color": {
+                    "en": "Color",
+                    "vi": "Màu sắc"
+                },
+                "image": {
+                    "en": "Image",
+                    "vi": "Chèn ảnh"
+                },
+                "placeholder": {
+                    "en": "Enter the text to generate QR...",
+                    "vi": "Nhập nội dung để tạo QR..."
+                },
+                "download": {
+                    "en": "Download QR",
+                    "vi": "Tải về máy"
+                },
+                "character": {
+                    "en": "characters",
+                    "vi": "kí tự"
+                }
+            },
+            "base64": {
+                "placeholder": {
+                    "en": "Enter the text to encode/decode...",
+                    "vi": "Nhập nội dung để mã hóa/giải mã..."
+                },
+                "encode": {
+                    "en": "Encode",
+                    "vi": "Mã hóa"
+                },
+                "decode": {
+                    "en": "Decode",
+                    "vi": "Giải mã"
+                },
+                "output": {
+                    "en": "Output",
+                    "vi": "Đầu ra"
+                }
+            },
+            "pwdgen": {
+                "type": {
+                    "en": "Choose password type",
+                    "vi": "Chọn dạng mật khẩu",
+                    "options": {
+                        "random": {
+                            "vi": "Ngẫu nhiên",
+                            "en": "Random"
+                        },
+                        "memorable": {
+                            "vi": "Ấn tượng",
+                            "en": "Memorable"
+                        },
+                        "pin": {
+                            "vi": "PIN",
+                            "en": "PIN"
+                        }
+                    }
+                },
+                "customize": {
+                    "en": "Customize your new password",
+                    "vi": "Tùy chỉnh cho mật khẩu",
+                    "options": {
+                        "length": {
+                            "en": "Length",
+                            "vi": "Độ dài"
+                        },
+                        "numbers": {
+                            "en": "Numbers",
+                            "vi": "Số học"
+                        },
+                        "symbols": {
+                            "en": "Symbols",
+                            "vi": "Ký tự đặc biệt"
+                        },
+                        "lower": {
+                            "en": "Lowercase",
+                            "vi": "Chữ thường"
+                        },
+                        "upper": {
+                            "en": "Uppercase",
+                            "vi": "Chữ hoa"
+                        }
+                    }
+                },
+                "output": {
+                    "en": "Generated password",
+                    "vi": "Mật khẩu đã tạo"
+                },
+                "copy": {
+                    "en": "Copy to clipboard",
+                    "vi": "Sao chép vào clipboard"
+                },
+                "refresh": {
+                    "en": "Refresh password",
+                    "vi": "Tạo lại mật khẩu"
+                },
+                "autorefresh": {
+                    "en": "Auto refresh",
+                    "vi": "Tự động tạo"
+                },
+                "copied": {
+                    "en": "Copied to clipboard !",
+                    "vi": "Đã sao chép vào clipboard !"
+                }
             }
         }
     },
     "alert": {
         "title": {
-            "En": "Oops...",
-            "Vi": "Ôi không..."
+            "en": "Oops...",
+            "vi": "Ôi không..."
         },
         "description": {
-            "Vi": "Hệ thống gặp sự cố. Xin vui lòng quay lại sau.!",
-            "En": "The system encountered an error. Please try again later.!"
+            "vi": "Hệ thống gặp sự cố. Xin vui lòng quay lại sau.!",
+            "en": "The system encountered an error. Please try again later.!"
         }
     }
 }

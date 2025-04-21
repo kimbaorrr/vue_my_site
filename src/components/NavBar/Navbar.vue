@@ -28,7 +28,7 @@ export default {
   },
   data() {
     const currentTheme = localStorage.getItem("theme") || "light";
-    const currentLang = localStorage.getItem("lang") || "Vi";
+    const currentLang = localStorage.getItem("lang") || "vi";
     const trans = this.getTranslator();
     // Khu vực các biến lưu trữ dữ liệu
     return {
@@ -65,7 +65,7 @@ export default {
       /**
        * Sự kiện chuyển đổi ngôn ngữ vi/en
        */
-      this.currentLang = this.currentLang === "En" ? "Vi" : "En";
+      this.currentLang = this.currentLang === "en" ? "vi" : "en";
       localStorage.setItem("lang", this.currentLang);
       localStorage.setItem("theme_by_user", "true");
       location.reload();

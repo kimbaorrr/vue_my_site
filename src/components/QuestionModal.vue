@@ -8,7 +8,7 @@
                 <!-- Modal header -->
                 <div class="flex justify-between items-center p-4 rounded-t border-b dark:border-gray-600 md:p-5">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                        {{ this.trans?.question?.header?.[this.getLang()] || "" }}
+                        {{ this.trans?.question?.header?.[this.lang] || "" }}
                     </h3>
                     <!--Close modal-->
                     <button type="button" aria-label="closeModal" @click="closeModal"
@@ -18,7 +18,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
-                        <span class="sr-only">{{ this.trans?.question?.close?.[this.getLang()] || "" }}</span>
+                        <span class="sr-only">{{ this.trans?.question?.close?.[this.lang] || "" }}</span>
                     </button>
                 </div>
                 <!-- Modal body -->
@@ -32,7 +32,7 @@
                     <div class="flex flex-col gap-4">
                         <div class="w-full">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                {{ this.trans?.question?.body?.name?.[this.getLang()] || "" }}
+                                {{ this.trans?.question?.body?.name?.[this.lang] || "" }}
                                 <span class="font-bold text-red-500">*</span>
                             </label>
                             <input type="text" name="name" v-model="this.formData.name"
@@ -41,7 +41,7 @@
 
                         <div class="w-full">
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                {{ this.trans?.question?.body?.email?.[this.getLang()] || "" }}
+                                {{ this.trans?.question?.body?.email?.[this.lang] || "" }}
                                 <span class="font-bold text-red-500">*</span>
                             </label>
                             <input type="text" name="email" v-model="this.formData.email"
@@ -51,17 +51,17 @@
                         <div class="w-full">
                             <label for="description"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                {{ this.trans?.question?.body?.content?.[this.getLang()] || "" }}
+                                {{ this.trans?.question?.body?.content?.[this.lang] || "" }}
                                 <span class="font-bold text-red-500">*</span>
                             </label>
                             <textarea name="content" rows="4" v-model="this.formData.content"
-                                class="blueBox w-full p-2.5 text-sm" placeholder="Viết gì đó vào đây..."
+                                class="blueBox w-full p-2.5 text-sm"
+                                :placeholder="this.trans?.question?.body?.placeholder?.[this.lang] || ''"
                                 required></textarea>
                         </div>
                     </div>
                     <div class="flex justify-between items-center">
-                        <button type="submit"
-                            class="blueBtn flex px-4 py-2.5 space-x-1 text-white">
+                        <button type="submit" class="blueBtn flex px-4 py-2.5 space-x-1 text-white">
                             <svg fill="currentColor" width="20" height="20" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
@@ -69,7 +69,7 @@
                                     clip-rule="evenodd"></path>
                             </svg>
                             <span class="relative flex text-sm font-medium">
-                                {{ this.trans?.question?.body?.send?.[this.getLang()] || "" }}
+                                {{ this.trans?.question?.body?.send?.[this.lang] || "" }}
                             </span>
                         </button>
                     </div>
@@ -84,6 +84,7 @@
 <script>
 import LoadingSpinner from '/src/components/LoadingSpinner.vue'
 import Mixin from "./Mixin.vue"
+import { useReCaptcha } from 'vue-recaptcha-v3'
 export default {
     name: "AskQuestionModal",
     components: {
@@ -94,13 +95,16 @@ export default {
         return {
             isOpenModal: false, // Trạng thái đóng/mở Modal
             isSending: false, // Dữ liệu đã hoàn tất gửi lên DB hay chưa ?
-            formData: {
+            formData: { // Các trường dữ liệu trong form
                 name: "",
                 email: "",
                 content: ""
-            },
-            trans: this.getTranslator()
+            }
         }
+    },
+    setup() {
+        const { executeRecaptcha } = useReCaptcha()
+        return { executeRecaptcha }
     },
     methods: {
         openModal() {
@@ -115,30 +119,38 @@ export default {
              */
             this.isOpenModal = false;
         },
-        sendQuestion() {
+        async sendQuestion() {
             /**
-             * Sự kiện gửi câu hỏi đến DB qua call API
+             * Sự kiện gửi câu hỏi đến DB qua API
              */
-            this.isSending = !this.isSending;
-            const formSerialized = $('#questionModal form').serialize();
-            setTimeout(() => {
-                $.ajax({
-                    url: 'https://api.baoit.site/my_blog/dat_cau_hoi/send',
-                    type: 'POST',
-                    data: formSerialized,
-                    success: () => {
-                        this.isSending = !this.isSending;
-                        alert(this.trans?.question?.body?.response?.success?.[this.getLang()] || "");
-                        this.closeModal();
-                    },
-                    error: (xhr) => {
-                        this.isSending = !this.isSending;
-                        const message = JSON.parse(xhr.responseText).message;
-                        alert(this.trans?.question?.body?.response?.fail?.[this.getLang()] || "" + "\n" + message);
-                    }
-                });
-            }, 1500)
+            this.isSending = true;
 
+            try {
+                const token = await this.executeRecaptcha('submit_question')
+                const form = document.querySelector('#questionModal form')
+                const formData = new FormData(form)
+                formData.append("Token", token)
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                const response = await fetch('https://api.baoit.site/my_blog/questions/send', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message);
+                }
+                alert(this.trans?.question?.body?.response?.success?.[this.lang] || "Gửi thành công!");
+                this.closeModal();
+            } catch (error) {
+                alert(
+                    (this.trans?.question?.body?.response?.fail?.[this.lang] || "Đã xảy ra lỗi!") +
+                    "\n" + error.message
+                );
+            } finally {
+                this.isSending = false;
+            }
         }
     }
 }

@@ -3,16 +3,16 @@
     <div
       class="w-full max-w-4xl flex flex-col justify-center gap-4 p-8 bg-center bg-cover rounded-xl xl:flex-row xl:shadow-lg xl:shadow-gray-400 xl:dark:shadow-purple-600">
       <!-- Left Section: Avatar -->
-      <Avatar :avatarImgSrc="this.infoData.Avatar || '#'"></Avatar>
+      <Avatar :avatarImgSrc="this.infoData.avatar || '#'"></Avatar>
 
       <!-- Loading Spinner -->
       <div class="w-full flex justify-end items-center"
-        v-if="Object.keys(this.infoData).length === 0 || this.isLoading">
+        v-if="this.isLoading">
         <LoadingSpinner></LoadingSpinner>
       </div>
       
       <!--Right Section: Content-->
-      <Content :contactData="this.contactData" :infoData="this.infoData" :getLang="this.getLang()"
+      <Content :contactData="this.contactData" :infoData="this.infoData" :getLang="this.lang"
         :isLoading="this.isLoading"></Content>
     </div>
   </div>
@@ -32,22 +32,12 @@ export default {
     Content,
     LoadingSpinner
   },
-  data() {
-    return {
-      infoData: [], // Danh sách thông tin cá nhân dạng JSON
-      isLoading: true, // Đã load dữ liệu xong chưa ?
-      contactData: []
-    }
-  },
   async mounted() {
     // Khu vực sẽ thực thi sau khi load xong DOM
-    this.infoData = await this.getCaNhan(); // Dữ liệu thông tin cá nhân dưới dạng JSON
-    this.contactData = await this.getLienHe(); // Dữ liệu thông tin liên hệ dưới dạng JSON
     // Đặt link tag vào DOM để load các icon
     const linkTag = document.createElement("link");
     linkTag.href = "https://jsdelivr.b-cdn.net/npm/fontawesome-free-6.2.1@6.2.1/css/all.min.css";
     linkTag.rel = "stylesheet";
-    this.isLoading = !this.isLoading;
   },
 }
 </script>

@@ -10,24 +10,24 @@
       <!--Search box-->
       <div class="flex justify-between items-center space-x-2">
         <input type="text" class="blueBox w-9/12 py-1.5 ps-3" v-model="this.searchText"
-          :placeholder="this.trans?.tools?.search_box?.placeholder?.[this.getLang()] || ''">
+          :placeholder="this.trans?.tools?.search_box?.placeholder?.[this.lang] || ''">
         <button type="button" class="blueBtn w-3/12 py-2 text-white">{{
           Object.keys(this.filteredTools).length }}</button>
       </div>
       <hr class="border-1 mt-3 rounded border-gray-500">
       <!--Loading Spinner-->
-      <div class="h-2/6 flex justify-center items-center" v-if="this.isLoading || Object.keys(this.toolData) === 0">
+      <div class="h-2/6 flex justify-center items-center" v-if="this.isLoading">
         <LoadingSpinner></LoadingSpinner>
       </div>
       <!--Tools list-->
       <ul class="font-medium list-none text-black dark:text-white"
-        v-if="this.toolData !== null && Object.keys(this.toolData).length > 0 && !this.isLoading">
+        v-if="Object.keys(this.toolData).length > 0 && !this.isLoading">
         <li class="my-3 duration-300 hover:translate-x-2" v-for="(item, idx) in this.filteredTools" :key="idx"
-          @click="this.selectedTool = item.Selector, toggleMobileSidebar()"
-          :class="this.selectedTool === item.Selector ? 'bg-gray-300 dark:bg-gray-700' : true">
+          @click="this.selectedTool = item.selector, toggleMobileSidebar()"
+          :class="this.selectedTool === item.selector ? 'bg-gray-300 dark:bg-gray-700' : true">
           <a href="#" class="flex items-center p-2 space-x-2 rounded-lg">
-            <span v-html=item.Icon></span>
-            <span class="text-sm">{{ item.Name }}</span>
+            <span v-html=item.icon></span>
+            <span class="text-sm">{{ item.name }}</span>
           </a>
         </li>
       </ul>
@@ -60,12 +60,9 @@ export default {
   },
   data() {
     return {
-      toolData: [], // Dữ liệu danh sách các tiện ích dạng JSON
       searchText: "", // Chuỗi tìm kiếm do người dùng nhập vào
       selectedTool: "qr", // ID tiện ích đang được chọn
-      isShowMobileSidebar: false, // Có muốn hiển thị Mobile Sidebar không ?
-      isLoading: true, // Trạng thái load danh sách từ DB
-      trans: this.getTranslator()
+      isShowMobileSidebar: false // Có muốn hiển thị Mobile Sidebar không ?
     }
   },
   methods: {
@@ -91,17 +88,12 @@ export default {
       this.isShowMobileSidebar = !this.isShowMobileSidebar;
     }
   },
-  async mounted() {
-    // Khu vực tự động thực thi sau khi load xong DOM
-    this.toolData = await this.getTienIch();
-    this.isLoading = !this.isLoading;
-  },
   computed: {
     // Khu vực tự động render lại đối tượng
     filteredTools() {
       // Sự kiện tìm kiếm tiện ích theo tên
       return this.toolData.filter(item => {
-        const matchesSearch = this.searchText === "" || item.Name.toLowerCase().includes(this.searchText.toLowerCase());
+        const matchesSearch = this.searchText === "" || item.name.toLowerCase().includes(this.searchText.toLowerCase());
         return matchesSearch;
       });
     }
