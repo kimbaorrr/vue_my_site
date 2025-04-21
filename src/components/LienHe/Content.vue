@@ -2,11 +2,11 @@
     <!-- Right Section: Content -->
     <div class="w-full flex flex-col-reverse p-8 text-black dark:text-white xl:w-7/12 xl:flex-col">
         <div class="mt-4 xl:mt-0">
-          <h2 class="text-xl font-bold tracking-tight md:text-3xl">{{ this.contactData?.title?.[this.getLang] || "" }}
+          <h2 class="text-xl font-bold tracking-tight md:text-3xl">{{ this.contactData?.title?.[this.lang] || "" }}
           </h2>
           <ul class="mt-4 space-y-1 list-none">
             <li v-for="(content, index) in this.contactData?.content" :key="index">
-              {{ content?.[this.getLang] }}
+              {{ content?.[this.lang] }}
             </li>
           </ul>
         </div>
@@ -58,7 +58,7 @@
 export default {
     name: "Content",
     props: {
-        getLang: Function,
+        lang: String,
         contactData: Object,
         infoData: Object,
         isLoading: Boolean

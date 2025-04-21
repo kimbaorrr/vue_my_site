@@ -44,6 +44,8 @@ export default {
       this.setThemeByTime();
     }
 
+    this.setGreetingByTime();
+
   }
 };
 

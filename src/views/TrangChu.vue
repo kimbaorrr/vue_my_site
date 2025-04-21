@@ -1,11 +1,11 @@
 <template>
   <!--Greeting Message-->
-  <GreetingMessage :isShowGreetingMessage="false"></GreetingMessage>
+  <GreetingMessage :isShowGreetingMessage="this.isShowGreetingMessage" :trans="this.trans" :lang="this.lang"></GreetingMessage>
 
   <div class="mt-8 divide-y divide-gray-200 dark:divide-gray-700 md:mt-16">
     <div class="space-y-2 md:pt-6 md:pb-8 md:my-4 md:space-y-5 xl:grid xl:grid-cols-3">
       <!--Left Content-->
-      <IntroContent :trans="this.trans" :getLang="this.lang" :introData="this.introData"></IntroContent>
+      <IntroContent :trans="this.trans" :lang="this.lang" :introData="this.introData"></IntroContent>
       
       <!--Right Content-->
       <CardInfo></CardInfo>
@@ -31,7 +31,8 @@ export default {
   },
   data() {
     return {
-      greetingMessage: ""
+      greetingMessage: "",
+      isShowGreetingMessage: false
     }
   },
   methods: {
@@ -56,7 +57,11 @@ export default {
   },
   async mounted() {
     this.typeWriter();
-
+    if (localStorage.getItem("greeting") === "true") {
+      this.isShowGreetingMessage = true;
+    } else {
+      this.isShowGreetingMessage = false;
+    }
     
   }
 }
@@ -77,34 +82,5 @@ export default {
 }
 
 
-.border-animation {
-  pointer-events: none;
-  border: 2px solid transparent;
-  background: linear-gradient(45deg, #ff0080, #7928ca, #2afadf, #ff0080);
-  background-size: 400% 400%;
-  animation: glowBorder 6s linear infinite;
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  -webkit-mask-composite: destination-out;
-  border-radius: 0.5rem;
-}
 
-@keyframes glowBorder {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
 </style>

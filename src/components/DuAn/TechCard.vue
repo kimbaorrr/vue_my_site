@@ -1,13 +1,13 @@
 <template>
     <div class="flex items-baseline space-x-1">
         <span class="font-semibold text-black dark:text-gray-100">{{
-            this.trans?.projects?.card?.technical?.desc?.[this.getLang] || "" }}:</span>
-        <span class="text-black dark:text-gray-200">{{ this.projectData?.description?.[this.getLang] || "" }}</span>
+            this.trans?.projects?.card?.technical?.desc?.[this.lang] || "" }}:</span>
+        <span class="text-black dark:text-gray-200">{{ this.projectData?.description?.[this.lang] || "" }}</span>
     </div>
 
     <div class="flex items-baseline space-x-1" v-if="this.projectData?.dataset?.name && this.projectData?.dataset?.url">
         <span class="font-semibold text-black dark:text-gray-100">{{
-            this.trans?.projects?.card?.technical?.dataset?.[this.getLang] || "" }}:</span>
+            this.trans?.projects?.card?.technical?.dataset?.[this.lang] || "" }}:</span>
         <a :href="this.projectData?.dataset.url" target="_blank" class="text-blue-500 underline">
             {{ this.projectData?.dataset.name }}
         </a>
@@ -15,23 +15,23 @@
 
     <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.languages.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
-            this.trans?.projects?.card?.technical?.lang?.[this.getLang] || "" }}:</span>
+            this.trans?.projects?.card?.technical?.lang?.[this.lang] || "" }}:</span>
         <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack?.languages.join(', ') }}</span>
     </div>
 
     <div class="flex items-baseline space-x-1" v-if="this.projectData?.type === 'AI'">
         <span class="font-semibold text-black dark:text-gray-100">{{
-            this.trans?.projects?.card?.technical?.metrics?.[this.getLang] || "" }}:</span>
+            this.trans?.projects?.card?.technical?.metrics?.[this.lang] || "" }}:</span>
         <div class="space-x-1">
             <button type="button" @click="this.$emit('toggleChart'); this.$emit('closeCfs');"
                 class="text-orange-400 dark:text-orange-600"
                 :class="this.isShowChart ? 'text-orange-700 dark:text-orange-400' : true">{{
-                    this.trans?.projects?.card?.technical?.metrics?.scalar?.[this.getLang] || "" }}</button>
+                    this.trans?.projects?.card?.technical?.metrics?.scalar?.[this.lang] || "" }}</button>
             <span class="font-bold text-gray-600">|</span>
             <button type="button" @click="this.$emit('toggleCfs'); this.$emit('closeChart');"
                 class="text-orange-400 dark:text-orange-600"
                 :class="this.isShowCfs ? 'text-orange-700 dark:text-orange-400' : true">{{
-                    this.trans?.projects?.card?.technical?.metrics?.matrix?.[this.getLang] || "" }}</button>
+                    this.trans?.projects?.card?.technical?.metrics?.matrix?.[this.lang] || "" }}</button>
         </div>
     </div>
 
@@ -44,79 +44,79 @@
 
     <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.frontEnd.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
-            this.trans?.projects?.card?.technical?.fe?.[this.getLang] || "" }}:</span>
+            this.trans?.projects?.card?.technical?.fe?.[this.lang] || "" }}:</span>
         <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.frontEnd.join(', ') }}</span>
     </div>
 
     <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.backEnd.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
-            this.trans?.projects?.card?.technical?.be?.[this.getLang] || "" }}:</span>
+            this.trans?.projects?.card?.technical?.be?.[this.lang] || "" }}:</span>
         <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.backEnd.join(', ') }}</span>
     </div>
 
     <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.database.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
-            this.trans?.projects?.card?.technical?.db?.[this.getLang] || "" }}:</span>
+            this.trans?.projects?.card?.technical?.db?.[this.lang] || "" }}:</span>
         <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.database.join(', ') }}</span>
     </div>
 
     <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.infrastructure.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
-            this.trans?.projects?.card?.technical?.inf_str?.[this.getLang] || "" }}:</span>
+            this.trans?.projects?.card?.technical?.inf_str?.[this.lang] || "" }}:</span>
         <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.infrastructure.join(', ') }}</span>
     </div>
 
     <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.architecture.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
-            this.trans?.projects?.card?.technical?.arc?.[this.getLang] || "" }}:</span>
+            this.trans?.projects?.card?.technical?.arc?.[this.lang] || "" }}:</span>
         <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.architecture.join(', ') }}</span>
     </div>
 
     <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.libraries.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
-            this.trans?.projects?.card?.technical?.lib?.[this.getLang] || "" }}:</span>
+            this.trans?.projects?.card?.technical?.lib?.[this.lang] || "" }}:</span>
         <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.libraries.join(', ') }}</span>
     </div>
 
     <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.models.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
-            this.trans?.projects?.card?.technical?.model?.[this.getLang] || "" }}:</span>
+            this.trans?.projects?.card?.technical?.model?.[this.lang] || "" }}:</span>
         <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.models.join(', ') }}</span>
     </div>
 
     <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.frameworks.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
-            this.trans?.projects?.card?.technical?.framework?.[this.getLang] || "" }}:</span>
+            this.trans?.projects?.card?.technical?.framework?.[this.lang] || "" }}:</span>
         <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.frameworks.join(', ') }}</span>
     </div>
 
     <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.algorithms.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
-            this.trans?.projects?.card?.technical?.algo?.[this.getLang] || "" }}:</span>
+            this.trans?.projects?.card?.technical?.algo?.[this.lang] || "" }}:</span>
         <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.algorithms.join(', ') }}</span>
     </div>
 
     <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.taskType.length">
         <span class="font-semibold text-black dark:text-gray-100">{{
-            this.trans?.projects?.card?.technical?.task_type?.[this.getLang] || "" }}:</span>
+            this.trans?.projects?.card?.technical?.task_type?.[this.lang] || "" }}:</span>
         <span class="text-black dark:text-gray-200">{{ this.projectData?.techStack.taskType.join(', ') }}</span>
     </div>
 
     <div class="flex items-baseline space-x-1">
         <span class="font-semibold text-black dark:text-gray-100">{{
-            this.trans?.projects?.card?.technical?.scope?.[this.getLang] || "" }}:</span>
-        <span class="text-black dark:text-gray-200">{{ this.projectData?.scope?.[this.getLang] || "" }}</span>
+            this.trans?.projects?.card?.technical?.scope?.[this.lang] || "" }}:</span>
+        <span class="text-black dark:text-gray-200">{{ this.projectData?.scope?.[this.lang] || "" }}</span>
     </div>
 
     <div class="flex items-baseline space-x-1" v-if="this.projectData?.Members > 1">
         <span class="font-semibold text-black dark:text-gray-100">{{
-            this.trans?.projects?.card?.technical?.role?.[this.getLang] || "" }}:</span>
-        <span class="text-black dark:text-gray-200">{{ this.projectData?.role?.[this.getLang] || "" }}</span>
+            this.trans?.projects?.card?.technical?.role?.[this.lang] || "" }}:</span>
+        <span class="text-black dark:text-gray-200">{{ this.projectData?.role?.[this.lang] || "" }}</span>
     </div>
 
     <div class="flex items-center space-x-2">
         <span class="font-semibold text-black dark:text-gray-100">{{
-            this.trans?.projects?.card?.technical?.code?.[this.getLang] || "" }}:</span>
+            this.trans?.projects?.card?.technical?.code?.[this.lang] || "" }}:</span>
         <a :href="this.projectData?.sourceCode?.gitHub || '#'"
             class="text-gray-800 duration-500 dark:text-gray-300 hover:text-gray-400 hover:dark:text-gray-600"
             target="_blank">
@@ -181,7 +181,7 @@ export default {
     props: {
         projectData: Object,
         trans: Object,
-        getLang: Function,
+        lang: String,
         isShowChart: Boolean,
         isShowCfs: Boolean
     }

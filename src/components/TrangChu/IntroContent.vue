@@ -3,18 +3,18 @@
     <div class="flex">
       <span
         class="animate-gradient-x from-yellow-600 leading-[60px] to-red-600 flex text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r bg-[length:200%_auto] dark:from-indigo-500 dark:to-purple-500 md:leading-[86px] md:text-7xl">
-        {{ this.trans?.home_body?.hi?.[this.getLang] || "" }}
+        {{ this.trans?.home_body?.hi?.[this.lang] || "" }}
       </span>
 
       <span class="flex items-center ml-4 text-5xl" style="animation: say_hi 1.5s linear infinite;">🖐️</span>
     </div>
     <div class="text-base leading-7 text-black dark:text-gray-100 md:text-lg md:leading-8">
-      <p>{{ this.introData?.welcome?.[this.getLang] || "" }}
+      <p>{{ this.introData?.welcome?.[this.lang] || "" }}
         <span class="pt-[3px] absolute inline-flex ml-1.5">
           <i class="twa twa-lg twa-party-popper inline-block"></i>
         </span>
       </p>
-      <p class="">{{ this.introData?.passion?.[this.getLang] || "" }}
+      <p class="">{{ this.introData?.passion?.[this.lang] || "" }}
         <!-- <span class="pt-[3px] absolute inline-flex ml-1.5">
               <svg width="25" height="25" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
                 <lineargradient id="h" x1="63.994" x2="63.994" y1="119.482" y2="39.919"
@@ -127,17 +127,17 @@
       <div class="mt-4 mb-8">
         <ul>
           <li v-for="(goal, index) in this.introData?.goals" :key="index">
-            {{ goal?.[this.getLang] }}
+            {{ goal?.[this.lang] }}
           </li>
         </ul>
       </div>
 
       <!--Link List-->
-      <IntroLinkList :getLang="this.getLang" :trans="this.trans"></IntroLinkList>
+      <IntroLinkList :lang="this.lang" :trans="this.trans"></IntroLinkList>
 
 
       <p class="flex my-8">
-        <span class="mr-2">{{ this.trans?.home_body?.thanks?.[this.getLang] || "" }}</span>
+        <span class="mr-2">{{ this.trans?.home_body?.thanks?.[this.lang] || "" }}</span>
       </p>
     </div>
   </div>
@@ -154,7 +154,7 @@ export default {
   props: {
     trans: Object,
     introData: Object,
-    getLang: Function
+    lang: String
   }
 }
 

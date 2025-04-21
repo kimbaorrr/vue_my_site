@@ -9,11 +9,11 @@
 
       <div class="flex flex-col justify-center items-center md:justify-between sm:flex-row">
         <!-- Filter Buttons -->
-        <FilterButtons :trans="this.trans" :getLang="this.lang" v-model:filterType="this.filterType">
+        <FilterButtons :trans="this.trans" :lang="this.lang" v-model:filterType="this.filterType">
         </FilterButtons>
 
         <!--Search Box-->
-        <SearchBox :trans="this.trans" :getLang="this.lang" :searchText="this.searchText"
+        <SearchBox :trans="this.trans" :lang="this.lang" :searchText="this.searchText"
           v-model:searchText="this.searchText">
         </SearchBox>
 
@@ -38,7 +38,7 @@
 
 
       <!--In Progress Ribbon-->
-      <Ribbon :isShowRibbon="!item.status" :trans="this.trans" :getLang="this.lang"></Ribbon>
+      <Ribbon :isShowRibbon="!item.status" :trans="this.trans" :lang="this.lang"></Ribbon>
 
       <!--Card header-->
       <div class="flex justify-between items-center mt-1 text-black dark:text-white">
@@ -73,7 +73,7 @@
       <!--Card body-->
       <div class="mt-2 space-y-1 text-xs">
         <!--Technical Info-->
-        <TechCard :projectData="item" :trans="trans" :getLang="this.lang" :isShowCfs="isShowCfs"
+        <TechCard :projectData="item" :trans="trans" :lang="this.lang" :isShowCfs="isShowCfs"
           :isShowChart="isShowChart" @closeCfs="isShowCfs = false" @closeChart="isShowChart = false"
           @toggleChart="isShowChart = !isShowChart" @toggleCfs="isShowCfs = !isShowCfs"></TechCard>
       </div>
@@ -100,7 +100,7 @@
       <!--Card body-->
       <div class="mt-4 space-y-2 text-sm">
         <!--Technical Info-->
-        <TechCard :projectData="selectedCard" :trans="trans" :getLang="lang" :isShowCfs="isShowCfs"
+        <TechCard :projectData="selectedCard" :trans="trans" :lang="lang" :isShowCfs="isShowCfs"
           :isShowChart="isShowChart" @closeCfs="isShowCfs = false" @closeChart="isShowChart = false"
           @toggleChart="isShowChart = !isShowChart" @toggleCfs="isShowCfs = !isShowCfs"></TechCard>
 

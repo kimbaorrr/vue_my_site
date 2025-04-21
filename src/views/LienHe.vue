@@ -12,7 +12,7 @@
       </div>
       
       <!--Right Section: Content-->
-      <Content :contactData="this.contactData" :infoData="this.infoData" :getLang="this.lang"
+      <Content :contactData="this.contactData" :infoData="this.infoData" :lang="this.lang"
         :isLoading="this.isLoading"></Content>
     </div>
   </div>

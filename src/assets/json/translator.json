@@ -51,6 +51,16 @@
         "thanks": {
             "vi": "Cảm ơn bạn đã ghé thăm ! ❤️",
             "en": "Thanks for coming ! ❤️"
+        },
+        "greeting": {
+            "day": {
+                "en": "🌻 Good morning! Have a great day!",
+                "vi": "🌻 Chào buổi sáng! Chúc bạn một ngày mới tràn đầy năng lượng!"
+            },
+            "night": {
+                "en": "",
+                "vi": ""
+            }
         }
     },
     "question": {

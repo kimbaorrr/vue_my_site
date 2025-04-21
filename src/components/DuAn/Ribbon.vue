@@ -3,7 +3,7 @@
     <div class="w-full h-full overflow-hidden absolute top-0 right-0 pointer-events-none" v-if="this.isShowRibbon">
         <div
             class="py-[2px] right-[-30px] top-[22px] transform w-[120px] overflow-visible absolute text-xs font-medium text-center text-white bg-red-600 rotate-45">
-            {{ this.trans?.projects?.filter_by?.in_progress?.[this.getLang] || "" }}
+            {{ this.trans?.projects?.filter_by?.in_progress?.[this.lang] || "" }}
         </div>
     </div>
 </template>
@@ -14,7 +14,7 @@ export default {
     props: {
         isShowRibbon: Boolean,
         trans: Object,
-        getLang: Function
+        lang: String
     }
 }
 </script>

@@ -143,6 +143,14 @@ export default {
             const theme = (hour >= 19 || hour < 7) ? "dark" : "light";
             this.setTheme(theme);
         },
+        setGreetingByTime() {
+            /**
+             * Đặt chủ đề theo thời gian
+             */
+            const [hour, minute] = this.getTime().split(":").map(Number);
+            const greeting = (hour >= 6 || hour < 10) ? "true" : "false";
+            localStorage.setItem("greeting", greeting);
+        },
         getTime() {
             /**
              * Lấy thời gian hiện tại dạng HH:mm

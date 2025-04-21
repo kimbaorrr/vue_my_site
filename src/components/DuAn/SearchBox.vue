@@ -10,7 +10,7 @@
                   d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
               </svg>
             </div>
-            <input type="text" :placeholder="this.trans?.projects?.search_box?.placeholder?.[this.getLang] || ''"
+            <input type="text" :placeholder="this.trans?.projects?.search_box?.placeholder?.[this.lang] || ''"
               @input="$emit('update:searchText', $event.target.value)"
               class="w-full py-2 ps-8 text-sm text-black bg-gray-50 rounded-md border-2 border-gray-400 duration-300 dark:placeholder-gray-400 dark:text-white dark:bg-gray-700 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:w-auto">
           </div>
@@ -23,7 +23,7 @@ export default {
     props: { // Các tham số nhận từ component cha
         trans: Object,
         searchText: String,
-        getLang: Function
+        lang: String
     },
     emits: ['update:searchText'] // Truyền ngược lên component cha
 }
