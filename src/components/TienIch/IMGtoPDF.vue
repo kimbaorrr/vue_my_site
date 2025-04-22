@@ -4,7 +4,9 @@
             <div class="flex flex-row justify-center items-baseline space-x-2">
                 <input type="file" accept="image/*" multiple @change="this.handleFiles" ref="filesInput"
                     class="blueBox w-5/12 px-2 py-1 mt-2 dark:focus:border-pink-600 focus:border-2 focus:border-pink-400" />
-                <button @click="this.convertToPDF" class="blueBtn px-4 py-2 text-white">
+                <button @click="this.convertToPDF" class="blueBtn px-4 py-2 text-white" :disabled="this.imagePreviews.length === 0" 
+                :class="this.imagePreviews.length === 0 ? 'cursor-not-allowed bg-gray-400 dark:bg-gray-600 hover:bg-gray-400 hover:dark:bg-gray-600' : true">
+                    
                     {{ trans?.tools?.labels?.img_pdf?.convert?.[lang] || "" }}
                 </button>
                 <button @click="this.clearImages" class="redBtn px-4 py-2 text-white">
