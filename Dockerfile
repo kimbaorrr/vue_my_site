@@ -1,22 +1,35 @@
-FROM node:lts-alpine
+# Sử dụng Node Alpine nhẹ
+FROM node:lts-alpine AS build-stage
 
-# install simple http server for serving static content
-RUN npm install -g http-server
-
-# make the 'app' folder the current working directory
+# Đặt thư mục làm việc
 WORKDIR /app
 
-# copy both 'package.json' and 'package-lock.json' (if available)
+# Copy file package.json và package-lock.json nếu có
 COPY package*.json ./
 
-# install project dependencies
+# Cài đặt dependency
 RUN npm install
 
-# copy project files and folders to the current working directory (i.e. 'app' folder)
+# Copy source code vào container
 COPY . .
 
-# build app for production with minification
+# Build ứng dụng cho production
 RUN npm run build
 
+# Stage thứ hai chỉ dùng để serve file tĩnh
+FROM node:lts-alpine AS production-stage
+
+# Cài http-server
+RUN npm install -g http-server
+
+# Tạo thư mục app
+WORKDIR /app
+
+# Copy thư mục dist từ stage build
+COPY --from=build-stage /app/dist ./dist
+
+# Mở port 8080
 EXPOSE 8080
-CMD [ "http-server", "dist", "--spa" ]
+
+# Dùng http-server với fallback để hỗ trợ history mode
+CMD [ "http-server", "dist", "--port", "8080", "--spa" ]

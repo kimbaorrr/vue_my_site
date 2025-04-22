@@ -31,13 +31,6 @@ export default {
     Avatar,
     Content,
     LoadingSpinner
-  },
-  async mounted() {
-    // Khu vực sẽ thực thi sau khi load xong DOM
-    // Đặt link tag vào DOM để load các icon
-    const linkTag = document.createElement("link");
-    linkTag.href = "https://jsdelivr.b-cdn.net/npm/fontawesome-free-6.2.1@6.2.1/css/all.min.css";
-    linkTag.rel = "stylesheet";
-  },
+  }
 }
 </script>
