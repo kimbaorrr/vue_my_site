@@ -259,6 +259,28 @@
                 "character": {
                     "en": "characters",
                     "vi": "kí tự"
+                },
+                "wifi": {
+                    "show": {
+                        "en": "QR for Wifi Connect",
+                        "vi": "Tạo QR cho kết nối Wifi"
+                    },
+                    "ssid": {
+                        "en": "SSID",
+                        "vi": "SSID"
+                    },
+                    "secure": {
+                        "en": "Secure Type",
+                        "vi": "Kiểu bảo mật"
+                    },
+                    "pwd": {
+                        "en": "Password",
+                        "vi": "Mật khẩu"
+                    },
+                    "hidden": {
+                        "en": "Hidden SSID",
+                        "vi": "Điểm truy cập ẩn"
+                    }
                 }
             },
             "base64": {

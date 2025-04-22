@@ -1,6 +1,5 @@
 <template>
-  <footer class="border-t border-gray-200 dark:border-gray-700"
-    v-if="Object.keys(this.infoData).length !== 0">
+  <footer class="border-t border-gray-200 dark:border-gray-700" v-if="Object.keys(this.infoData).length !== 0">
     <div class="flex flex-col justify-center items-center mt-4 mb-6 space-y-4 md:mb-10 md:space-y-0">
       <div class="flex flex-col items-center">
         <!--Copyright Text-->
@@ -97,12 +96,10 @@ export default {
       /**
        * Sự kiện nhấn nút Back To Top
        */
-      $("html, body").animate(
-        {
-          scrollTop: $("body").offset().top,
-        },
-        "slow"
-      );
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     },
     handleScroll() {
       /**

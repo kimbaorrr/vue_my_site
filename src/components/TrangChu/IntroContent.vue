@@ -2,7 +2,7 @@
   <div class="space-y-6 md:pr-8 md:space-y-8 xl:col-span-2">
     <div class="flex">
       <span
-        class="animate-gradient-x from-yellow-600 leading-[60px] to-red-600 flex text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r bg-[length:200%_auto] dark:from-indigo-500 dark:to-purple-500 md:leading-[86px] md:text-7xl">
+        class="from-yellow-600 leading-[60px] to-red-600 flex text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r bg-[length:200%_auto] dark:from-indigo-500 dark:to-purple-500 md:leading-[86px] md:text-7xl">
         {{ this.trans?.home_body?.hi?.[this.lang] || "" }}
       </span>
 
@@ -157,22 +157,4 @@ export default {
     lang: String
   }
 }
-
-
 </script>
-
-<style>
-@keyframes gradient-x {
-  0% {
-    background-position: 0% center;
-  }
-
-  100% {
-    background-position: -200% center;
-  }
-}
-
-.animate-gradient-x {
-  animation: gradient-x 10s linear infinite;
-}
-</style>

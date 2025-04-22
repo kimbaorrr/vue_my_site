@@ -1,6 +1,6 @@
 <template>
-    <div class="overflow-y-auto flex-1 mt-10 md:mt-0 xl:px-5">
-        <div class="px-4 py-8 space-y-6 rounded-lg border-2 border-orange-500 dark:border-orange-800 md:px-36 md:py-16">
+    <div class="overflow-y-auto flex-1 mt-10 md:px-5 md:mt-0">
+        <div class="px-4 py-8 space-y-6 rounded-lg border-2 border-orange-500 dark:border-orange-800 md:px-[8rem] md:py-16">
             <div class="space-y-4">
                 <span class="font-medium text-black dark:text-white">{{ this.trans?.tools?.labels?.pwdgen?.type?.[this.lang] || ""}}</span>
                 <div

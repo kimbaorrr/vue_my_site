@@ -185,7 +185,7 @@ export default {
                 const pngUrl = canvas.toDataURL("image/png");
                 const downloadLink = document.createElement("a");
                 downloadLink.href = pngUrl;
-                downloadLink.download = "svg-to-image.png";
+                downloadLink.download = "image.png";
                 downloadLink.click();
 
                 URL.revokeObjectURL(url);
