@@ -6,7 +6,7 @@
 
       <!--Action-->
       <div class="flex justify-center items-center space-x-4">
-        <button type="button" @click="this.executeAction()"
+        <button type="button" @click="this.inputString.length !== 0 ? this.executeAction() : true"
           class="blueBtn px-4 py-2 text-sm font-semibold text-white">{{ this.trans?.tools?.labels?.base64?.encode?.[this.lang] || '' }}</button>
       </div>
     </div>

@@ -366,6 +366,39 @@
                     "en": "Copied to clipboard !",
                     "vi": "Đã sao chép vào clipboard !"
                 }
+            },
+            "img_pdf": {
+                "convert": {
+                    "en": "Convert",
+                    "vi": "Chuyển đổi"
+                },
+                "clear": {
+                    "en": "Reset",
+                    "vi": "Làm lại"
+                },
+                "output": {
+                    "file_name": {
+                        "en": "File name",
+                        "vi": "Tên tệp PDF"
+                    },
+                    "paper_size": {
+                        "en": "Paper size",
+                        "vi": "Khổ giấy"
+                    },
+                    "orient": {
+                        "en": "Orientation",
+                        "vi": "Hướng giấy",
+                        "portrait": {
+                            "en": "Portrait",
+                            "vi": "Dọc"
+                        },
+                        "landscape": {
+                            "en": "Landscape",
+                            "vi": "Ngang"
+                        }
+                    }
+                }
+
             }
         }
     },

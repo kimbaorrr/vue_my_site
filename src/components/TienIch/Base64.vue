@@ -6,11 +6,11 @@
             
             <!--Action-->
             <div class="flex justify-center items-center space-x-4">
-                <button type="button" @click="this.executeAction('encode')"
+                <button type="button" @click="this.inputString.length !== 0 ? this.executeAction('encode') : true"
                     class="redBtn px-4 py-2 text-sm font-semibold text-white">
                     {{ this.trans?.tools?.labels?.base64?.encode?.[this.lang] || '' }}
                 </button>
-                <button type="button" @click="this.executeAction('decode')"
+                <button type="button" @click="this.inputString.length !== 0 ? this.executeAction('decode') : true"
                     class="greenBtn px-4 py-2 text-sm font-semibold text-white">
                     {{ this.trans?.tools?.labels?.base64?.decode?.[this.lang] || '' }}
                 </button>

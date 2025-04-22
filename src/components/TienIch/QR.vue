@@ -44,7 +44,7 @@
             </div>
 
             <!--Wifi Connect-->
-            <div class="flex flex-col gap-4 text-sm text-black dark:text-white md:grid md:grid-cols-5"
+            <div class="flex flex-col gap-4 text-sm text-black dark:text-white md:grid md:grid-cols-4"
                 v-show="this.isShowWifiConnect">
                 <div class="col-span-1">
                     <label for="ssid" class="font-medium">{{ this.trans?.tools?.labels?.qr?.wifi?.ssid?.[this.lang] ||
@@ -57,10 +57,10 @@
                     <select class="form-input" v-model="this.wifiData.secureType">
                         <option value="nopass">Open</option>
                         <option value="wep">WEP</option>
-                        <option value="wpa">WPA/WPA2 PSK</option>
+                        <option value="wpa">WPA/WPA2/WPA3 PSK</option>
                     </select>
                 </div>
-                <div class="col-span-2">
+                <div class="col-span-1">
                     <label for="password" class="font-medium">{{ this.trans?.tools?.labels?.qr?.wifi?.pwd?.[this.lang]
                         || "" }}</label>
                     <input type="password" name="password" v-model="this.wifiData.password" class="form-input"
@@ -81,7 +81,7 @@
 
         <!--Output-->
         <div class="flex flex-col justify-center items-center p-4 py-12 mt-4 bg-gray-100 rounded-lg border-2 border-green-400 dark:bg-gray-800"
-            id="outputQR">
+            id="outputQR" v-show="qrData.inputString.length !== 0 || (wifiData.ssid.length !== 0 && (wifiData.secureType === 'nopass' || wifiData.password.length !== 0))">
             <QrcodeVue :value="this.outputString" :size="220" :foreground="this.qrData.color" level="H" render-as="svg">
             </QrcodeVue>
             <p class="mt-4 font-semibold text-center">{{ this.qrData.title }}</p>

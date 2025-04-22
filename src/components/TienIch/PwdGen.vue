@@ -20,7 +20,7 @@
                         </svg>{{ this.trans?.tools?.labels?.pwdgen?.type?.options?.random?.[this.lang] || "" }}</button>
                     <button
                         class="w-full flex flex-row justify-center items-center px-4 py-1 text-xs font-semibold text-black rounded-md duration-500"
-                        :class="this.pwdType === 1 ? 'bg-white dark:bg-gray-200' : true" @click="this.pwdType = 1"
+                        :class="this.pwdType === 1 ? 'bg-white dark:bg-gray-200' : true" @click="this.pwdType = 1" disabled=""
                         aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round"
