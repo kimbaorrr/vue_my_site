@@ -25,7 +25,7 @@
                     </ul>
                 </div>
 
-                <div class="hidden items-center gap-1 xl:flex">
+                <div class="hidden items-center gap-1 md:flex">
                     <span class="text-gray-400 cursor-default">|</span>
                 </div>
                 <!-- Icon Nav -->
@@ -84,7 +84,7 @@
                                 loading="lazy" width="18" height="18" v-if="this.currentLang === 'vi'" class="absolute">
                             <img alt="US_Flag"
                                 src="https://upload.wikimedia.org/wikipedia/commons/4/42/Animated-Flag-USA.gif"
-                                loading="lazy" width="18" height="18" v-if="this.currentLang === 'en'" class="absolute">
+                                loading="lazy" width="18" height="18" v-else="this.currentLang === 'en'" class="absolute">
                         </div>
                     </button>
                     <!-- Clock -->

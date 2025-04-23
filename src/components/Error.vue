@@ -17,7 +17,7 @@
 <script>
 import Mixin from "./Mixin.vue";
 export default {
-    name: "Alert",
+    name: "Error",
     mixins: [Mixin]
 }
 </script>

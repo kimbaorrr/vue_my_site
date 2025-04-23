@@ -4,18 +4,47 @@
             <div class="flex flex-row justify-center items-baseline space-x-2">
                 <input type="file" accept="image/*" multiple @change="this.handleFiles" ref="filesInput"
                     class="blueBox w-5/12 px-2 py-1 mt-2 dark:focus:border-pink-600 focus:border-2 focus:border-pink-400" />
-                <button @click="this.convertToPDF" class="blueBtn px-4 py-2 text-white" :disabled="this.imagePreviews.length === 0" 
-                :class="this.imagePreviews.length === 0 ? 'cursor-not-allowed bg-gray-400 dark:bg-gray-600 hover:bg-gray-400 hover:dark:bg-gray-600' : true">
-                    
+                <button @click="this.convertToPDF" class="blueBtn px-4 py-2 text-white"
+                    :disabled="this.imagePreviews.length === 0"
+                    :class="this.imagePreviews.length === 0 ? 'cursor-not-allowed bg-gray-400 dark:bg-gray-600 hover:bg-gray-400 hover:dark:bg-gray-600' : true">
+
                     {{ trans?.tools?.labels?.img_pdf?.convert?.[lang] || "" }}
                 </button>
                 <button @click="this.clearImages" class="redBtn px-4 py-2 text-white">
                     {{ trans?.tools?.labels?.img_pdf?.clear?.[lang] || "" }}
                 </button>
             </div>
-
+            <div class="grid gap-4 text-sm text-black dark:text-white md:grid-cols-4 sm:grid-cols-2">
+                <div class="col-span-2">
+                    <label for="fileName" class="font-medium">{{
+                        this.trans?.tools?.labels?.img_pdf?.output?.file_name?.[this.lang] || "" }}</label>
+                    <input type="text" v-model="this.fileName" id="fileName" class="form-input" />
+                </div>
+                <div class="col-span-2">
+                    <label for="pageSize" class="font-medium">{{
+                        this.trans?.tools?.labels?.img_pdf?.output?.paper_size?.[this.lang] || "" }}</label>
+                    <select v-model="this.selectedPageSize" id="pageSize" class="form-input">
+                        <option value="a4">A4</option>
+                        <option value="letter">Letter</option>
+                        <option value="legal">Legal</option>
+                        <option value="a3">A3</option>
+                        <option value="a5">A5</option>
+                        <option value="b5">B5</option>
+                    </select>
+                </div>
+                <div class="col-span-2">
+                    <label for="orientation" class="font-medium">{{
+                        this.trans?.tools?.labels?.img_pdf?.output?.orient?.[this.lang] || "" }}</label>
+                    <select v-model="this.selectedOrientation" id="orientation" class="form-input">
+                        <option value="portrait">{{
+                            this.trans?.tools?.labels?.img_pdf?.output?.orient?.portrait?.[this.lang] || "" }}</option>
+                        <option value="landscape">{{
+                            this.trans?.tools?.labels?.img_pdf?.output?.orient?.landscape?.[this.lang] || "" }}</option>
+                    </select>
+                </div>
+            </div>
             <div class="grid grid-cols-2 gap-2 py-6 border-t border-gray-600 border-dashed dark:border-gray-300 md:grid-cols-4"
-                v-show="Object.keys(this.imagePreviews).length > 0">
+                v-show="Object.keys(this.imagePreviews).length !== 0">
                 <div class="h-full relative flex flex-col justify-center items-center space-y-1"
                     v-for="(img, index) in this.imagePreviews" :key="index" :draggable="true"
                     @dragstart="this.onDragStart($event, index)" @dragover="this.onDragOver($event)"
@@ -58,6 +87,7 @@ export default {
             selectedPageSize: 'a4',
             selectedOrientation: 'portrait',
             fileName: 'converted',
+            isLoading: false,
             hoverIndex: null, // Tracking the index of hovered image
         };
     },
@@ -71,10 +101,22 @@ export default {
         async handleFiles(event) {
             this.files = Array.from(event.target.files);
             this.imagePreviews = [];
+            const maxSize = 5 * 1024 * 1024;
+            const oversizedFiles = [];
+
             await Promise.all(this.files.map(async (file) => {
-                const base64Image = await this.readFile(file);
-                this.imagePreviews.push(base64Image);
+                if (file.size > maxSize) {
+                    oversizedFiles.push(file.name);
+                } else {
+                    const base64Image = await this.readFile(file);
+                    this.imagePreviews.push(base64Image);
+                }
             }));
+
+            if (oversizedFiles.length > 0) {
+                const fileList = oversizedFiles.join('\n');
+                this.setAlertMessage(`Dung lượng tệp vượt quá 5MB:\n${fileList}`, "warning");
+            }
         },
 
         /**
@@ -134,10 +176,14 @@ export default {
             this.imagePreviews = [];
             this.$refs.filesInput.value = "";
         },
-
+        getImageType(base64) {
+            const match = /^data:image\/(png|jpeg);/i.exec(base64);
+            return match ? match[1].toUpperCase() : 'JPEG';
+        },
         /**
          * Chuyển đổi các ảnh hiện tại thành một tệp PDF và tải xuống.
          */
+
         convertToPDF() {
             if (this.imagePreviews.length === 0) return;
             const pdf = new jsPDF({
@@ -148,10 +194,11 @@ export default {
             const addImageToPDF = (img, index) => {
                 return new Promise((resolve) => {
                     const imgProps = pdf.getImageProperties(img);
+                    const type = this.getImageType(img);
                     const pdfWidth = pdf.internal.pageSize.getWidth();
                     const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
                     if (index > 0) pdf.addPage();
-                    pdf.addImage(img, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+                    pdf.addImage(img, type, 0, 0, pdfWidth, pdfHeight);
                     resolve();
                 });
             };
@@ -179,12 +226,13 @@ export default {
          */
         deleteImage(index) {
             this.imagePreviews.splice(index, 1);
+            this.imagePreviews.length === 0 ? this.clearImages() : true;
         },
     }
 };
 </script>
 
-<style scoped>
+<style>
 .form-input {
     @apply blueBox w-full p-2 mt-2 focus:border-pink-400 dark:focus:border-pink-600 focus:border-2;
 }

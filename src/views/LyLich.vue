@@ -1,14 +1,14 @@
 <template>
-  <Alert></Alert>
+  <Error></Error>
 </template>
 
 <script>
-import Alert from '/src/components/Alert.vue';
+import Error from '/src/components/Error.vue';
 
 export default {
   name: "LyLich",
   components: {
-    Alert
+    Error
   }
 }
 </script>

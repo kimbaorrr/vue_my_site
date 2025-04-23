@@ -1,5 +1,9 @@
 <script>
 import translator from "/src/assets/json/translator.json";
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
+
+const apiDomain = "api.baoit.site";
 let isDataLoaded = false;
 let cachedData = {
     trans: [],
@@ -8,15 +12,16 @@ let cachedData = {
     toolData: [],
     contactData: [],
     introData: [],
-    lang: "Vi",
-    isLoading: true
+    lang: "vi",
+    isLoading: true,
+    theme: "light"
 };
 
 export default {
     name: "Mixin",
     data() {
+
         return {
-            clock: "",
             trans: [],
             infoData: [],
             projectData: [],
@@ -24,7 +29,8 @@ export default {
             contactData: [],
             introData: [],
             lang: "vi",
-            isLoading: true
+            isLoading: true,
+            theme: "light"
         }
     },
     methods: {
@@ -39,6 +45,7 @@ export default {
                 this.contactData = cachedData.contactData;
                 this.introData = cachedData.introData;
                 this.lang = cachedData.lang;
+                this.theme = cachedData.theme;
                 this.isLoading = false;
                 return;
             }
@@ -64,6 +71,7 @@ export default {
             this.contactData = contactData;
             this.introData = introData;
             this.lang = this.getLang();
+            this.theme = this.getTheme();
 
             cachedData.trans = this.trans;
             cachedData.infoData = this.infoData;
@@ -72,6 +80,7 @@ export default {
             cachedData.contactData = this.contactData;
             cachedData.introData = this.introData;
             cachedData.lang = this.lang;
+            cachedData.theme = this.theme;
             isDataLoaded = true;
 
             this.isLoading = false;
@@ -80,47 +89,82 @@ export default {
             /**
              * Lấy danh sách thông tin cá nhân & trả về dạng JSON
              */
-            const response = await fetch(`https://api.baoit.site/my_blog/personal/get`);
-            const result = await response.json();
-            return result.value.data[0];
+            try {
+                const response = await fetch(`https://${apiDomain}/my_blog/personal/get`);
+                const result = await response.json();
+                return result.value.data[0];
+            } catch (error) {
+                console.error(`Lỗi khi lấy dữ liệu cá nhân: ${error.message}`, 'error');
+                return {};
+            }
+
         },
         async getDuAn() {
             /**
              * * Lấy danh sách thông tin dự án & trả về dạng JSON
              */
-            const response = await fetch(`https://api.baoit.site/my_blog/projects/get`);
-            const result = await response.json();
-            return result.value.data;
+            try {
+                const response = await fetch(`https://${apiDomain}/my_blog/projects/get`);
+                const result = await response.json();
+                return result.value.data;
+            } catch (error) {
+                console.error(`Lỗi khi lấy dữ liệu dự án: ${error.message}`, 'error');
+                return {};
+            }
+
         },
         async getTienIch() {
             /**
              * * Lấy danh sách thông tin tiện ích & trả về dạng JSON
              */
-            const response = await fetch(`https://api.baoit.site/my_blog/tools/get`);
-            const result = await response.json();
-            return result.value.data;
+            try {
+                const response = await fetch(`https://${apiDomain}/my_blog/tools/get`);
+                const result = await response.json();
+                return result.value.data;
+            } catch (error) {
+                console.error(`Lỗi khi lấy dữ liệu tiện ích: ${error.message}`, 'error');
+                return {};
+            }
+
         },
         async getLienHe() {
             /**
              * * Lấy danh sách thông tin liên hệ & trả về dạng JSON
              */
-            const response = await fetch(`https://api.baoit.site/my_blog/contact/get`);
-            const result = await response.json();
-            return result.value.data[0];
+            try {
+                const response = await fetch(`https://${apiDomain}/my_blog/contact/get`);
+                const result = await response.json();
+                return result.value.data[0];
+            } catch (error) {
+                console.error(`Lỗi khi lấy dữ liệu liên hệ: ${error.message}`, 'error');
+                return {};
+            }
+
         },
         async getGioiThieu() {
             /**
              * * Lấy danh sách thông tin giới thiệu & trả về dạng JSON
              */
-            const response = await fetch(`https://api.baoit.site/my_blog/intro/get`);
-            const result = await response.json();
-            return result.value.data[0];
+            try {
+                const response = await fetch(`https://${apiDomain}/my_blog/intro/get`);
+                const result = await response.json();
+                return result.value.data[0];
+            } catch (error) {
+                console.error(`Lỗi khi lấy dữ liệu giới thiệu: ${error.message}`, 'error');
+                return {};
+            }
         },
         getLang() {
             /**
              * Lấy ngôn ngữ hiện tại
              */
             return localStorage.getItem("lang") || "vi";
+        },
+        getTheme() {
+            /**
+             * Lấy chủ đề hiện tại
+             */
+            return localStorage.getItem("theme") || "light";
         },
         getTranslator() {
             /**
@@ -135,30 +179,23 @@ export default {
             localStorage.setItem("theme", value);
             document.body.classList.toggle("dark", value === "dark");
         },
-        setThemeByTime() {
-            /**
-             * Đặt chủ đề theo thời gian
-             */
-            const [hour, minute] = this.getTime().split(":").map(Number);
-            const theme = (hour >= 19 || hour < 7) ? "dark" : "light";
-            this.setTheme(theme);
-        },
-        setGreetingByTime() {
-            /**
-             * Đặt chủ đề theo thời gian
-             */
-            const [hour, minute] = this.getTime().split(":").map(Number);
-            const greeting = (hour >= 6 || hour < 10) ? "true" : "false";
-            localStorage.setItem("greeting", greeting);
-        },
         getTime() {
-            /**
-             * Lấy thời gian hiện tại dạng HH:mm
-             */
             const now = new Date();
             const hours = now.getHours().toString().padStart(2, "0");
             const minutes = now.getMinutes().toString().padStart(2, "0");
             return `${hours}:${minutes}`;
+        },
+        getHour() {
+            return Number(this.getTime().split(":")[0]);
+        },
+        setThemeByTime() {
+            const hour = this.getHour();
+            this.setTheme(hour >= 19 || hour < 7 ? "dark" : "light");
+        },
+        setGreetingByTime() {
+            const hour = this.getHour();
+            const greeting = hour >= 6 && hour < 10 ? "true" : "false";
+            localStorage.setItem("greeting", greeting);
         },
         async copyToClipboard(myStr) {
             if (myStr.length > 0) {
@@ -191,11 +228,20 @@ export default {
                 URL.revokeObjectURL(url);
             };
             img.src = url;
+        },
+        setAlertMessage(message, type) {
+            toast(message, {
+                autoClose: 3000,
+                position: "top-center",
+                theme: "auto",
+                type: type,
+                dangerouslyHTMLString: true
+            });
         }
     },
     created() {
         this.loadAllData();
-    },
+    }
 }
 
 </script>
