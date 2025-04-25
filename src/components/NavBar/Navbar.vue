@@ -9,7 +9,7 @@
     <QuestionModal ref="questionModal" />
   </modal>
   <!-- Mobile Nav -->
-  <MobileNav :trans="this.trans" :currentLang="this.currentLang" :isToggleMenuClicked="this.isToggleMenuClicked"
+  <MobileNav :trans="this.trans" :currentLang="this.lang" :isToggleMenuClicked="this.isToggleMenuClicked"
     @close="isToggleMenuClicked = false" />
 </template>
 
@@ -39,6 +39,7 @@ export default {
        * Sự kiện chuyển đổi chủ đề sáng/tối
        */
       const newTheme = this.theme === "dark" ? "light" : "dark";
+      this.theme = newTheme;
       this.setTheme(newTheme);
     },
     toggleLang() {
@@ -46,6 +47,7 @@ export default {
        * Sự kiện chuyển đổi ngôn ngữ vi/en
        */
       const newLang = this.lang === "en" ? "vi" : "en";
+      this.lang = newLang;
       localStorage.setItem("lang", newLang);
       localStorage.setItem("theme_by_user", "true");
       location.reload();
@@ -63,6 +65,8 @@ export default {
   },
   created() {
     this.trans = this.getTranslator();
+    this.lang = this.getLang();
+    this.theme = this.getTheme();
     this.navLinks = {
       "/": this.trans.nav.home[this.lang],
       "/du-an": this.trans.nav.project[this.lang],

@@ -1,6 +1,6 @@
 <template>
   <div class="w-full relative">
-    <textarea rows="4" :value="this.inputString" @input="this.onInput" autofocus="true"
+    <textarea :rows="rows" :value="this.inputString" @input="this.onInput" autofocus="true"
       class="blueBox textarea_counter w-full p-2.5 pb-8 text-sm" :class="this.class"
       :placeholder="this.placeHolder"></textarea>
     <span class="char_counter absolute bottom-0 right-2.5 p-2.5 text-sm font-bold text-gray-500">
@@ -17,7 +17,10 @@ export default {
   props: {
     inputString: String,
     placeHolder: String,
-    class: String
+    class: String,
+    rows: {
+      default: "4"
+    }
   },
   mixins: [Mixin],
   emits: ["update:inputString"],

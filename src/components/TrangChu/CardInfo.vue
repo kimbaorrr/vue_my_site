@@ -6,9 +6,8 @@
             <LoadingSpinner></LoadingSpinner>
         </div>
         <!--Card Content-->
-        <div class="z-10 mb-8 transition-all duration-200 ease-out scale-100 hover:z-50 xl:mb-0 xl:hover:scale-[1.15]"
-            style="perspective: 600px;"
-            v-if="Object.keys(this.infoData).length !== 0 && !this.isLoading">
+        <div class="z-10 mb-8 transition-all duration-200 ease-out scale-100 hover:z-50 xl:mb-0 xl:hover:scale-[1.15]" 
+            style="perspective: 600px;" v-if="!this.isLoading">
             <div
                 class="overflow-hidden flex flex-col bg-white outline-1 outline-gray-100 outline shadow-lg shadow-gray-200 transition-all duration-200 ease-out dark:bg-dark dark:outline-gray-600 dark:shadow-green-700 xl:rounded-3xl">
                 <img alt="HinhDD" width="550" height="350" decoding="async" fetchpriority="high"
@@ -17,8 +16,8 @@
                 <div class="hidden py-4 xl:block xl:px-6">
                     <h3 class="text-xl font-semibold text-gray-800 dark:text-white">{{
                         this.infoData?.fullName?.[this.lang] || ""
-                        }}</h3>
-                    <h5 class="py-2 text-gray-700 dark:text-gray-300">{{ this.infoData?.job?.[this.lang] || ""}} | {{
+                    }}</h3>
+                    <h5 class="py-2 text-gray-700 dark:text-gray-300">{{ this.infoData?.job?.[this.lang] || "" }} | {{
                         this.trans?.home_body?.favorite?.[this.lang] || "" }} {{
                             this.infoData?.favorite?.[this.lang] || ""
                         }}</h5>
@@ -54,7 +53,8 @@
                                 <path
                                     d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
                             </svg>
-                            <a class="px-2" :href="'mailto:' + this.infoData?.email">{{ this.infoData?.email || "" }}</a>
+                            <a class="px-2" :href="'mailto:' + this.infoData?.email">{{ this.infoData?.email || ""
+                                }}</a>
                         </div>
                         <div class="ml-[0.20rem] flex items-center gap-2.5 text-gray-700 dark:text-gray-200">
                             <a target="_blank" :href="this.infoData?.socials?.git?.url || '#'"
@@ -91,6 +91,7 @@
 <script>
 import LoadingSpinner from "../LoadingSpinner.vue";
 import Mixin from "../Mixin.vue";
+
 export default {
     name: "CardInfo",
     mixins: [Mixin],

@@ -30,16 +30,20 @@
             <span class="font-bold text-gray-600">|</span>
             <button type="button" @click="this.$emit('toggleCfs'); this.$emit('closeChart');"
                 class="text-orange-400 dark:text-orange-600"
-                :class="this.isShowCfs ? 'text-orange-700 dark:text-orange-400' : true">{{
-                    this.trans?.projects?.card?.technical?.metrics?.matrix?.[this.lang] || "" }}</button>
+                :class="this.isShowCfs ? 'text-orange-700 dark:text-orange-400' : true"
+                :disabled="this.projectData?.evaluationMetrics?.confusionMatrix === ''">
+                {{ this.trans?.projects?.card?.technical?.metrics?.matrix?.[this.lang] || "" }}
+            </button>
         </div>
     </div>
 
     <div class="w-full max-h-36 flex" v-if="this.projectData?.type === 'AI'"
         v-show="this.isShowCfs || this.isShowChart">
-        <ScalarChart v-if="this.isShowChart"></ScalarChart>
-        <img src="https://glassboxmedicine.com/wp-content/uploads/2019/02/confusion-matrix.png?w=816"
-            alt="Confussion Matrix" class="w-full inline-flex" v-if="this.isShowCfs" />
+        <ScalarChart v-if="this.isShowChart" :projectData="this.projectData" :selectedIndex="this.selectedIndex">
+        </ScalarChart>
+        <img v-bind:src="this.projectData?.evaluationMetrics?.confusionMatrix" alt="Confussion Matrix"
+            class="w-full h-auto inline-flex"
+            v-if="this.isShowCfs && this.projectData?.evaluationMetrics?.confusionMatrix !== ''" />
     </div>
 
     <div class="flex items-baseline space-x-1" v-if="this.projectData?.techStack.frontEnd.length">
@@ -173,6 +177,7 @@
 
 <script>
 import ScalarChart from './ScalarChart.vue';
+
 export default {
     name: "TechCard",
     components: {
@@ -183,7 +188,8 @@ export default {
         trans: Object,
         lang: String,
         isShowChart: Boolean,
-        isShowCfs: Boolean
+        isShowCfs: Boolean,
+        selectedIndex: String
     }
 }
 </script>

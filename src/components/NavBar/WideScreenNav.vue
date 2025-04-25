@@ -77,18 +77,16 @@
                     </button>
                     <!-- Change Language -->
                     <button type="button" @click="this.toggleLang" aria-label="changeLanguage"
-                        class="p-4 rounded transition duration-300 dark:hover:bg-gray-700 hover:bg-gray-200">
-                        <div class="flex justify-center items-center">
-                            <img alt="VN_Flag"
-                                src="https://upload.wikimedia.org/wikipedia/commons/0/07/Flag_of_Vietnam-Animated.gif"
-                                loading="lazy" width="18" height="18" v-if="this.currentLang === 'vi'" class="absolute">
-                            <img alt="US_Flag"
-                                src="https://upload.wikimedia.org/wikipedia/commons/4/42/Animated-Flag-USA.gif"
-                                loading="lazy" width="18" height="18" v-else="this.currentLang === 'en'" class="absolute">
-                        </div>
+                        class="h-[1.88rem] w-[1.88rem] relative p-1.5 rounded transition duration-300 dark:hover:bg-gray-700 hover:bg-gray-200">
+                        <img alt="EN_Flag"
+                            src="https://upload.wikimedia.org/wikipedia/commons/0/07/Flag_of_Vietnam-Animated.gif"
+                            loading="lazy" width="100%" height="100%" v-show="this.currentLang === 'vi'">
+                        <img alt="VN_Flag"
+                            src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Animated-Flag-USA-2.gif"
+                            loading="lazy" width="100%" height="100%" v-show="this.currentLang === 'en'">
                     </button>
                     <!-- Clock -->
-                    <div class="p-1.5 font-semibold cursor-default">{{ this.subNavClock }}</div>
+                    <div class="p-1.5 text-sm font-semibold cursor-default">{{ this.subNavClock }}</div>
                     <!-- Toggle Menu (For Mobile Nav)-->
                     <button type="button" @click="this.$emit('toggleMobileNav')" aria-label="toggleMenu"
                         class="p-1.5 rounded transition duration-300 dark:hover:bg-gray-700 hover:bg-gray-200 md:hidden">

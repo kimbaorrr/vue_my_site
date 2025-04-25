@@ -46,6 +46,8 @@ import IMGtoPDF from "../components/TienIch/IMGtoPDF.vue";
 import PwdGen from "../components/TienIch/PwdGen.vue";
 import Nato from "../components/TienIch/Nato.vue";
 import LoadingSpinner from "../components/LoadingSpinner.vue";
+import MultiPlayer from "../components/TienIch/MultiPlayer.vue";
+
 export default {
   name: "TienIch",
   mixins: [Mixin], // Khai báo sử dụng các hàm chung
@@ -56,7 +58,8 @@ export default {
     IMGtoPDF,
     PwdGen,
     Nato,
-    LoadingSpinner
+    LoadingSpinner,
+    MultiPlayer
   },
   data() {
     return {
@@ -78,6 +81,7 @@ export default {
         case "imgPdf": return 'IMGtoPDF';
         case "url": return 'URL';
         case "natoGen": return "Nato";
+        case "mPlayer": return 'MultiPlayer';
 
       }
     },

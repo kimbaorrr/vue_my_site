@@ -33,7 +33,7 @@
                     <div class="col-span-2">
                         <label for="hinhAnh" class="font-medium">{{ this.trans?.tools?.labels?.qr?.image?.[this.lang] ||
                             '' }}</label>
-                        <input type="file" @change="this.handleImageUpload" class="form-input p-[0.35rem]" />
+                        <input ref="imageInput" type="file" @change="this.handleImageUpload" class="form-input p-[0.35rem]" accept="image/*"/>
                     </div>
                 </div>
             </div>
@@ -81,8 +81,10 @@
 
         <!--Output-->
         <div class="flex flex-col justify-center items-center p-4 py-12 mt-4 bg-gray-100 rounded-lg border-2 border-green-400 dark:bg-gray-800"
-            id="outputQR" v-show="qrData.inputString.length !== 0 || (wifiData.ssid.length !== 0 && (wifiData.secureType === 'nopass' || wifiData.password.length !== 0))">
-            <QrcodeVue :value="this.outputString" :size="220" :foreground="this.qrData.color" level="H" render-as="svg">
+            id="outputQR"
+            v-show="qrData.inputString.length !== 0 || (wifiData.ssid.length !== 0 && (wifiData.secureType === 'nopass' || wifiData.password.length !== 0))">
+            <QrcodeVue :value="this.outputString" :size="220" :foreground="this.qrData.color" :level="this.qrData.logo.src !== '' ? H : M" render-as="svg"
+                :imageSettings=this.qrData.logo>
             </QrcodeVue>
             <p class="mt-4 font-semibold text-center">{{ this.qrData.title }}</p>
             <p class="text-sm text-center">{{ this.qrData.subTitle }}</p>
@@ -114,7 +116,12 @@ export default {
                 title: "",
                 subTitle: "",
                 color: "#000000",
-                logo: null,
+                logo: {
+                    src: '',
+                    width: 40,
+                    height: 40,
+                    excavate: true,
+                }
             },
             class: "blueBox border-2 focus:border-pink-400 focus:dark:border-pink-600",
             wifiData: {
@@ -133,17 +140,24 @@ export default {
 
             const reader = new FileReader();
             reader.onload = (e) => {
-                this.logo = e.target.result;
+                this.qrData.logo.src = e.target.result;
             };
             reader.readAsDataURL(file);
         },
         resetForm() {
             this.qrData.inputString = "",
-                this.qrData.title = "";
+            this.qrData.title = "";
             this.qrData.subTitle = "";
             this.qrData.color = "#000000";
-            this.qrData.logo = null;
-
+            this.qrData.logo = {
+                src: '',
+                width: 40,
+                height: 40,
+                excavate: true,
+            }
+            
+            this.$refs.imageInput.value = '';
+            
             this.wifiData.ssid = "";
             this.wifiData.secureType = "nopass";
             this.wifiData.password = "";

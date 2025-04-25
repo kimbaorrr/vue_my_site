@@ -157,14 +157,14 @@
                     "vi": "Ngôn ngữ lập trình"
                 },
                 "metrics": {
-                    "en": "Evalution Metrics",
+                    "en": "Evaluation Metrics",
                     "vi": "Chỉ số đánh giá",
                     "scalar": {
                         "en": "Scalar Metrics",
                         "vi": "Chỉ số định lượng"
                     },
                     "matrix": {
-                        "en": "Confussion Matrix",
+                        "en": "Confusion Matrix",
                         "vi": "Ma trận nhầm lẫn"
                     }
                 },
@@ -398,7 +398,26 @@
                         }
                     }
                 }
-
+            },
+            "multi_player": {
+                "input_text": {
+                    "placeholder": {
+                        "en": "Once line per video link...",
+                        "vi": "Mỗi dòng một liên kết video..."
+                    }
+                },
+                "from_txt": {
+                    "en": "Read links from text file...",
+                    "vi": "Đọc links từ tệp văn bản..."
+                },
+                "load": {
+                    "en": "Load videos",
+                    "vi": "Nạp dữ liệu"
+                },
+                "remove": {
+                    "en": "Remove all",
+                    "vi": "Xóa tất cả"
+                }
             }
         }
     },

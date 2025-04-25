@@ -34,7 +34,7 @@
         this.selectedCard === null || this.selectedCard.id === item.id ? 'opacity-100' : 'opacity-50',
         this.isExpanded(item.id) ? 'h-full overflow-visible' : 'h-[24vh] overflow-hidden'
       ]" :data-da-id="item.id" v-for="(item, idx) in this.filteredProjects" :key="idx"
-      @click="this.toggleExpand(item.id)">
+      @click="this.toggleExpand(item.id)" >
 
 
       <!--In Progress Ribbon-->
@@ -75,7 +75,7 @@
         <!--Technical Info-->
         <TechCard :projectData="item" :trans="trans" :lang="this.lang" :isShowCfs="isShowCfs"
           :isShowChart="isShowChart" @closeCfs="isShowCfs = false" @closeChart="isShowChart = false"
-          @toggleChart="isShowChart = !isShowChart" @toggleCfs="isShowCfs = !isShowCfs"></TechCard>
+          @toggleChart="isShowChart = !isShowChart" @toggleCfs="isShowCfs = !isShowCfs" :selectedIndex="idx"></TechCard>
       </div>
 
       <!--See More icon-->
@@ -93,7 +93,7 @@
         <h2 class="text-xl font-bold text-black dark:text-white">{{ this.selectedCard.name }}</h2>
         <!-- Close Button -->
         <button class="text-xl text-gray-600 dark:text-gray-300 hover:text-red-600"
-          @click="this.selectedCard = null; this.isShowChart = false;">
+          @click="this.selectedCard = null; this.isShowChart = false;this.isShowCfs = false">
           ✕
         </button>
       </div>
