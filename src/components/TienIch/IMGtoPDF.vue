@@ -1,19 +1,22 @@
 <template>
     <div class="overflow-y-auto flex-1 mt-10 md:px-5 md:mt-0">
         <div class="p-4 space-y-5 rounded-lg border-2 border-orange-500 dark:border-[#F59E0B] md:p-10">
-            <div class="flex flex-row justify-center items-baseline space-x-2">
+            <div
+                class="flex flex-col justify-between items-center gap-4 md:flex-row md:justify-center md:items-baseline md:gap-0 md:space-x-2">
                 <input type="file" accept="image/*" multiple @change="this.handleFiles" ref="filesInput"
-                    class="blueBox w-5/12 px-2 py-1 mt-2 dark:focus:border-pink-600 focus:border-2 focus:border-pink-400" />
-                <button @click="this.convertToPDF" class="blueBtn px-4 py-2 text-white"
-                    :disabled="this.imagePreviews.length === 0"
-                    :class="this.imagePreviews.length === 0 ? 'cursor-not-allowed bg-gray-400 dark:bg-gray-600 hover:bg-gray-400 hover:dark:bg-gray-600' : true">
-
-                    {{ trans?.tools?.labels?.img_pdf?.convert?.[lang] || "" }}
-                </button>
-                <button @click="this.clearImages" class="redBtn px-4 py-2 text-white">
-                    {{ trans?.tools?.labels?.img_pdf?.clear?.[lang] || "" }}
-                </button>
+                    class="blueBox w-full px-2 py-1 mt-2 dark:focus:border-pink-600 focus:border-2 focus:border-pink-400 md:w-5/12" />
+                <div class="w-full flex flex-row justify-between gap-2 md:w-auto md:space-x-2">
+                    <button @click="this.convertToPDF" class="blueBtn w-full px-4 py-2 text-white md:w-auto"
+                        :disabled="this.imagePreviews.length === 0"
+                        :class="this.imagePreviews.length === 0 ? 'cursor-not-allowed bg-gray-400 dark:bg-gray-600 hover:bg-gray-400 hover:dark:bg-gray-600' : true">
+                        {{ trans?.tools?.labels?.img_pdf?.convert?.[lang] || "" }}
+                    </button>
+                    <button @click="this.clearImages" class="redBtn w-full px-4 py-2 text-white md:w-auto">
+                        {{ trans?.tools?.labels?.img_pdf?.clear?.[lang] || "" }}
+                    </button>
+                </div>
             </div>
+
             <div class="grid gap-4 text-sm text-black dark:text-white md:grid-cols-4 sm:grid-cols-2">
                 <div class="col-span-2">
                     <label for="fileName" class="font-medium">{{

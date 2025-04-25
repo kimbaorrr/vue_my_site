@@ -14,8 +14,8 @@
             </a>
             <input type="file" ref="fileInput" class="hidden" @change="this.loadVideosFromFile" />
 
-
-            <div class="flex flex-col justify-between space-y-3 text-sm md:flex-row md:items-center md:space-y-0">
+            <!--Action Buttons-->
+            <div class="flex flex-col justify-between gap-4 text-sm md:flex-row md:items-center md:space-y-0">
                 <!--Left Buttons-->
                 <div class="flex space-x-2">
                     <button @click="this.loadVideos" class="blueBtn px-4 py-2 text-white"
@@ -35,7 +35,7 @@
                 <div class="flex space-x-2">
                     <button @click="this.playVideos"
                         class="blueBtn flex items-center px-4 py-2 text-white bg-gray-700 hover:bg-gray-800">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="lucide lucide-play">
                             <path d="M5 3v18l15-9-15-9z" />
@@ -44,7 +44,7 @@
 
                     <button @click="this.pauseVideos"
                         class="blueBtn flex items-center px-4 py-2 text-white bg-gray-700 hover:bg-gray-800">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="lucide lucide-pause">
                             <path d="M6 19h4V5H6zM14 5v14h4V5z" />
@@ -55,7 +55,7 @@
 
                     <button @click="this.backVideos"
                         class="blueBtn flex items-center px-4 py-2 text-white bg-gray-700 hover:bg-gray-800">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="lucide lucide-skip-back lucide-skip-back-icon">
                             <polygon points="19 20 9 12 19 4 19 20" />
@@ -65,7 +65,7 @@
 
                     <button @click="this.fowardVideos"
                         class="blueBtn flex items-center px-4 py-2 text-white bg-gray-700 hover:bg-gray-800">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="lucide lucide-skip-forward lucide-skip-forward-icon">
                             <polygon points="5 4 15 12 5 20 5 4" />
@@ -75,7 +75,7 @@
 
                     <button @click="this.restartVideos"
                         class="blueBtn flex items-center px-4 py-2 text-white bg-gray-700 hover:bg-gray-800">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="lucide lucide-rotate-ccw lucide-rotate-ccw-icon">
                             <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
@@ -85,7 +85,7 @@
 
                     <button @click="this.toggleFullscreen"
                         class="blueBtn flex items-center px-4 py-2 text-white bg-gray-700 hover:bg-gray-800">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="lucide lucide-fullscreen lucide-fullscreen-icon">
                             <path d="M3 7V5a2 2 0 0 1 2-2h2" />
@@ -98,10 +98,10 @@
                 </div>
             </div>
 
-            <span class="border-t border-dashed"></span>
+            <div class="border-t border-gray-500 border-dashed"></div>
 
             <!--Video Players-->
-            <div :class="this.gridClass" class="grid grid-cols-1 gap-2 p-2 md:gap-1" ref="videoGrid">
+            <div :class="this.gridClass" class="max-h-screen overflow-y-auto grid grid-cols-1 gap-1" ref="videoGrid">
                 <VideoPlayer v-for="(url, index) in this.videoList" :key="index" :video_src="url" ref="videoPlayer" />
             </div>
         </div>
