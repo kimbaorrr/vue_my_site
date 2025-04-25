@@ -1,12 +1,12 @@
 <template>
-    <video ref="videoPlayer" class="video-js vjs-default-skin w-full h-auto">
+    <video ref="videoPlayer" class="video-js vjs-theme-city w-full h-auto">
         <source :src="this.video_src" :type="this.video_type" />
     </video>
 </template>
 
 <script>
 import videojs from 'video.js';
-import 'video.js/dist/video-js.css';
+import '@videojs/themes/dist/city/index.css';
 
 export default {
     name: 'VideoPlayer',

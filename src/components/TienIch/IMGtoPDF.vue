@@ -76,7 +76,7 @@
 
 
 <script>
-import jsPDF from 'jspdf';
+import {jsPDF} from 'jspdf';
 import Mixin from '../Mixin.vue';
 
 export default {

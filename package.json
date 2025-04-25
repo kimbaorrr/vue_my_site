@@ -9,16 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@videojs/themes": "^1.0.1",
     "chart.js": "^4.4.9",
     "crypto-random-string": "^5.0.0",
-    "generate-password": "^1.7.1",
     "jspdf": "^3.0.1",
-    "jwplayer-video-element": "^1.3.1",
     "lodash": "^4.17.21",
     "qrcode.vue": "^3.6.0",
     "random-string-generator": "^1.0.7",
     "randomcolor": "^0.6.2",
-    "randomstring": "^1.3.1",
     "remove-accents": "^0.5.0",
     "video.js": "^8.22.0",
     "vue": "^3.5.13",
@@ -35,6 +33,7 @@
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15",
     "url-loader": "^4.1.1",
-    "vite": "^5.4.11"
+    "vite": "^5.4.11",
+    "vite-plugin-cdn-import": "^1.0.1"
   }
 }

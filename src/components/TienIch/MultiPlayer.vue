@@ -130,6 +130,7 @@ export default {
     computed: {
         gridClass() {
             const count = this.videoList.length;
+            if (count == 1) return '';
             if (count <= 4) return 'md:grid-cols-2';
             if (count <= 9) return 'md:grid-cols-3';
             return 'md:grid-cols-4';

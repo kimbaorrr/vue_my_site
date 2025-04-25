@@ -20,7 +20,6 @@
 import Navbar from './components/NavBar/Navbar.vue';
 import Footer from './components/Footer/Footer.vue';
 import Mixin from './components/Mixin.vue';
-import 'jwplayer-video-element';
 
 export default {
   name: 'App',

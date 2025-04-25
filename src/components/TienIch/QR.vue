@@ -100,7 +100,8 @@
 import QrcodeVue from 'qrcode.vue'
 import InputCharCount from "./InputCharCount.vue";
 import Mixin from "../Mixin.vue";
-import _ from "lodash";
+import _ from "lodash"
+
 export default {
     name: "QR",
     mixins: [Mixin],
