@@ -1,18 +1,19 @@
 <template>
-    <video ref="videoPlayer" class="video-js vjs-theme-city w-full h-auto">
-        <source :src="this.video_src" :type="this.video_type" />
-    </video>
+    <div class="aspect-video w-full">
+        <video ref="videoPlayer" class="video-js vjs-default-skin w-full h-full object-cover">
+            <source :src="this.video_src"/>
+        </video>
+    </div>
 </template>
 
 <script>
 import videojs from 'video.js';
-import '@videojs/themes/dist/city/index.css';
+import 'video.js/dist/video-js.min.css';
 
 export default {
     name: 'VideoPlayer',
     props: {
-        video_src: String,
-        video_type: String
+        video_src: String
     },
     mounted() {
         this.player = videojs(this.$refs.videoPlayer, {
@@ -20,15 +21,11 @@ export default {
             controls: true,
             responsive: true,
             fluid: true,
+            aspectRatio: '16:9',
             muted: true,
-            preload: "meta",
+            preload: "metadata",
             playbackRates: [0.5, 1, 1.5, 2],
-            playsinline: true,
-            skipButtons: {
-                forward: 5,
-                backward: 5
-            },
-            enableSmoothSeeking: true
+            playsinline: true
         });
     },
     beforeUnmount() {
@@ -38,36 +35,31 @@ export default {
     },
     methods: {
         play() {
-            const video = this.$refs.videoPlayer;
-            if (video) {
-                video.play();
+            if (this.player) {
+                this.player.play();
             }
         },
         pause() {
-            const video = this.$refs.videoPlayer;
-            if (video) {
-                video.pause();
+            if (this.player) {
+                this.player.pause();
             }
         },
         restart() {
-            const video = this.$refs.videoPlayer;
-            if (video) {
-                video.currentTime = 0;
-                video.play();
+            if (this.player) {
+                this.player.currentTime(0);
+                this.player.play();
             }
         },
         forward() {
-            const video = this.$refs.videoPlayer;
-            if (video) {
-                video.currentTime += video.currentTime;
-                video.play();
+            if (this.player) {
+                const currentTime = this.player.currentTime();
+                this.player.currentTime(currentTime + 5);
             }
         },
         back() {
-            const video = this.$refs.videoPlayer;
-            if (video) {
-                video.currentTime -= video.currentTime;
-                video.play();
+            if (this.player) {
+                const currentTime = this.player.currentTime();
+                this.player.currentTime(Math.max(0, currentTime - 5));
             }
         }
     }
