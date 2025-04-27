@@ -1,6 +1,6 @@
 <template>
     <div class="overflow-y-auto flex-1 mt-10 md:px-5 md:mt-0">
-        <div class="p-4 space-y-5 rounded-lg border-2 border-orange-500 dark:border-[#F59E0B] md:p-10">
+        <div class="border-[#F59E0B] p-4 space-y-5 rounded-lg border-2 dark:border-[#FBBF24] md:p-10">
             <div
                 class="flex flex-col justify-between items-center gap-4 md:flex-row md:justify-center md:items-baseline md:gap-0 md:space-x-2">
                 <input type="file" accept="image/*" multiple @change="this.handleFiles" ref="filesInput"

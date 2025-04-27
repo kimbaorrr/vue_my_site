@@ -2,7 +2,7 @@
     <!--QR APP-->
     <div class="overflow-y-auto flex-1 mt-10 md:mt-0 xl:px-5">
         <!--Input-->
-        <div class="p-4 space-y-3 rounded-lg border-2 border-orange-500 dark:border-[#F59E0B]">
+        <div class="border-[#F59E0B] p-4 space-y-3 rounded-lg border-2 dark:border-[#FBBF24]">
             <!--QR-->
             <div class="" v-show="!this.isShowWifiConnect">
                 <!--Input Text-->
@@ -80,7 +80,7 @@
         </div>
 
         <!--Output-->
-        <div class="flex flex-col justify-center items-center p-4 py-12 mt-4 bg-gray-100 rounded-lg border-2 border-green-400 dark:bg-gray-800"
+        <div class="border-[#10B981] flex flex-col justify-center items-center p-4 py-12 mt-4 bg-gray-100 rounded-lg border-2 dark:bg-gray-800"
             id="outputQR"
             v-show="qrData.inputString.length !== 0 || (wifiData.ssid.length !== 0 && (wifiData.secureType === 'nopass' || wifiData.password.length !== 0))">
             <QrcodeVue :value="this.outputString" :size="220" :foreground="this.qrData.color" :level="this.qrData.logo.src !== '' ? H : M" render-as="svg"

@@ -1,18 +1,18 @@
 <template>
     <div class="overflow-y-auto flex-1 mt-10 md:px-2 md:mt-0">
-        <div class="p-4 space-y-5 rounded-lg border-2 border-orange-500 dark:border-[#F59E0B]"
+        <div class="border-[#F59E0B] p-4 space-y-5 rounded-lg border-2 dark:border-[#FBBF24]"
             :class="{ 'fullscreen-grid': this.isFullscreen }" ref="gridContainer">
             <!--Input Text-->
             <InputCharCount v-model:inputString="this.inputText"
                 :placeHolder="this.trans?.tools?.labels?.multi_player?.input_text?.placeholder?.[this.lang] || ''"
-                :class="''" :rows="'5'">
+                :class="'focus:border-pink-400 dark:focus:border-pink-600'" :rows="'5'">
             </InputCharCount>
 
             <!--Read links from file-->
             <a href="#" @click.prevent="this.triggerFileInput" class="text-sm font-medium text-blue-500">
                 {{ this.trans?.tools?.labels?.multi_player?.from_txt?.[this.lang] || '' }}
             </a>
-            <input type="file" ref="fileInput" class="hidden" @change="this.loadVideosFromFile" />
+            <input type="file" ref="fileInput" class="hidden" @change="this.loadTextFromFile" />
 
             <!--Action Buttons-->
             <div class="flex flex-col justify-between gap-4 text-sm md:flex-row md:items-center md:space-y-0">
@@ -114,7 +114,7 @@ import InputCharCount from './InputCharCount.vue';
 import Mixin from '../Mixin.vue';
 
 export default {
-    name: 'MultiPlayer',
+    name: 'MultiVideoPlayer',
     mixins: [Mixin],
     components: {
         VideoPlayer,
@@ -141,7 +141,7 @@ export default {
             this.$refs.fileInput.click();
         },
 
-        async loadVideosFromFile(event) {
+        async loadTextFromFile(event) {
             const file = event.target.files[0];
             if (file && file.type === 'text/plain') {
                 try {
@@ -197,24 +197,25 @@ export default {
             }
         },
 
-        playVideos() {
-            this.$refs.videoPlayer.forEach(player => player.play());
+        async playVideos() {
+            await Promise.all(this.$refs.videoPlayer.map(player => player.play()));
         },
 
-        pauseVideos() {
-            this.$refs.videoPlayer.forEach(player => player.pause());
+        async pauseVideos() {
+            await Promise.all(this.$refs.videoPlayer.map(player => player.pause()));
         },
 
-        restartVideos() {
-            this.$refs.videoPlayer.forEach(player => player.restart());
+        async restartVideos() {
+            await Promise.all(this.$refs.videoPlayer.map(player => player.restart()));
         },
-        fowardVideos() {
-            this.$refs.videoPlayer.forEach(player => player.forward());
+
+        async fowardVideos() {
+            await Promise.all(this.$refs.videoPlayer.map(player => player.forward()));
         },
-        backVideos() {
-            this.$refs.videoPlayer.forEach(player => player.back());
+
+        async backVideos() {
+            await Promise.all(this.$refs.videoPlayer.map(player => player.back()));
         }
-
     }
 };
 </script>

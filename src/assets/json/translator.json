@@ -402,8 +402,8 @@
             "multi_player": {
                 "input_text": {
                     "placeholder": {
-                        "en": "Once line per video link...",
-                        "vi": "Mỗi dòng một liên kết video..."
+                        "en": "Once line per link...",
+                        "vi": "Mỗi dòng một liên kết..."
                     }
                 },
                 "from_txt": {
@@ -411,13 +411,24 @@
                     "vi": "Đọc links từ tệp văn bản..."
                 },
                 "load": {
-                    "en": "Load videos",
+                    "en": "Load",
                     "vi": "Nạp dữ liệu"
                 },
                 "remove": {
                     "en": "Remove all",
                     "vi": "Xóa tất cả"
+                },
+                "auto_refresh": {
+                    "per": {
+                        "en": "Auto refresh per",
+                        "vi": "Tự động làm mới mỗi"
+                    },
+                    "sec": {
+                        "en": "seconds",
+                        "vi": "giây"
+                    }
                 }
+
             }
         }
     },

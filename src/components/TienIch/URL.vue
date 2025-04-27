@@ -2,7 +2,7 @@
   <!--UTF8 APP-->
   <div class="overflow-y-auto flex-1 mt-10 md:mt-0 xl:px-5">
     <!--Input-->
-    <div class="p-4 space-y-3 rounded-lg border-2 border-orange-500 dark:border-[#F59E0B]">
+    <div class="border-[#F59E0B] p-4 space-y-3 rounded-lg border-2 dark:border-[#FBBF24]">
       <!--Input Text-->
       <InputCharCount v-model:inputString="this.inputString" :placeHolder="this.trans?.tools?.labels?.base64?.placeholder?.[this.lang] || ''" :class="this.class"></InputCharCount>
 
@@ -16,7 +16,7 @@
     </div>
     <!--Output-->
     <div
-      class="flex-col justify-center items-center p-4 py-8 mt-4 bg-gray-100 rounded-lg border-2 border-green-400 dark:bg-gray-800">
+      class="border-[#10B981] flex-col justify-center items-center p-4 py-8 mt-4 bg-gray-100 rounded-lg border-2 dark:bg-gray-800">
       <div class="flex justify-between items-center mb-2">
         <span class="text-lg font-bold">{{ this.trans?.tools?.labels?.base64?.output?.[this.lang] || '' }} ✍️</span>
       </div>

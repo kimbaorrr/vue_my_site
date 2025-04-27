@@ -46,7 +46,8 @@ import IMGtoPDF from "../components/TienIch/IMGtoPDF.vue";
 import PwdGen from "../components/TienIch/PwdGen.vue";
 import Nato from "../components/TienIch/Nato.vue";
 import LoadingSpinner from "../components/LoadingSpinner.vue";
-import MultiPlayer from "../components/TienIch/MultiPlayer.vue";
+import MultiVideoPlayer from "../components/TienIch/MultiVideoPlayer.vue";
+import MultiImagePlayer from "../components/TienIch/MultiImagePlayer.vue";
 
 export default {
   name: "TienIch",
@@ -59,7 +60,8 @@ export default {
     PwdGen,
     Nato,
     LoadingSpinner,
-    MultiPlayer
+    MultiVideoPlayer,
+    MultiImagePlayer
   },
   data() {
     return {
@@ -81,8 +83,8 @@ export default {
         case "imgPdf": return 'IMGtoPDF';
         case "url": return 'URL';
         case "natoGen": return "Nato";
-        case "mPlayer": return 'MultiPlayer';
-
+        case "mVPlayer": return 'MultiVideoPlayer';
+        case "mIPlayer": return 'MultiImagePlayer';
       }
     },
     toggleMobileSidebar() {
