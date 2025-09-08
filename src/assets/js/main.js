@@ -11,7 +11,7 @@ const app = createApp(App);
 app.use(router);
 app.use(PerfectScrollbarPlugin);
 app.use(VueReCaptcha, {
-    siteKey: secret.reCaptcha.siteKey,
+    siteKey: secret.ReCaptcha.siteKey,
     loaderOptions: {
       autoHideBadge: true,
       useRecaptchaNet: true

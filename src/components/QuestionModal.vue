@@ -22,7 +22,7 @@
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form class="relative flex flex-col gap-4 p-4 md:p-5" @submit.prevent="sendQuestion">
+                <form class="relative flex flex-col gap-4 p-4 md:p-5" ref="questionForm" @submit.prevent="sendQuestion">
                     <!--Sending Spinner-->
                     <div v-if="this.isSending" class="bg-opacity-75 absolute inset-0 z-10 justify-center items-center">
                         <LoadingSpinner></LoadingSpinner>
@@ -59,6 +59,9 @@
                                 :placeholder="this.trans?.question?.body?.placeholder?.[this.lang] || ''"
                                 required></textarea>
                         </div>
+                        <div class="w-full">
+                            <div class="g-recaptcha" :data-sitekey="this.siteKey"></div>
+                        </div>
                     </div>
                     <div class="flex justify-between items-center">
                         <button type="submit" class="blueBtn flex px-4 py-2.5 space-x-1 text-white">
@@ -84,7 +87,7 @@
 <script>
 import LoadingSpinner from '/src/components/LoadingSpinner.vue'
 import Mixin from "./Mixin.vue"
-import { useReCaptcha } from 'vue-recaptcha-v3'
+import secret from "/src/assets/json/secret.json"
 export default {
     name: "AskQuestionModal",
     components: {
@@ -92,6 +95,7 @@ export default {
     },
     mixins: [Mixin],
     data() {
+        const siteKey = secret.ReCaptcha.siteKey
         return {
             isOpenModal: false, // Trạng thái đóng/mở Modal
             isSending: false, // Dữ liệu đã hoàn tất gửi lên DB hay chưa ?
@@ -99,38 +103,46 @@ export default {
                 name: "",
                 email: "",
                 content: ""
-            }
+            },
+            siteKey: siteKey
         }
-    },
-    setup() {
-        const { executeRecaptcha } = useReCaptcha()
-        return { executeRecaptcha }
     },
     methods: {
         openModal() {
-            /**
-             * Sự kiện nhấn nút mở Ask Question Modal
-             */
             this.isOpenModal = true;
         },
         closeModal() {
-            /**
-             * Sự kiện nhấn nút đóng Ask Question Modal
-             */
             this.isOpenModal = false;
         },
-        async sendQuestion() {
-            /**
-             * Sự kiện gửi câu hỏi đến DB qua API
-             */
-            this.isSending = true;
-
+        async verifyCaptcha() {
             try {
-                const token = await this.executeRecaptcha('submit_question')
-                const form = document.querySelector('#questionModal form')
-                const formData = new FormData(form)
-                formData.append("Token", token)
-                await new Promise(resolve => setTimeout(resolve, 1500));
+                const token = await grecaptcha.execute(this.siteKey, { action: 'submit' });
+
+                const res = await fetch("https://api.baoit.site/captcha/recaptcha/verify", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(token)
+                });
+                return res.ok;
+
+            } catch (err) {
+                alert("Lỗi xác thực Captcha!\n" + err.message);
+                return false;
+            }
+        },
+        async sendQuestion() {
+            this.isSending = true;
+            try {
+                const captchaOk = await this.verifyCaptcha();
+                if (!captchaOk) {
+                    this.isSending = false;
+                    this.setAlertMessage("Captcha không hợp lệ !", "danger");
+                    return;
+                }
+
+                const apiKey = secret.apiKey;
+                const formData = new FormData(this.$refs.questionForm);
+                formData.append("ApiKey", apiKey);
 
                 const response = await fetch('https://api.baoit.site/my_blog/questions/send', {
                     method: 'POST',
@@ -141,6 +153,7 @@ export default {
                     const errorData = await response.json();
                     throw new Error(errorData.message);
                 }
+
                 alert(this.trans?.question?.body?.response?.success?.[this.lang] || "Gửi thành công!");
                 this.closeModal();
             } catch (error) {
@@ -153,6 +166,7 @@ export default {
             }
         }
     }
+
 }
 
 </script>

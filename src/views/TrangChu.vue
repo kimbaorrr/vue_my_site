@@ -2,14 +2,20 @@
   <!--Greeting Message-->
   <GreetingMessage :isShowGreetingMessage="this.isShowGreetingMessage" :trans="this.trans" :lang="this.lang">
   </GreetingMessage>
-
   <div class="mt-8 divide-y divide-gray-200 dark:divide-gray-700 md:mt-16">
     <div class="space-y-2 md:pt-6 md:pb-8 md:my-4 md:space-y-5 xl:grid xl:grid-cols-3">
-      <!--Left Content-->
-      <IntroContent :trans="this.trans" :lang="this.lang" :introData="this.introData"></IntroContent>
+      <!--Loading Spinner-->
+      <div class="h-full flex justify-center items-center" v-if="this.isLoading">
+        <LoadingSpinner></LoadingSpinner>
+      </div>
 
-      <!--Right Content-->
-      <CardInfo></CardInfo>
+      <!--Primary Section-->
+      <div v-if="!this.isLoading">
+        <!--Left Content-->
+        <IntroContent :trans="this.trans" :lang="this.lang" :introData="this.introData"></IntroContent>
+        <!--Right Content-->
+        <CardInfo></CardInfo>
+      </div>
     </div>
   </div>
 </template>

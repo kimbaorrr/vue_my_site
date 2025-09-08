@@ -1,13 +1,9 @@
 <template>
     <!--Personal Card-->
     <div class="hidden xl:block">
-        <!--Loading Spinner-->
-        <div class="h-full flex justify-center items-center" v-if="this.isLoading">
-            <LoadingSpinner></LoadingSpinner>
-        </div>
         <!--Card Content-->
         <div class="z-10 mb-8 transition-all duration-200 ease-out scale-100 hover:z-50 xl:mb-0 xl:hover:scale-[1.15]" 
-            style="perspective: 600px;" v-if="!this.isLoading">
+            style="perspective: 600px;">
             <div
                 class="overflow-hidden flex flex-col bg-white outline-1 outline-gray-100 outline shadow-lg shadow-gray-200 transition-all duration-200 ease-out dark:bg-dark dark:outline-gray-600 dark:shadow-green-700 xl:rounded-3xl">
                 <img alt="HinhDD" width="550" height="350" decoding="async" fetchpriority="high"

@@ -2,18 +2,19 @@
   <div class="h-screen flex justify-center items-center bg-white dark:bg-dark">
     <div
       class="w-full max-w-4xl flex flex-col justify-center gap-4 p-8 bg-center bg-cover rounded-xl xl:flex-row xl:shadow-lg xl:shadow-gray-400 xl:dark:shadow-purple-600">
-      <!-- Left Section: Avatar -->
-      <Avatar :avatarImgSrc="this.infoData.avatar || '#'"></Avatar>
-
       <!-- Loading Spinner -->
-      <div class="w-full flex justify-end items-center"
-        v-if="this.isLoading">
+      <div class="w-full flex justify-end items-center" v-if="this.isLoading">
         <LoadingSpinner></LoadingSpinner>
       </div>
-      
-      <!--Right Section: Content-->
-      <Content :contactData="this.contactData" :infoData="this.infoData" :lang="this.lang"
-        :isLoading="this.isLoading"></Content>
+      <!--Primary Section-->
+      <div v-if="!this.isLoading">
+        <!-- Left Section: Avatar -->
+        <Avatar :avatarImgSrc="this.infoData.avatar || '#'"></Avatar>
+        <!--Right Section: Content-->
+        <Content :contactData="this.contactData" :infoData="this.infoData" :lang="this.lang"
+          :isLoading="this.isLoading"></Content>
+      </div>
+
     </div>
   </div>
 </template>
